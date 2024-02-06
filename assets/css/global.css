@@ -1,0 +1,17 @@
+.content {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+@media (max-width: 720px) {
+    .content {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

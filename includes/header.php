@@ -1,17 +1,39 @@
-<header>
-    <h1>Your Website Header</h1>
-    
-    <!-- Navigatiemenu -->
-    <nav>
-        <ul>
-            <li><a href="contact.php">Akteweel</a></li>
-            <!-- Onder Akteweel: Nuujts -->
-            <!-- Onder Akteweel: Pergram -->
-            <!-- Onder Akteweel: Album -->
-            <li><a href="about.php">Vereniging</a></li>
-            <li><a href="index.php">Historie</a></li>
-            <li><a href="contact.php">Sjponsore</a></li>
-            <li><a href="contact.php">Ketak</a></li>
-        </ul>
-    </nav>
-</header>
+<?php require './vendor/autoload.php'; ?>
+
+<style> <?php include './assets/css/header.css'; ?> </style>
+
+    <a href="#">
+        <img class="logo" src="./assets/images/TuinhagedisseLogo.png"/>
+    </a>
+    <header class="site-header">
+        <div class="header__content--flow">
+            <section class="header-content--left">
+                <a href="#" class="brand-logo"></a>
+                <button class="nav-toggle">
+                    <span class="toggle--icon"></span>
+                </button>
+            </section>
+            <section class="header-content--right">
+                <nav class="header-nav" role="navigation">
+                    <ul class="nav__list" aria-expanded="false">
+                        <li class="list-item">
+                            <a class="nav__link" href="#">Akteweel</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="nav__link" href="#">Vereniging</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="nav__link" href="#">Historie</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="nav__link" href="#">Sjponsore</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="nav__link" href="#">Ketak</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </header>
+    <img src="./assets/images/Carnaval-in-Roermond.jpg" style="height: 300px;"/>

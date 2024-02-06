@@ -6,7 +6,7 @@
     <title>Your Website Title</title>
 
     <!-- Link naar je CSS-bestand(en) -->
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
 
     <!-- Voeg eventuele andere head-elementen toe, zoals scripts of meta-tags -->
 </head>
@@ -24,7 +24,7 @@
     <?php include_once 'includes/footer.php'; ?>
 
     <!-- Link naar je JavaScript-bestand(en) -->
-    <script src="/assets/js/script.js"></script>
+    <script src="./assets/js/header.js"></script>
 
     <!-- Voeg eventuele andere scripts toe -->
 </body>
