@@ -36,4 +36,4 @@
             </section>
         </div>
     </header>
-    <img src="./assets/images/Carnaval-in-Roermond.jpg" style="height: 300px;"/>
+    <img class="banner" src="./assets/images/bannerPlaceholder.jpg"/>
