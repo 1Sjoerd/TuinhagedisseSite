@@ -1,3 +1,58 @@
 <!-- Specifieke inhoud van de indexpagina -->
-<h2>Welcome to the Home Page</h2>
-<p>This is the content of the home page.</p>
+
+<?php  
+    include("./includes/agendaHome.php"); 
+?>
+
+<div class="container-hagedis">
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+    <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
+</div>

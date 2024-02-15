@@ -1,6 +1,6 @@
 <?php require './vendor/autoload.php'; ?>
 
-<style> <?php include './assets/css/header.css'; ?> </style>
+<style> <?php include './assets/css/header.css'; ?></style>
 
     <a href="#">
         <img class="logo" src="./assets/images/TuinhagedisseLogo.png"/>
@@ -36,4 +36,20 @@
             </section>
         </div>
     </header>
-    <img class="banner" src="./assets/images/bannerPlaceholder.jpg"/>
+    <div class="banner">
+        <div id="banner" class="background"></div>
+    </div>
+
+    <script>
+        var banner = document.getElementById("banner");
+        var images = [
+            "url('assets/images/bannerPlaceholder')",
+            "url('assets/images/bannerPlaceholder2')",
+            "url('assets/images/bannerPlaceholder3')"
+        ];
+
+        setInterval(function () {
+            var bg = images[Math.floor(Math.random() * images.length)];
+            banner.style.backgroundImage = bg;
+        }, 5000);
+    </script>

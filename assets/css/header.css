@@ -53,11 +53,18 @@ body {
     --header-margin: 5vh;
     --shadow: 0 0.1875em 0.3125em #0003, 0 0.125em 0.5em #0002;
     min-block-size: var(--header);
-    background-color: rgba(23,125,34,1);
+    background: repeating-linear-gradient(
+    45deg,
+    rgb(54, 161, 65),
+    rgb(54, 161, 65) 210px,
+    rgb(55, 165, 66) 210px,
+    rgb(55, 165, 66) 420px
+    );
+    /* background-color: rgb(27 69 31); */
     outline: 1px solid var(--border-clr);
     padding-inline: var(--padding);
     box-shadow: var(--shadow);
-    height: 80px;
+    height: 60px;
 }
 
 .header__content--flow {
@@ -96,7 +103,7 @@ body {
     border: none;
     visibility: hidden;
     cursor: pointer;
-    margin-top: 22px;
+    margin-top: 4px;
     margin-right: 15px
 }
 
@@ -144,8 +151,7 @@ body {
     display: grid;
     grid-auto-flow: column;
     justify-content: space-evenly;
-    grid-auto-rows: 2.25rem;
-    margin-top: 20px;
+    height: 60px;
 }
 
 .list-item {
@@ -158,9 +164,11 @@ body {
     place-items: center;
     min-width: 10ch;
     color: var(--text-primary);
-    font-size: 15.3px;
+    font-size: 18.3px;
     font-weight: 500;
     text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+    text-shadow: 2px 2px rgb(16, 90, 24);
 }
 
 .nav__link:focus-within {
@@ -180,11 +188,25 @@ body {
   margin-left: 20px;
   margin-top: -20px;
   box-shadow: var(--shadow);
+  z-index: 3;
 }
 
 .banner {
-    object-fit: cover;
     height: 300px;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/images/bannerPlaceholder3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 1s ease;
 }
 
 @media (max-width: 720px) {
@@ -216,7 +238,7 @@ body {
         gap: var(--space-05) 0;
         position: fixed;
         width: 10em;
-        background-color: rgba(23,125,34,1);
+        background-color: rgb(54, 161, 65);
         border-radius: var(--bd-radius);
         border: 1px solid var(--border-clr);
         padding-block: 0.5rem;
@@ -224,10 +246,14 @@ body {
         box-shadow: var(--shadow);
         visibility: hidden;
         opacity: 0;
+        justify-content: space-evenly;
+        grid-auto-rows: 2.25rem;
+        height: auto;
     }
 
     .nav__list[aria-expanded="true"] {
-        z-index: 2;
+        z-index: 3;
+        position: absolute;
         visibility: visible;
         transform-origin: top center;
         opacity: 1;
@@ -245,6 +271,8 @@ body {
 
 @media (max-width: 479px) {
     .nav__list {
-        width: calc(var(--full-width) - (var(--space-1) * 2));
+        justify-content: space-evenly;
+        grid-auto-rows: 2.25rem;
+        height: auto;
     }
 }

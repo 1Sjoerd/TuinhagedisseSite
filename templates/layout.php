@@ -7,7 +7,6 @@
 
     <!-- Link naar je CSS-bestand(en) -->
     <link rel="stylesheet" href="./assets/css/global.css">
-
     <!-- Voeg eventuele andere head-elementen toe, zoals scripts of meta-tags -->
     <link rel="shortcut icon" href=".assets/images/favicon/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href=".assets/images/favicon/apple-touch-icon.png" />
@@ -19,6 +18,10 @@
     <link rel="apple-touch-icon" sizes="144x144" href=".assets/images/favicon/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href=".assets/images/favicon/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href=".assets/images/favicon/apple-touch-icon-180x180.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
 
