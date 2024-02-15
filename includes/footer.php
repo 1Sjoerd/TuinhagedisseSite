@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<!--FONT AWESOME-->
->>>>>>> 9f9e040585069f9c50fc68ab3f3cffc23106bd91
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style> <?php include './assets/css/footer.css'; ?> </style>
 
