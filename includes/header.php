@@ -43,9 +43,9 @@
     <script>
         var banner = document.getElementById("banner");
         var images = [
-            "url('assets/images/bannerPlaceholder')",
-            "url('assets/images/bannerPlaceholder2')",
-            "url('assets/images/bannerPlaceholder3')"
+            "url('https://th.martines.dev/assets/images/bannerPlaceholder.jpg')",
+            "url('https://th.martines.dev/assets/images/bannerPlaceholder2.jpg')",
+            "url('https://th.martines.dev/assets/images/bannerPlaceholder3.jpg')"
         ];
 
         setInterval(function () {
