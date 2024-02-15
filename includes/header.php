@@ -41,15 +41,32 @@
     </div>
 
     <script>
+        function preloadImages() {
+            var images = [
+                "https://th.martines.dev/assets/images/bannerPlaceholder.jpg",
+                "https://th.martines.dev/assets/images/bannerPlaceholder2.jpg",
+                "https://th.martines.dev/assets/images/bannerPlaceholder3.jpg"
+            ];
+
+            for (var i = 0; i < images.length; i++) {
+                var img = new Image();
+                img.src = images[i];
+            }
+        }
+
+        window.onload = preloadImages;
+    </script>
+
+    <script>
         var banner = document.getElementById("banner");
         var images = [
-            "url('https://th.martines.dev/assets/images/bannerPlaceholder.jpg')",
-            "url('https://th.martines.dev/assets/images/bannerPlaceholder2.jpg')",
-            "url('https://th.martines.dev/assets/images/bannerPlaceholder3.jpg')"
+            "https://th.martines.dev/assets/images/bannerPlaceholder.jpg",
+            "https://th.martines.dev/assets/images/bannerPlaceholder2.jpg",
+            "https://th.martines.dev/assets/images/bannerPlaceholder3.jpg"
         ];
 
         setInterval(function () {
-            var bg = images[Math.floor(Math.random() * images.length)];
+            var bg = "url(" + images[Math.floor(Math.random() * images.length)] + ")";
             banner.style.backgroundImage = bg;
         }, 5000);
     </script>
