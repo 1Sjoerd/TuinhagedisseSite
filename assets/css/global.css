@@ -1,5 +1,4 @@
 body {
-    /* background-color: rgb(27 69 31); */
     background: repeating-linear-gradient(
     45deg,
     rgb(12, 66, 17),
@@ -15,7 +14,6 @@ body {
     width: 100%;
     padding-left: 70px;
     padding-right: 70px;
-    background-color: rgb(12, 66, 17);
 }
 
 .background-hagedis {
@@ -41,7 +39,7 @@ body {
     width: 180%;
     height: 100%;
     overflow: hidden;
-    
+    background-color: rgb(12, 66, 17);
     z-index: -1;
 }
 
