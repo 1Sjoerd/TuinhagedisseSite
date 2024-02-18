@@ -1,4 +1,19 @@
- .footer{
+.owl-carousel {
+    background-color: white;
+}
+
+.sponsoren-carousel {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sponsoren-carousel img {
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+}
+
+.footer{
     background-color: rgba(23,125,34,1);
     padding:20px 0px;
     color: var(--text-primary);
