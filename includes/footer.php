@@ -95,7 +95,6 @@
 <script>
     $('.owl-carousel').owlCarousel({
         autoplay:true,
-        autoplayTimeout:2000,
         autoplayHoverPause:true,
         center: false,
         loop:true,
@@ -105,12 +104,15 @@
         responsive:{
             0:{
                 items:1,
+                autoplayTimeout:5000,
             },
             600:{
                 items:4,
+                autoplayTimeout:2500,
             },
             1000:{
                 items:6,
+                autoplayTimeout:2500,
             }
         }
     })
