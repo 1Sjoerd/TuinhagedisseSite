@@ -9,7 +9,7 @@
         </div>
 
         <div class="row">
-            &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse || Designed By: Sjoerd & Mark 
+            &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse || Test Designed By: Sjoerd & Mark 
         </div>
     </div>
 </footer>
