@@ -87,7 +87,7 @@
         </div>
 
         <div class="row">
-            &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse
+            &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse Test
         </div>
     </div>
 </footer>
