@@ -17,7 +17,7 @@
                 <nav class="header-nav" role="navigation">
                     <ul class="nav__list" aria-expanded="false">
                         <li class="list-item">
-                            <a class="nav__link" href="#">Akteweel</a>
+                            <a class="nav__link" href="./index.php">Akteweel</a>
                         </li>
                         <li class="list-item">
                             <a class="nav__link" href="#">Vereniging</a>
