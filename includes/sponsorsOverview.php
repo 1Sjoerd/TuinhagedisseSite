@@ -15,35 +15,51 @@
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Baker Bart kazerneplein.jpg">
+                    <a href="https://www.bakkerbart.nl/vestigingen/bestellen-bij-bakker-bart-roermond-kazerneplein" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Baker Bart kazerneplein.jpg">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/bartjanssenassurantien.png">
+                    <a href="http://www.janssenass.nl/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/bartjanssenassurantien.png">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/botex wasserij logo.jpg">
+                    <a href="https://botex-wasserij.nl/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/botex wasserij logo.jpg">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Dierx Groep.jpg">
+                    <a href="https://dierx.eu/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Dierx Groep.jpg">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/domiveranda.png">
+                    <a href="https://domiveranda.com/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/domiveranda.png">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/hetfinancieeladvieshuis.png">
+                    <a href="https://www.hetfinancieeladvieshuis.nl/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/hetfinancieeladvieshuis.png">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Hotel-en-Grand-Cafe-De-Pauw.png">
+                    <a href="https://www.hoteldepauw.nl/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/Hotel-en-Grand-Cafe-De-Pauw.png">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/janwuts.jpeg">
+                    <a href="https://www.janwuts.nl/voorraadlijst/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/janwuts.jpeg">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
@@ -51,11 +67,15 @@
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/mts.gif">
+                    <a href="https://www.mertenssimons.nl/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/mts.gif">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
-                    <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/sif.jpeg">
+                    <a href="https://sif-group.com/en/" target="_blank">
+                        <img class="logos-gallery-image" src="./assets/images/logos-sjponsoren/sif.jpeg">
+                    </a>
                 </div>
 
                 <div class="logos-gallery-item">
