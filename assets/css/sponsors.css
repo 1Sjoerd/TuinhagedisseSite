@@ -45,47 +45,32 @@
   }
 }
 
-.logos-container {
-  max-width: 100rem;
-  margin: 0 auto;
-  padding: 0 2rem 2rem;
+ul {
+  list-style: none;
 }
 
-.logos-gallery {
+.logo-gallery {
   display: flex;
   flex-wrap: wrap;
-  margin: -1rem -1rem;
+  justify-content: center;
+  gap: 10px;
 }
 
-.logos-gallery-item {
+.logo-gallery > li {
+  flex-basis: 350px;
+  position: relative;
+}
+.logo-gallery li img {
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
   flex: 1 0 24rem;
-  margin: 1rem;
   padding: 5px;
   background-color: white;
   border-style: solid;
   border-color: rgb(43, 148, 53);
   box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-}
-
-.logos-gallery-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-@supports (display: grid) {
-  .logos-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-gap: 2rem;
-  }
-
-  .logos-gallery,
-  .logos-gallery-item {
-    margin: 0;
-  }
 }
 
 .other-sponsors {
