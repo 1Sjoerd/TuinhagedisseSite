@@ -2,8 +2,6 @@
 
 <?php
     include("./includes/agendaHome.php");
-    /* The include for SponsorsOverview.php is here temporary! eventually this moves to it's own sjponsore page */
-    include("./includes/sponsorsOverview.php");
 ?>
 
 <div class="container-hagedis">
