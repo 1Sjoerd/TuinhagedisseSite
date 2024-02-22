@@ -104,7 +104,7 @@
         responsive:{
             0:{
                 items:1,
-                autoplayTimeout:5000,
+                autoplayTimeout:4000,
             },
             600:{
                 items:4,
