@@ -1,11 +1,12 @@
+<style> <?php include './assets/css/standardblock.css'; ?> </style>
 <style> <?php include './assets/css/sponsors.css'; ?> </style>
 
-<div class="sponsors-overview">
+<div class="block-overview">
     <div class="heading-title">
-        <h2 class="sponsors-title"> Sjponsore </h2>
+        <h2 class="block-title"> Sjponsore </h2>
     </div>
     <div class="sponsors-body">
-        <div class="sponsors-intro">
+        <div class="block-text">
             Dees sjponsore zeen de drievende krach achter os vereiniging! Dankzij häör gulle biedrage bleuje ozze aktiviteiten en greujt ozze gemeinsjap.  Veer wille ug bedanke veur de ongersjteuning.
         </div>
 
