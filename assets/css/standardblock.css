@@ -77,7 +77,6 @@
 @media only screen and (max-width:480px) {
   .block-overview {
     width:100%;
-    margin:0;
   }
   .block-overview .heading-title h1 {
     font-size:1em;

@@ -13,6 +13,7 @@ ul {
   flex-basis: 300px;
   position: relative;
 }
+
 .logo-gallery li img {
   object-fit: scale-down;
   width: 100%;
