@@ -74,7 +74,7 @@
             </ul>
         </div>
         <div class="other-sponsors">
-            <div class="sponsors-intro">
+            <div class="block-text">
                 <a href="https://ok-rijmar.nl/" target="_blank">Rijmar</a><br>
                 <a href="https://subnetriooltechniek.nl/" target="_blank">Subnet</a><br>
                 <a href="http://gifeco.nl/" target="_blank">Gifeco Training & Advies</a><br>
