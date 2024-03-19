@@ -2,4 +2,5 @@
 
 <?php
     include("./includes/agendaHome.php");
+    include("./includes/news.php");
 ?>

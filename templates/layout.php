@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Kleur in de topbar van Safari -->
+    <meta name="theme-color" content="#1B7A24FF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: dark)">
+
     <title>V.V. de Tuinhagedisse</title>
 
     <!-- Link naar je CSS-bestand(en) -->

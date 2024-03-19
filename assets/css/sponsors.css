@@ -1,50 +1,3 @@
-.sponsors-overview {
-  margin: 20px;
-  min-width:300px;
-  background:#eeeded;
-  border-radius: 10px;
-}
-
-.sponsors-overview .heading-title {
-  padding:10px 20px;
-  text-transform:uppercase;
-  font-size:.9em;
-  position:relative;
-  font-family: 'Roboto', sans-serif;
-  background-color: rgb(43, 148, 53);
-  height: 60px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-/* EVENTS LEFT CONTES */
-.sponsors-overview .sponsors-intro {
-  padding:15px 20px;
-}
-
-.sponsors-title {
-  height: 40px;
-  display: table-cell;
-  vertical-align: middle;
-  color: #ddd;
-  font-family: "Oswald", sans-serif;
-  text-shadow: 2px 2px rgb(16, 90, 24);
-}
-
-.sponsors-intro {
-  font-family: 'Roboto', sans-serif;
-  color: #3f3f3f;
-  font-family: "Oswald", sans-serif;
-}
-
-/* FOR RESPONSIVE ONLY  */
-@media only screen and (max-width:480px) {
-  .sponsors-overview {
-    width:100%;
-    margin:0;
-  }
-}
-
 ul {
   list-style: none;
 }
@@ -57,9 +10,10 @@ ul {
 }
 
 .logo-gallery > li {
-  flex-basis: 350px;
+  flex-basis: 300px;
   position: relative;
 }
+
 .logo-gallery li img {
   object-fit: scale-down;
   width: 100%;
