@@ -50,6 +50,7 @@ select {
     appearance: none;  /* Voor moderne browsers */
 }
 
+
 select {
     background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5"><path fill="none" stroke="currentColor" stroke-width=".8" d="M0 0l2 2 2-2"/></svg>') no-repeat right 10px center;
     background-size: 8px 10px;
