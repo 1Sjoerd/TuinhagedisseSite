@@ -14,6 +14,17 @@
             "Sigma Sigma Pearl Clean Semi-Matt"
         ];
 
+        document.addEventListener('DOMContentLoaded', () => {
+            setDateToToday();
+            updatePaintOptions();
+        });
+
+        function setDateToToday() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            dateInputs.forEach(input => input.value = today);
+        }
+
         function addPaintSection() {
             var container = document.getElementById("paints_container");
             var paintSection = document.createElement("div");
@@ -46,6 +57,7 @@
                 <br><br>
             `;
             container.appendChild(paintSection);
+            setDateToToday(); // Set the date of the new date input to today
             updatePaintOptions();
         }
 
@@ -145,8 +157,6 @@
                 }
             });
         }
-
-        document.addEventListener('DOMContentLoaded', updatePaintOptions);
     </script>
 </head>
 <body>

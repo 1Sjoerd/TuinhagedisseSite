@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
-        <h1>Maintenance/Controle Result</h1>
+        <h1>Herschildering & Controle Tool</h1>
         <?php foreach ($results as $result): ?>
             <div class="result-section">
                 <h3><?php echo htmlspecialchars($result["surface"]); ?></h3>
