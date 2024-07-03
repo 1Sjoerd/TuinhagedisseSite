@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdf->AddPage();
     $pdf->SetMargins(PDF_MARGIN_LEFT, 10, PDF_MARGIN_RIGHT);
 
+
     $html = "<h1>Onderhoudsschema</h1>";
 
     foreach ($surfaces as $index => $surface) {
