@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once('tcpdf-main/tcpdf.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdf->SetKeywords('TCPDF, PDF, onderhoud, calculator');
 
     $pdf->AddPage();
+    $pdf->SetMargins(PDF_MARGIN_LEFT, 10, PDF_MARGIN_RIGHT);
+
 
     $html = "<h1>Onderhoudsschema</h1>";
 
