@@ -11,7 +11,6 @@ transition: all 0.3s ease;
 
 .event-calendar {
   width:400px;
-  margin: 20px;
   min-width:300px;
   background:#eeeded;
   border-radius: 10px;
@@ -79,7 +78,7 @@ transition: all 0.3s ease;
 
 /* EVENTS LEFT CONTES */
 .event-calendar .event-left-content {
-  padding:15px 20px;
+  padding:21px 20px;
 }
 
 .title-calendar {
@@ -167,7 +166,7 @@ transition: all 0.3s ease;
 
 
 /* FOR RESPONSIVE ONLY  */
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:992px) {
   .event-calendar {
     width:100%;
     margin:0;

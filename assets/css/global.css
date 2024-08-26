@@ -12,8 +12,8 @@ body {
     margin-top: 35px;
     margin-bottom: 70px;
     width: 100%;
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
 }
 
 .background-hagedis {
@@ -43,12 +43,56 @@ body {
     z-index: -1;
 }
 
-@media (max-width: 720px) {
+/* Container for the sections */
+.homepage-sections {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top sections containing agenda and prinsen */
+.top-sections {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Adjust gap between agenda and prinsen sections */
+}
+
+/* Agenda section */
+.agenda-section {
+    flex: 0 0 400px; /* Agenda takes fixed width */
+}
+
+/* Prinsen section */
+.prinsen-section {
+    flex: 1; /* Prinsen takes the remaining space */
+    background-color: #eeeded; /* Optional background color for prinsen section */
+    border-radius: 10px; /* Optional border radius */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Optional box shadow */
+}
+
+/* News section */
+.news-section {
+    margin-top: 30px;
+}
+
+@media (max-width: 992px) {
     .content {
         margin-top: 30px;
         margin-bottom: 30px;
         width: 100%;
         padding-left: 20px;
-        padding-right: 30px;
+        padding-right: 20px;
+    }
+
+    .top-sections {
+        flex-direction: column;
+    }
+
+    .agenda-section, .prinsen-section {
+        flex: 1 1 auto;
+        width: 100%; /* Ensures full width on mobile */
+    }
+
+    .news-section {
+        margin-top: 20px;
     }
 }

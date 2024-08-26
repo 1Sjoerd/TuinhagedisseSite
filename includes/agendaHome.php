@@ -57,23 +57,6 @@
         </div>
          </a>
       </li>
-
-      <li>
-         <a href="">
-        <div class="event-left-content">
-          <div class="title-event">
-             <h2> Evenement</h2>
-            <div class="event-date"> Okt 22, 2024</div>
-            <div class="event-location"> Meneerkes</div>
-          </div>
-        </div>
-        <div class="event-icon"> 
-          <div class="month">Okt </div> 
-          <div class="date">22 </div> 
-        </div>
-         </a>
-      </li>
-          
           
     </ul>
   </div>
