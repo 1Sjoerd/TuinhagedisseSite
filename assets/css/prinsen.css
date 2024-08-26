@@ -43,11 +43,13 @@
 
 .title-text {
     font-size: 40px;
+    text-shadow: 2px 2px rgb(16, 90, 24);
 }
 
 .subtitle-text {
     font-size: 20px;
     margin: 0;
+    text-shadow: 2px 2px rgb(16, 90, 24);
 }
 
 @media (max-width: 1250px) and (min-width: 992px) {
