@@ -1,5 +1,5 @@
 .owl-carousel {
-    background-color: white;
+    background-color: #eeeded;
 }
 
 .sponsoren-carousel {
@@ -13,14 +13,16 @@
 }
 
 .footer{
-    background-color: rgba(23,125,34,1);
+    background: rgb(43, 148, 53);
     padding:20px 0px;
     color: var(--text-primary);
     text-align:center;
-    font-size: 15.3px;
+    font-size: 20px;
     font-weight: 500;
     text-transform: uppercase;
+    text-shadow: 2px 2px rgb(16, 90, 24);
     outline: 1px solid var(--border-clr);
+    font-family: "Oswald", sans-serif;
 }
     
 .footer .row{
@@ -37,7 +39,7 @@
 }
     
 .footer .row a:hover{
-    color:black;
+    color:rgb(165, 165, 165);
 }
     
 .footer .row ul{
@@ -52,4 +54,5 @@
 .footer .row a i{
     font-size:2em;
     margin:0% 1%;
+    text-shadow: 2px 2px rgb(16, 90, 24);
 }

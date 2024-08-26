@@ -1,102 +1,109 @@
 .prinsen-body {
-    display: flex; /* Align cards side by side */
-    gap: 20px; /* Space between cards */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 15px 20px;
-    justify-content: space-between; /* Evenly distribute space between cards */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between;
 }
 
 .card {
-    background-color: rgb(45 142 54);
+    background-color: rgb(45, 142, 54);
     color: #fff;
     font-family: "Oswald", sans-serif;
     border-radius: 10px;
-    box-shadow: 0 0 20px #ccc;
-    overflow: hidden;
+    box-shadow: 0 0 6px #bebebe;
     display: flex;
-    width: 100%; /* Make each card take the full width of the container */
-    max-width: calc(50% - 10px); /* Each card takes 50% of the width with some margin */
-    margin: 10px 0; /* Space between cards */
-    height: 300px; /* Set a fixed height for the cards */
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    max-width: calc(50% - 10px);
+    margin: 10px 0;
+    height: 300px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .image-section {
-    width: 40%; /* Image section takes 40% of the card width */
-    height: 100%; /* Ensure the image section fills the card's height */
+    width: 40%;
+    height: 100%;
     overflow: hidden;
 }
 
 .image-section img {
-    width: 100%; /* Image covers the full width of its container */
-    height: 100%; /* Image also covers the full height */
-    object-fit: cover; /* Ensure the image covers the entire section without distortion */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .text-section {
-    width: 60%; /* Text section takes 60% of the card width */
+    width: 60%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center the text vertically */
-    text-align: left; /* Align text to the left */
+    justify-content: center;
+    text-align: left;
 }
 
 .title-text {
-    font-size: 40px;
+    font-size: 1.5rem;
     text-shadow: 2px 2px rgb(16, 90, 24);
+    margin-bottom: 10px;
 }
 
 .subtitle-text {
-    font-size: 20px;
+    font-size: 1rem;
     margin: 0;
     text-shadow: 2px 2px rgb(16, 90, 24);
 }
 
 @media (max-width: 1250px) and (min-width: 992px) {
     .card {
-        flex-direction: column; /* Stack image and text vertically */
-        height: auto; /* Allow the card height to adjust based on content */
+        flex-direction: column;
+        height: auto;
     }
 
     .image-section {
-        width: 100%; /* Image takes full width */
-        height: 200px; /* Set a fixed height for the image */
+        width: 100%;
+        height: 200px;
     }
 
     .text-section {
-        width: 100%; /* Text takes full width */
-        text-align: center; /* Center text */
+        width: 100%;
+        text-align: center;
     }
 
     .subtitle-text {
-        display: none; /* Hide the subtitle text */
+        display: none;
     }
 }
 
 @media (max-width: 720px) {
     .prinsen-body {
-        flex-direction: column; /* Stack cards vertically on smaller screens */
+        flex-direction: column;
     }
 
     .card {
-        max-width: 100%; /* Cards take full width on smaller screens */
-        flex-direction: column; /* Stack image and text vertically on smaller screens */
-        height: auto; /* Allow the card height to adjust based on content */
+        max-width: 100%;
+        flex-direction: column;
+        height: auto;
     }
 
     .image-section {
-        width: 100%; /* Image takes full width on smaller screens */
-        height: auto; /* Allow the image height to adjust based on content */
+        width: 100%;
+        height: auto;
     }
 
     .image-section img {
-        height: auto; /* Maintain the image's aspect ratio */
+        height: auto;
     }
 
     .text-section {
-        width: 100%; /* Text takes full width on smaller screens */
-        text-align: center; /* Center text on smaller screens */
-        padding: 0rem;
+        width: 100%;
+        text-align: center;
+        padding: 0;
         padding-bottom: 20px;
     }
 }

@@ -1,12 +1,19 @@
+.news-body {
+    padding: 10px;
+    background-color: #eeeded;
+}
+
 .news-slider {
     border-radius: 10px;
+    padding: 8px; 
 }
 
 .news-post{
-    margin: 20px 15px 20px;
+    margin: 20px 24px 30px;
     border-radius: 10px;
     padding-top: 1px;
-    box-shadow: 14px 14px 22px -9px #bbcbd8;
+    box-shadow: 0 0 6px #d1d1d1;
+    background-color: rgb(52 154 66);
 }
 .news-post .post-img{
     position: relative;
@@ -48,10 +55,13 @@
 .news-post .post-content{
     background:#fff;
     padding: 2px 20px 40px;
-    border-radius: 15px;
+    border-radius: 10px;
+    font-family: "Oswald", sans-serif;
 }
 .news-post .post-title a{
-    font-size:15px;
+    font-family: "Oswald", sans-serif;
+    padding-top: 10px;
+    font-size:18px;
     font-weight:bold;
     color:#333;
     display: inline-block;
@@ -83,7 +93,7 @@
     background: rgb(43, 148, 53);
     color: #ffffff;
     box-shadow: 0px 10px 20px -10px rgb(43, 148, 53);
-    border-radius: 25px;
+    border-radius: 10px;
     text-transform: uppercase;
 }
 .news-post .read-more:hover{
@@ -104,8 +114,8 @@
     width: 50px;
     align-content: center;
     padding: 0 18px 0 15px;
-    border-radius: 50%;
-    box-shadow: 3px 14px 25px -10px #bbcbd8;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #d1d1d1;
     transition: background 0.5s ease 0s;
 }
 .owl-nav .buttonnext{
@@ -117,8 +127,8 @@
     width: 50px;
     align-content: center;
     padding: 0 15px 0 18px;
-    border-radius: 50%;
-    box-shadow: 3px 14px 25px -10px #bbcbd8;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #d1d1d1;
     transition: background 0.5s ease 0s;
 }
 
