@@ -71,5 +71,6 @@ ul {
   padding-right: 18%;
   padding-top: 30px;
   padding-bottom: 42px;
-  text-align: center;
+  display: inline-block;
+  text-align: left;
 }
