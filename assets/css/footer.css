@@ -7,6 +7,14 @@
 }
 
 .sponsoren-carousel img {
+    vertical-align: middle;
+    padding: 5px;
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(43, 148, 53);
+    border-width: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cfcece;
     width: 150px;
     height: 150px;
     object-fit: scale-down;
