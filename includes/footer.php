@@ -122,11 +122,6 @@
         <div class="row">
             &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse
         </div>
-
-        <!-- Display the string from the database -->
-        <div class="row">
-            <?php echo $string_output; ?>
-        </div>
     </div>
 </footer>
 

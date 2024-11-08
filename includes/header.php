@@ -29,7 +29,7 @@
                             <a class="nav__link" href="./sjponsore.php">Sjponsore</a>
                         </li>
                         <li class="list-item">
-                            <a class="nav__link" href="#">Ketak</a>
+                            <a class="nav__link" href="./kontak.php">Kóntak</a>
                         </li>
                     </ul>
                 </nav>
