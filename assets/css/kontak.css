@@ -1,0 +1,35 @@
+.block-text {
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+}
+
+.block-text a:link {
+  color: rgb(43, 148, 53);
+}
+
+.block-text a:visited {
+  color: rgb(43, 148, 53);
+}
+
+.row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  font-size:0.8em;
+}
+  
+.row a{
+  text-decoration:none;
+  color: rgb(43, 148, 53);
+  transition:0.5s;
+}
+  
+.row a:hover{
+  color:rgb(165, 165, 165);
+}
+  
+.row a i{
+  font-size:2em;
+  margin:0% 1%;
+  text-shadow: 1px 1px rgb(16, 90, 24);
+}
