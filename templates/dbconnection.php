@@ -1,8 +1,8 @@
 <?php
 session_start();
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "Mark";
+$password = "VVTH2023!";
 $dbname = "vvdetuinhagedisse_nl";
 
 // Create connection
