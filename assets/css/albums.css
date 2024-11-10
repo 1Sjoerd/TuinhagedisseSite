@@ -1,0 +1,81 @@
+/* Algemeen grid voor de albums */
+#album-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Zet de kolommen dynamisch op */
+    gap: 20px; /* Ruimte tussen de albums */
+    padding: 20px;
+}
+
+/* Standaardstijl voor de album div's (zoals nieuwsitems) */
+.album-post {
+    margin: 20px 24px 30px;
+    border-radius: 10px;
+    padding-top: 1px;
+    box-shadow: 0 0 6px #d1d1d1;
+    background-color: rgb(52 154 66); /* Groene achtergrond, pas aan indien nodig */
+}
+
+.album-post .cover-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 15px 15px 15px 15px;
+}
+
+.album-post .cover-img img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transform: scale(1, 1);
+    transition: transform 0.2s linear;
+}
+
+.album-post:hover .cover-img img {
+    transform: scale(1.1, 1.1);
+}
+
+.album-post .album-content {
+    background: #fff;
+    padding: 10px 10px 10px;
+    border-radius: 10px;
+    font-family: "Oswald", sans-serif;
+    display: flex; /* Flexbox inschakelen */
+    flex-direction: column; /* Zorg ervoor dat alles in een kolom wordt geplaatst */
+    justify-content: center; /* Verticaal centreren van de inhoud */
+    height: 110px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.album-post .album-title a {
+    display: flex; /* Flexbox voor de titel */
+    align-items: center; /* Verticaal centreren van de titel */
+    justify-content: center; /* Horizontaal centreren van de titel */
+    font-family: "Oswald", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    height: 100%; /* Zorg ervoor dat de titel de volledige hoogte van de container inneemt */
+}
+
+.album-post .album-title a:hover {
+    text-decoration: none;
+    color: rgb(43, 148, 53); /* Groene kleur bij hover */
+}
+
+@media (max-width: 1200px) {
+    /* Op een scherm kleiner dan 1200px breed, twee albums per rij */
+    #album-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Op een scherm kleiner dan 768px breed, één album per rij */
+    #album-list {
+        grid-template-columns: 1fr;
+    }
+}

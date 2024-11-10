@@ -29,6 +29,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 
+<?php
+    require('dbconnection.php');
+?>
+
 <div class="container-hagedis">
     <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>
     <img draggable="false" (dragstart)="false;" src="./assets/svg/hagedis.svg" class="background-hagedis"/>

@@ -2,13 +2,13 @@
 
 <style> <?php include './assets/css/header.css'; ?></style>
 
-    <a href="#">
+    <a href="./index.php">
         <img class="logo" src="./assets/images/TuinhagedisseLogo.png"/>
     </a>
     <header class="site-header">
         <div class="header__content--flow">
             <section class="header-content--left">
-                <a href="#" class="brand-logo"></a>
+                <a href="./index.php" class="brand-logo"></a>
                 <button class="nav-toggle">
                     <span class="toggle--icon"></span>
                 </button>
@@ -20,11 +20,11 @@
                             <a class="nav__link" href="./index.php">Akteweel</a>
                         </li>
                         <li class="list-item">
-                            <a class="nav__link" href="#">Vereniging</a>
+                            <a class="nav__link" href="./vereniging.php">Vereniging</a>
                         </li>
-                        <li class="list-item">
+                        <!--<li class="list-item">
                             <a class="nav__link" href="#">Historie</a>
-                        </li>
+                        </li>-->
                         <li class="list-item">
                             <a class="nav__link" href="./sjponsore.php">Sjponsore</a>
                         </li>
@@ -43,9 +43,9 @@
     <script>
         function preloadImages() {
             var images = [
-                "https://th.martines.dev/assets/images/bannerPlaceholder.jpg",
-                "https://th.martines.dev/assets/images/bannerPlaceholder2.jpg",
-                "https://th.martines.dev/assets/images/bannerPlaceholder3.jpg"
+                "./assets/images/bannerPlaceholder.jpg",
+                "./assets/images/bannerPlaceholder2.jpg",
+                "./assets/images/bannerPlaceholder3.jpg"
             ];
 
             for (var i = 0; i < images.length; i++) {
@@ -60,9 +60,9 @@
     <script>
         var banner = document.getElementById("banner");
         var images = [
-            "https://th.martines.dev/assets/images/bannerPlaceholder.jpg",
-            "https://th.martines.dev/assets/images/bannerPlaceholder2.jpg",
-            "https://th.martines.dev/assets/images/bannerPlaceholder3.jpg"
+            "./assets/images/bannerPlaceholder.jpg",
+            "./assets/images/bannerPlaceholder2.jpg",
+            "./assets/images/bannerPlaceholder3.jpg"
         ];
 
         setInterval(function () {

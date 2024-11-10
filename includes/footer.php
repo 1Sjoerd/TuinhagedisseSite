@@ -1,36 +1,3 @@
-<?php
-// Database credentials
-//$servername = "vvdetuinhagedisse.nl.mysql";
-//$username = "vvdetuinhagedisse_nl";
-//$password = "TH2024!";
-//$dbname = "vvdetuinhagedisse_nl";
-
-// Create connection
-//$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-//if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
-
-// Query to get the string
-//$sql = "SELECT `string` FROM `test-table`";
-//$result = $conn->query($sql);
-
-//$string_output = "";
-
-//if ($result->num_rows > 0) {
-    // Assuming you want to display only the first result
-//    $row = $result->fetch_assoc();
-//    $string_output = $row["string"];
-//} else {
-//    $string_output = "No information available";
-//}
-
-// Close connection
-//$conn->close();
-?>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style> <?php include './assets/css/footer.css'; ?> </style>
 

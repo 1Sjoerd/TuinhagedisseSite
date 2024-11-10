@@ -9,55 +9,47 @@
   </div>
   <div class="events-body">
     <ul>
-       <li>
-         <a href="">
-        <div class="event-left-content">
-          <div class="title-event">
-             <h2> Evenement</h2>
-            <div class="event-date"> Feb 28, 2024</div>
-            <div class="event-location"> Aad leeve</div>
-          </div>
-        </div>
-        <div class="event-icon"> 
-          <div class="month">Feb </div> 
-          <div class="date">28 </div> 
-        </div>
-         </a>
-      </li>
-         
-          
-      <li>
-         <a href="">
-        <div class="event-left-content">
-          <div class="title-event">
-             <h2> Evenement</h2>
-            <div class="event-date"> Mar 12, 2024</div>
-            <div class="event-location"> Aad leeve</div>
-          </div>
-        </div>
-        <div class="event-icon"> 
-          <div class="month">Mar </div> 
-          <div class="date">12 </div> 
-        </div>
-         </a>
-      </li>
-      
-       <li>
-         <a href="">
-        <div class="event-left-content">
-          <div class="title-event">
-             <h2> Evenement</h2>
-            <div class="event-date"> Okt 22, 2024</div>
-            <div class="event-location"> Meneerkes</div>
-          </div>
-        </div>
-        <div class="event-icon"> 
-          <div class="month">Okt </div> 
-          <div class="date">22 </div> 
-        </div>
-         </a>
-      </li>
-          
+    <?php
+      $sql = "SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC LIMIT 3;";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0 ) {
+        while ($row = $result->fetch_assoc()) {
+
+          $origDate = $row["date"];
+          $newDate = date("d-M-Y", strtotime($origDate));
+          $newDate = explode('-', $newDate);
+
+          $day  = $newDate[0];
+          $month   = $newDate[1];
+          if ($month == "Mar") {
+            $month = "Mrt";
+          } elseif ($month == "May") {
+            $month = "Mei";
+          } elseif ($month == "Oct") {
+            $month = "Okt";
+          }
+
+          $year = $newDate[2];
+                    
+          echo "<li>";
+            echo "<a>";
+              echo "<div class='event-left-content'>";
+                echo "<div class='title-event'>";
+                  echo "<h2> ".$row["title"]."</h2>";
+                  echo "<div class='event-date'> ".$day." ".$month.", ".$year."</div>";
+                  echo "<div class='event-location'> ".$row["location"]."</div>";
+                echo "</div>";
+              echo "</div>";
+              echo "<div class='event-icon'>";
+                echo "<div class='month'>".$month." </div>";
+                echo "<div class='date'>".$day." </div> ";
+              echo "</div>";
+            echo "</a>";
+          echo "</li>";
+        }
+      }
+    ?>   
     </ul>
   </div>
   
