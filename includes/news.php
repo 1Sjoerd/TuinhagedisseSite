@@ -39,10 +39,7 @@
             }
         ?>
         </div>
-    </div>
-</div>
-
-<?php
+        <?php
 $sql = "SELECT * FROM `news` ORDER BY `date` DESC";
 $result = $conn->query($sql);
 
@@ -64,5 +61,9 @@ if ($result->num_rows > 0 ) {
     }
 }
 ?>
+    </div>
+</div>
+
+
 
 <script src="./assets/js/modal.js"></script>
