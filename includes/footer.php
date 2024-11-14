@@ -76,7 +76,6 @@
             <img src='./assets/images/logos-sjponsoren/van%20Tuyl%20beheer.jpg' alt="">
         </a>
     </div>
-    <!-- Carousel content remains unchanged -->
 </div>
 
 <footer>
@@ -106,7 +105,7 @@
                 0:{
                     items:1
                 },
-                980:{
+                620:{
                     items:2
                 },
                 1200:{
@@ -115,28 +114,61 @@
             }
         });
 
-        $('.owl-carousel').owlCarousel({
-            autoplay:true,
-            autoplayHoverPause:true,
-            center: false,
-            loop:true,
-            margin:50,
-            dots:false,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    autoplayTimeout:4000,
-                },
-                600:{
-                    items:4,
-                    autoplayTimeout:2500,
-                },
-                1000:{
-                    items:6,
-                    autoplayTimeout:2500,
+        (function($) {
+            $.fn.shuffle = function() {
+                var allElems = this.get(),
+                    getRandom = function(max) {
+                        return Math.floor(Math.random() * max);
+                    },
+                    shuffled = $.map(allElems, function() {
+                        var random = getRandom(allElems.length),
+                            randEl = $(allElems[random]).clone(true)[0];
+                        allElems.splice(random, 1);
+                        return randEl;
+                    });
+
+                this.each(function(i) {
+                    $(this).replaceWith($(shuffled[i]));
+                });
+
+                return $(shuffled);
+            };
+        })(jQuery);
+
+        $(document).ready(function() {
+            $(".owl-carousel .sponsoren-carousel").shuffle();
+
+            $('.owl-carousel').owlCarousel({
+                autoplay: true,
+                autoplayHoverPause: true,
+                loop: true,
+                margin: 50,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        autoplayTimeout: 4000
+                    },
+                    600: {
+                        items: 3,
+                        autoplayTimeout: 2500
+                    },
+                    1000: {
+                        items: 4,
+                        autoplayTimeout: 2500
+                    },
+                    1350: {
+                        items: 5,
+                        autoplayTimeout: 2500
+                    },
+                    1550: {
+                        items: 6,
+                        autoplayTimeout: 2500
+                    }
                 }
-            }
-        })
+            });
+        });
+
     });
 </script>

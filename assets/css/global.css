@@ -36,12 +36,28 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 180%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: rgb(12, 66, 17);
+    background-color: rgb(12, 66, 17); /* Background color */
     z-index: -1;
 }
+
+.container-hagedis::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../svg/hagedis.svg);
+    background-repeat: repeat;
+    background-size: 500px 650px;
+    transform: scale(1.2) rotate(190deg);
+    filter: invert(20%) sepia(10%) saturate(6753%) hue-rotate(87deg) brightness(90%) contrast(80%);
+    z-index: -1;
+}
+
 
 /* Container for the sections */
 .homepage-sections {
@@ -49,11 +65,18 @@ body {
     flex-direction: column;
 }
 
+.homepage-sections > * {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); /* Centreert het element horizontaal */
+}
+
 /* Top sections containing agenda and prinsen */
 .top-sections {
     display: flex;
     flex-direction: row;
     gap: 20px; /* Adjust gap between agenda and prinsen sections */
+    max-width: 1200px;
 }
 
 /* Agenda section */
@@ -72,6 +95,7 @@ body {
 /* News section */
 .news-section {
     margin-top: 30px;
+    max-width: 1200px;
 }
 
 @media (max-width: 992px) {

@@ -10,12 +10,12 @@
   <div class="events-body">
     <ul>
     <?php
-      $sql = "SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC LIMIT 3;";
+      $sql = "SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC LIMIT 4;";
       $result = $conn->query($sql);
 
-      if ($result->num_rows > 0 ) {
+      if ($result->num_rows > 0) {
+        // Wanneer er resultaten zijn
         while ($row = $result->fetch_assoc()) {
-
           $origDate = $row["date"];
           $newDate = date("d-M-Y", strtotime($origDate));
           $newDate = explode('-', $newDate);
@@ -37,7 +37,6 @@
               echo "<div class='event-left-content'>";
                 echo "<div class='title-event'>";
                   echo "<h2> ".$row["title"]."</h2>";
-                  echo "<div class='event-date'> ".$day." ".$month.", ".$year."</div>";
                   echo "<div class='event-location'> ".$row["location"]."</div>";
                 echo "</div>";
               echo "</div>";
@@ -48,9 +47,20 @@
             echo "</a>";
           echo "</li>";
         }
+      } else {
+        // Wanneer er geen resultaten zijn
+        echo "<li>";
+          echo "<a>";
+            echo "<div class='event-left-content'>";
+              echo "<div class='title-event'>";
+                echo "<h2>  Gein evenemente gepland </h2>";
+                echo "<div class='event-location'> Nog aeve wachte </div>";
+              echo "</div>";
+            echo "</div>";
+          echo "</a>";
+        echo "</li>";
       }
     ?>   
     </ul>
   </div>
-  
 </div>
