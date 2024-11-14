@@ -12,6 +12,7 @@
 
     <!-- Link naar je CSS-bestand(en) -->
     <link rel="stylesheet" href="./assets/css/global.css">
+    <style> <?php include './assets/css/modal.css'; ?> </style>
     <!-- Voeg eventuele andere head-elementen toe, zoals scripts of meta-tags -->
     <link rel="shortcut icon" href="./assets/images/favicon/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="./assets/images/favicon/apple-touch-icon.png" />

@@ -1,6 +1,5 @@
 <style> <?php include './assets/css/standardblock.css'; ?> </style>
 <style> <?php include './assets/css/news.css'; ?> </style>
-<style> <?php include './assets/css/modal.css'; ?> </style>
 
 <div class="block-overview">
     <div class="heading-title">
