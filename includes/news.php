@@ -44,4 +44,3 @@
 
 
 
-<script src="./assets/js/modal.js"></script>
