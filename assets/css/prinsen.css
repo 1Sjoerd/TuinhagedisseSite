@@ -7,39 +7,43 @@
 }
 
 .card {
-    background-color: rgb(45, 142, 54);
+    background-color: rgb(216, 216, 216);
     color: #fff;
     font-family: "Oswald", sans-serif;
     border-radius: 10px;
     box-shadow: 0 0 6px #bebebe;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow: hidden;
     width: 100%;
     max-width: calc(50% - 10px);
     margin: 10px 0;
     height: 300px;
     transition: transform 0.3s ease;
-}
-
-.card:hover {
     transform: translateY(-5px);
 }
 
 .image-section {
-    width: 40%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 .image-section img {
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
+    width: 100%;
     object-fit: cover;
+    box-shadow: -20px 0 40px rgba(255, 255, 255, 0.8), /* Left glow */
+                20px 0 40px rgba(255, 255, 255, 0.8);  /* Right glow */
 }
 
 .text-section {
-    width: 60%;
+    background-color: rgb(45, 142, 54);
+    height: 80px;
+    width: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -47,16 +51,67 @@
     text-align: left;
 }
 
-.title-text {
+/* .title-text {
     font-size: 1.5rem;
     text-shadow: 2px 2px rgb(16, 90, 24);
     margin-bottom: 10px;
+} */
+
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(45, 142, 54, 0.8); /* Semi-transparent background */
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title-text {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding-right: 10px;
 }
 
 .subtitle-text {
+    font-size: 0.9rem;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* .subtitle-text {
     font-size: 1rem;
     margin: 0;
     text-shadow: 2px 2px rgb(16, 90, 24);
+} */
+
+.morebtn {  
+    font-family: "Oswald", sans-serif;
+    padding: 7px 10px;
+    float: right;
+    font-size: 13px;
+    font-weight: 500;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 10px 20px -10px rgb(43, 148, 53);
+    border-radius: 10px;
+    border-width: 0px;
+    text-transform: uppercase;
+    color: #110e0e;
+    margin-left: 10px;
+}
+.morebtn:hover {  
+    color: #06c65c;
+    background-color: rgb(255, 255, 255);
+}
+
+@media (min-width: 1330px) {
+    .card {
+        height: 410px;
+    }
 }
 
 @media (max-width: 1250px) and (min-width: 992px) {
@@ -67,7 +122,7 @@
 
     .image-section {
         width: 100%;
-        height: 200px;
+        height: 300px;
     }
 
     .text-section {
@@ -77,6 +132,18 @@
 
     .subtitle-text {
         display: none;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+    .text-overlay {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 720px) {
+    .card {
+        height: 500px;
     }
 }
 
