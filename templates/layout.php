@@ -64,7 +64,7 @@ if ($result->num_rows > 0 ) {
                 echo "<div class='block-overview'>";
                     echo "<div class='heading-title'>";
                         echo "<h2 class='block-title'>".$row["title"]."</h2>";
-                        echo "<a class='close-button hide-modal' id='".$row['id']."news' data-id='".$row['id']."news'>&#10006;</a>";
+                        echo "<a class='close-button hide-modal' style='color:white;' id='".$row['id']."news' data-id='".$row['id']."news'>&#10006;</a>";
                     echo "</div>";
                     echo "<div class='block-text'>";
                         echo $row["text"];
