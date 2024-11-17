@@ -20,15 +20,13 @@
 
 .close-button {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 19px;
+    right: 19px;
     transition: all 0.5s ease;
     background-color: rgb(23,125,34,1);
     margin-right: -10px;
     margin-top: -9px;
     border-radius: 50%;
-    border: 2px solid #fff;
-    color: white !important; 
     -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
     box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
@@ -42,5 +40,4 @@
 
 .close-button:hover {
     background-color: red;
-    color: #fff;
 }
