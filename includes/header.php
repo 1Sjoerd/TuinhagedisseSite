@@ -43,9 +43,18 @@
     <script>
         function preloadImages() {
             var images = [
-                "./assets/images/bannerPlaceholder.jpg",
-                "./assets/images/bannerPlaceholder2.jpg",
-                "./assets/images/bannerPlaceholder3.jpg"
+                "./assets/images/banner/1.JPG",
+                "./assets/images/banner/2.JPG",
+                "./assets/images/banner/3.JPG",
+                "./assets/images/banner/4.JPG",
+                "./assets/images/banner/5.JPG",
+                "./assets/images/banner/6.JPG",
+                "./assets/images/banner/7.JPG",
+                "./assets/images/banner/8.JPG",
+                "./assets/images/banner/9.JPG",
+                "./assets/images/banner/10.JPG",
+                "./assets/images/banner/11.JPG",
+                "./assets/images/banner/12.JPG"
             ];
 
             for (var i = 0; i < images.length; i++) {
@@ -60,9 +69,18 @@
     <script>
         var banner = document.getElementById("banner");
         var images = [
-            "./assets/images/bannerPlaceholder.jpg",
-            "./assets/images/bannerPlaceholder2.jpg",
-            "./assets/images/bannerPlaceholder3.jpg"
+            "./assets/images/banner/1.JPG",
+                "./assets/images/banner/2.JPG",
+                "./assets/images/banner/3.JPG",
+                "./assets/images/banner/4.JPG",
+                "./assets/images/banner/5.JPG",
+                "./assets/images/banner/6.JPG",
+                "./assets/images/banner/7.JPG",
+                "./assets/images/banner/8.JPG",
+                "./assets/images/banner/9.JPG",
+                "./assets/images/banner/10.JPG",
+                "./assets/images/banner/11.JPG",
+                "./assets/images/banner/12.JPG"
         ];
 
         setInterval(function () {
