@@ -9,7 +9,7 @@
             <div class="image-section">
                 <img src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
                 <div class="text-overlay">
-                    <p class="title-text">Rick I</p>
+                    <p class="title-text">RICK I</p>
                     <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="image-section">
                 <img src="./assets/images/prinsen/yara.jpg" alt="Prinses Yara I" loading="lazy"/>
                 <div class="text-overlay">
-                    <p class="title-text">Yara I</p>
+                    <p class="title-text">YARA I</p>
                     <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
