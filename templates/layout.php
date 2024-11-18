@@ -24,6 +24,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon-180x180.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,7 @@ if ($result->num_rows > 0 ) {
                 echo "<div class='block-overview'>";
                     echo "<div class='heading-title'>";
                         echo "<h2 class='block-title'>".$row["title"]."</h2>";
-                        echo "<a class='close-button hide-modal' style='color:white;' id='".$row['id']."news' data-id='".$row['id']."news'>&#10006;</a>";
+                        echo "<a class='close-button hide-modal' style='color:white;' id='".$row['id']."news' data-id='".$row['id']."news'><i class='fas fa-times'></i></a>";
                     echo "</div>";
                     echo "<div class='block-text'>";
                         echo $row["text"];
