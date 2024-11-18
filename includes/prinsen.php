@@ -2,23 +2,23 @@
 
 <div class="block-overview">
     <div class="heading-title">
-        <h2 class="block-title"> Prinsen </h2>
+        <h2 class="block-title"> Veurgengers </h2>
     </div>
     <div class="prinsen-body">
         <div class="card">
             <div class="image-section">
-                <img src="./assets/images/prinsen/onbekend.jpg" alt="Prins Jannie I" loading="lazy" />
+                <img src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
                 <div class="text-overlay">
-                    <p class="title-text">?</p>
+                    <p class="title-text">Rick I</p>
                     <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
         </div>
         <div class="card">
             <div class="image-section">
-                <img src="./assets/images/prinsen/onbekend.jpg" alt="Prins Joey I" loading="lazy"/>
+                <img src="./assets/images/prinsen/yara.jpg" alt="Prinses Yara I" loading="lazy"/>
                 <div class="text-overlay">
-                    <p class="title-text">?</p>
+                    <p class="title-text">Yara I</p>
                     <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
