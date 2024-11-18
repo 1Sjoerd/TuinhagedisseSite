@@ -97,8 +97,8 @@
             autoplay:false,
             center: false,
             loop:false,
-            dots:true,
-            nav:true,
+            dots:false,
+            nav:false,
             navText: ["<a class='buttonprev'>","<a class='buttonnext'></a>"],
             responsiveClass:true,
             responsive:{
