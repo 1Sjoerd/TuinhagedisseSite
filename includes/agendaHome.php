@@ -4,7 +4,7 @@
   <div class="heading-title">
     <h2 class="title-calendar"> Ozze agenda </h2>
     <div class="icon-box">
-       <i class="fas fa-calendar-alt"></i>
+       <i style="color:white; text-shadow: 2px 2px rgb(16, 90, 24);" class="fas fa-calendar-alt"></i>
     </div>
   </div>
   <div class="events-body">
