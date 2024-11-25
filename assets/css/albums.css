@@ -114,3 +114,70 @@
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* Voeg een parent container toe met center styling indien nodig */
+.block-text {
+    text-align: center; /* Centreer de inhoud binnen de container */
+    position: relative; /* Belangrijk: Zorg dat de spinner zich kan positioneren binnen deze container */
+}
+
+.block-text .read-more {
+    display: inline-block; /* Zorg ervoor dat de knop gecentreerd kan worden */
+    padding: 15px 15px;
+    font-size: 12px;
+    background: rgb(43, 148, 53);
+    color: #ffffff;
+    box-shadow: 0px 10px 20px -10px rgb(43, 148, 53);
+    border-radius: 10px;
+    text-transform: uppercase;
+    margin: 40px;
+    text-align: center; /* Zorg dat tekst gecentreerd blijft binnen de knop */
+}
+
+.block-text .read-more:hover {
+    background: rgb(43, 148, 53);
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Zorg ervoor dat de spinner altijd onderaan de block-text div verschijnt */
+.block-text {
+    position: relative; /* Hierdoor kan de spinner relatief ten opzichte van deze div gepositioneerd worden */
+}
+
+/* De spinner wordt absoluut gepositioneerd binnen de block-overview container */
+#loading-spinner {
+    position: absolute;
+    bottom: 20px; /* De spinner komt altijd 20px boven de onderkant van de container */
+    left: 50%;  /* Horizontaal centreren van de spinner */
+    transform: translateX(-50%);  /* Zorg dat de spinner precies gecentreerd is */
+    z-index: 20; /* Zorg ervoor dat de spinner boven de geblurrde content ligt */
+    display: none; /* Verberg de spinner standaard */
+}
+
+/* De draaiende spinner zelf */
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid rgb(43, 148, 53); /* Gebruik dezelfde groene kleur als de "Bekiek meer"-knop */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+/* Animatie voor de draaiende spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Standaard verborgen spinner */
+.hidden {
+    display: none;
+}
+
+/* Blur de inhoud van de block-text div, maar niet de spinner */
+.block-text.blurred {
+    filter: blur(5px);
+    pointer-events: none; /* Zorg ervoor dat er geen interactie is met de geblurrde inhoud */
+}
