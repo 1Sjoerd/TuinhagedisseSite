@@ -7,120 +7,154 @@
     </div>
     <div class="block-text">
         <div id="album-list"></div>
+            <div id="loading-spinner" class="hidden">
+        <div class="spinner"></div>
     </div>
-    <div class="block-text">
-        <div id="photo-album"></div>
     </div>
 </div>
-
 <script>
     const pageId = '848282781947419';
     const accessToken = 'EAAMuxlWpSN8BO4Jq8LwWbE5nd2SDQelAvc2Gd3gX8Qkf4cPUKmFVnw0wGHtDmZBhO8EuJR5N7G84BeZCCIaDnLZAyv3lvuGQ36tZAU8G2UrGkR0caZCc8OYvEkuvOqOX3WjqPh3wj7O4l0VJf8YQxOGQlZCZADSGcAcpqsPa7dV82pfnUOOwSsLHlj2NUboGcZAW';
 
-// Stap 1: Haal de lijst met albums op
-async function fetchAlbums() {
-    try {
-        const response = await fetch(`https://graph.facebook.com/v11.0/${pageId}/albums?fields=id,name,cover_photo&access_token=${accessToken}`);
-        const data = await response.json();
+    let endDate = new Date();
+    const stepInYears = 2;
+    const spinner = document.getElementById('loading-spinner');
+    const blockOverview = document.querySelector('.block-text'); // De block-overview div
 
-        const albumList = document.getElementById('album-list');
-        albumList.innerHTML = "";
+    // Toon de spinner en blur de onderliggende div
+    function showSpinner() {
+        spinner.style.display = 'block';  // Zorg ervoor dat de spinner zichtbaar wordt
+        if (blockOverview) {
+            blockOverview.classList.add('blurred'); // Voeg de blur toe aan de block-overview div
+        }
+    }
 
-        for (const album of data.data) {
-            const albumItem = document.createElement('div');
-            albumItem.className = 'album-post';
+    // Verberg de spinner en verwijder de blur
+    function hideSpinner() {
+        spinner.style.display = 'none'; // Verberg de spinner
+        if (blockOverview) {
+            blockOverview.classList.remove('blurred'); // Verwijder de blur van de block-overview div
+        }
+    }
 
-            let coverPhotoUrl = '';
-            if (album.cover_photo) {
-                const coverPhotoResponse = await fetch(`https://graph.facebook.com/v11.0/${album.cover_photo.id}?fields=source&access_token=${accessToken}`);
-                const coverPhotoData = await coverPhotoResponse.json();
-                coverPhotoUrl = coverPhotoData.source;
+    // Functie om albums te laden voor een specifiek tijdsbereik
+    async function fetchAlbumsForPeriod(startDate, endDate) {
+        let allAlbums = [];
+        let url = `https://graph.facebook.com/v11.0/${pageId}/albums?fields=id,name,cover_photo,created_time,link&access_token=${accessToken}`;
+
+        try {
+            // Toon de spinner voor we beginnen met laden
+            showSpinner();
+
+            let nextPageUrl = url;
+
+            while (nextPageUrl) {
+                const response = await fetch(nextPageUrl);
+                const data = await response.json();
+
+                // Filter albums op basis van het opgegeven tijdsbereik
+                const periodAlbums = data.data.filter(album => {
+                    const createdTime = new Date(album.created_time);
+                    return createdTime >= startDate && createdTime < endDate;
+                });
+
+                allAlbums = allAlbums.concat(periodAlbums);
+
+                // Update de URL voor de volgende pagina (of stop als er geen volgende pagina is)
+                nextPageUrl = data.paging ? data.paging.next : null;
             }
 
-            albumItem.innerHTML = `
-                <div class="cover-img">
-                    <img href="#photo-album" src="${coverPhotoUrl}" alt="${album.name}">
-                </div>
-                <div class="album-content">
-                    <h3 class="album-title">
-                        <a href="#photo-album" onclick="fetchPhotos('${album.id}')">${album.name}</a>
-                    </h3>
-                </div>
-            `;
+            // Sorteer albums aflopend op basis van `created_time`
+            allAlbums.sort((a, b) => new Date(b.created_time) - new Date(a.created_time));
 
-            albumList.appendChild(albumItem);
-        }
-    } catch (error) {
-        console.error('Error fetching albums:', error);
-        albumList.innerHTML = `<p>Fout bij het laden van albums. Probeer het later opnieuw.</p>`;
-    }
-}
+            // Haal de coverfoto's van alle albums tegelijk op
+            const coverPhotoIds = allAlbums.map(album => album.cover_photo && album.cover_photo.id);
+            const coverPhotos = await fetchCoverPhotosInBulk(coverPhotoIds);
 
-// Stap 2: Haal alle foto's op van een specifiek album en start de slideshow
-async function fetchAllPhotos(albumId) {
-    let allPhotos = [];
-    let url = `https://graph.facebook.com/v11.0/${albumId}/photos?fields=source,name&access_token=${accessToken}`;
+            // Voeg albums toe aan de UI
+            const albumList = document.getElementById('album-list');
+            allAlbums.forEach((album, index) => {
+                const albumItem = document.createElement('div');
+                albumItem.className = 'album-post';
 
-    while (url) {
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            allPhotos = allPhotos.concat(data.data);
-            url = data.paging ? data.paging.next : null;
+                const coverPhotoUrl = coverPhotos[album.cover_photo.id] || ''; // Haal de URL van de coverfoto op
+
+                // Controleer of album.link beschikbaar is
+                const albumLink = album.link || '#';  // Zorg ervoor dat er een link is, anders gebruik # als fallback
+
+                albumItem.innerHTML = `
+                    <div class="cover-img">
+                        <img href="#photo-album" src="${coverPhotoUrl}" alt="${album.name}">
+                    </div>
+                    <div class="album-content">
+                        <h3 class="album-title">
+                            <a href="${albumLink}" target="_blank">${album.name}</a>
+                        </h3>
+                    </div>
+                `;
+
+                albumList.appendChild(albumItem);
+            });
+
+            hideSpinner(); // Verberg de spinner nadat de albums zijn geladen
         } catch (error) {
-            console.error('Error fetching photos:', error);
-            break;
+            console.error('Error fetching albums:', error);
+            hideSpinner();
         }
     }
-    return allPhotos;
-}
 
-// Stap 3: Haal en toon foto's van het geselecteerde album in een slideshow
-async function fetchPhotos(albumId) {
-    const photoAlbum = document.getElementById('photo-album');
-    photoAlbum.innerHTML = ""; // Leeg de container
+    // Haal alle coverfoto's op in bulk
+    async function fetchCoverPhotosInBulk(coverPhotoIds) {
+        const coverPhotoUrls = {};
 
-    try {
-        const photos = await fetchAllPhotos(albumId);
+        // Als er geen coverfoto's zijn, retourneer een leeg object
+        if (coverPhotoIds.length === 0) return coverPhotoUrls;
 
-        // Voor elke foto maken we een slide aan
-        photos.forEach((photo, index) => {
-            const slide = document.createElement('div');
-            slide.className = 'mySlides';
-            slide.style.display = index === 0 ? 'block' : 'none'; // Alleen de eerste foto is zichtbaar
+        const url = `https://graph.facebook.com/v11.0?ids=${coverPhotoIds.join(',')}&fields=source&access_token=${accessToken}`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-            const img = document.createElement('img');
-            img.src = photo.source;
-            img.alt = photo.name || "Facebook Photo";
-            img.style.width = '100%';
+        // Sla de URLs van coverfoto's op
+        for (let id in data) {
+            if (data[id].source) {
+                coverPhotoUrls[id] = data[id].source;
+            }
+        }
 
-            slide.appendChild(img);
-            photoAlbum.appendChild(slide);
-        });
-
-        // Voeg navigatieknoppen toe voor de slideshow
-        photoAlbum.innerHTML += `
-            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-            <a class="next" onclick="changeSlide(1)">&#10095;</a>
-        `;
-
-        currentSlideIndex = 0;
-    } catch (error) {
-        console.error('Error fetching photos:', error);
+        return coverPhotoUrls;
     }
-}
 
-// Slideshow-functionaliteit
-let currentSlideIndex = 0;
+    // Functie om albums te laden voor oudere periodes
+    async function loadMoreAlbums() {
+        showSpinner(); // Toon de spinner wanneer de "Bekiek meer" knop wordt ingedrukt
 
-function changeSlide(n) {
-    const slides = document.getElementsByClassName("mySlides");
-    slides[currentSlideIndex].style.display = "none"; // Verberg huidige slide
-    currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length; // Update index
-    slides[currentSlideIndex].style.display = "block"; // Toon volgende slide
-}
+        const startDate = new Date(endDate); // Begin bij de huidige `endDate`
+        startDate.setFullYear(endDate.getFullYear() - stepInYears); // Bereken de nieuwe startdatum
+        await fetchAlbumsForPeriod(startDate, endDate); // Haal albums op voor deze periode
+        endDate = startDate; // Update de globale `endDate` naar het begin van deze periode
+    }
 
-// Laad de albums zodra de pagina wordt geladen
-fetchAlbums();
+    // Initialiseer de pagina en laad de eerste albums
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Bereken de beginperiode (laatste 2 jaar)
+        const startDate = new Date();
+        startDate.setFullYear(endDate.getFullYear() - stepInYears);
 
+        // Laad albums van de eerste periode
+        await fetchAlbumsForPeriod(startDate, endDate);
+
+        // Update de globale `endDate` naar de huidige `startDate`
+        endDate = startDate;
+
+        // Voeg de "Meer Laden"-knop toe
+        const albumList = document.getElementById('album-list');
+        const moreButton = document.createElement('a'); // Gebruik een <a>-element
+        moreButton.className = 'read-more'; // Voeg de gewenste class toe
+        moreButton.textContent = 'Bekiek meer'; // Gebruik dezelfde tekst
+        moreButton.onclick = (event) => {
+            event.preventDefault(); // Zorg dat de knop niet standaard linkgedrag vertoont
+            loadMoreAlbums(); // Roep de functie aan om meer albums te laden
+        };
+        albumList.parentNode.appendChild(moreButton); // Plaats de knop direct na album-list
+    });
 </script>
