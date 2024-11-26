@@ -10,7 +10,6 @@
                 <img src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
                 <div class="text-overlay">
                     <p class="title-text">RICK I</p>
-                    <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
         </div>
@@ -19,7 +18,6 @@
                 <img src="./assets/images/prinsen/yara.jpg" alt="Prinses Yara I" loading="lazy"/>
                 <div class="text-overlay">
                     <p class="title-text">YARA I</p>
-                    <!-- <button href="#" class="morebtn">Laes meer</button> -->
                 </div>
             </div>
         </div>
