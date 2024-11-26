@@ -7,11 +7,13 @@
     </div>
     <div class="block-text">
         <div id="album-list"></div>
-            <div id="loading-spinner" class="hidden">
-        <div class="spinner"></div>
+        <div id="loading-spinner" class="hidden">
+            <div class="spinner">
+        </div>
     </div>
     </div>
 </div>
+
 <script>
     const pageId = '848282781947419';
     const accessToken = 'EAAMuxlWpSN8BO4Jq8LwWbE5nd2SDQelAvc2Gd3gX8Qkf4cPUKmFVnw0wGHtDmZBhO8EuJR5N7G84BeZCCIaDnLZAyv3lvuGQ36tZAU8G2UrGkR0caZCc8OYvEkuvOqOX3WjqPh3wj7O4l0VJf8YQxOGQlZCZADSGcAcpqsPa7dV82pfnUOOwSsLHlj2NUboGcZAW';
@@ -19,22 +21,25 @@
     let endDate = new Date();
     const stepInYears = 2;
     const spinner = document.getElementById('loading-spinner');
-    const blockOverview = document.querySelector('.block-text'); // De block-overview div
+    const albumList = document.getElementById('album-list');
+    let moreButton; // Declare the "Bekiek meer" button globally
 
-    // Toon de spinner en blur de onderliggende div
+    // Toon de spinner, verberg de knop, en voeg padding toe
     function showSpinner() {
-        spinner.style.display = 'block';  // Zorg ervoor dat de spinner zichtbaar wordt
-        if (blockOverview) {
-            blockOverview.classList.add('blurred'); // Voeg de blur toe aan de block-overview div
+        spinner.style.display = 'block';
+        if (moreButton) {
+            moreButton.style.display = 'none'; // Hide the "Bekiek meer" button
         }
+        albumList.style.setProperty('padding-bottom', '80px', 'important');
     }
 
-    // Verberg de spinner en verwijder de blur
+    // Verberg de spinner, toon de knop, en verwijder padding
     function hideSpinner() {
-        spinner.style.display = 'none'; // Verberg de spinner
-        if (blockOverview) {
-            blockOverview.classList.remove('blurred'); // Verwijder de blur van de block-overview div
+        spinner.style.display = 'none';
+        if (moreButton) {
+            moreButton.style.display = 'inline-block'; // Show the "Bekiek meer" button
         }
+        albumList.style.setProperty('padding-bottom', '0px', 'important'); // Remove the padding instantly
     }
 
     // Functie om albums te laden voor een specifiek tijdsbereik
@@ -72,7 +77,6 @@
             const coverPhotos = await fetchCoverPhotosInBulk(coverPhotoIds);
 
             // Voeg albums toe aan de UI
-            const albumList = document.getElementById('album-list');
             allAlbums.forEach((album, index) => {
                 const albumItem = document.createElement('div');
                 albumItem.className = 'album-post';
@@ -147,8 +151,7 @@
         endDate = startDate;
 
         // Voeg de "Meer Laden"-knop toe
-        const albumList = document.getElementById('album-list');
-        const moreButton = document.createElement('a'); // Gebruik een <a>-element
+        moreButton = document.createElement('a'); // Gebruik een <a>-element
         moreButton.className = 'read-more'; // Voeg de gewenste class toe
         moreButton.textContent = 'Bekiek meer'; // Gebruik dezelfde tekst
         moreButton.onclick = (event) => {
@@ -158,3 +161,4 @@
         albumList.parentNode.appendChild(moreButton); // Plaats de knop direct na album-list
     });
 </script>
+

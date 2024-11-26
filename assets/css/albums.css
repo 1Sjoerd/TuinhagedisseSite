@@ -127,6 +127,7 @@
     font-size: 12px;
     background: rgb(43, 148, 53);
     color: #ffffff;
+    font-weight: 600;
     box-shadow: 0px 10px 20px -10px rgb(43, 148, 53);
     border-radius: 10px;
     text-transform: uppercase;
@@ -143,6 +144,7 @@
 /* Zorg ervoor dat de spinner altijd onderaan de block-text div verschijnt */
 .block-text {
     position: relative; /* Hierdoor kan de spinner relatief ten opzichte van deze div gepositioneerd worden */
+    min-height: 90px;
 }
 
 /* De spinner wordt absoluut gepositioneerd binnen de block-overview container */
