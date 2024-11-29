@@ -91,7 +91,7 @@
                 const albumId = albumIdMatch ? albumIdMatch[1] : null;
 
                 if (isMobile && albumId) {
-                    albumLink = `fb://photo?id=${albumId}`;
+                    albumLink = `fb://albums/${albumId}`;
                 }
 
                 albumItem.innerHTML = `
