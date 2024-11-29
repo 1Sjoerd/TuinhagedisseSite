@@ -122,7 +122,8 @@
 }
 
 .block-text .read-more {
-    display: inline-block; /* Zorg ervoor dat de knop gecentreerd kan worden */
+    font-family: "Oswald", sans-serif;
+    display: inline-block;
     padding: 15px 15px;
     font-size: 12px;
     background: rgb(43, 148, 53);
@@ -132,7 +133,7 @@
     border-radius: 10px;
     text-transform: uppercase;
     margin: 40px;
-    text-align: center; /* Zorg dat tekst gecentreerd blijft binnen de knop */
+    text-align: center;
 }
 
 .block-text .read-more:hover {
