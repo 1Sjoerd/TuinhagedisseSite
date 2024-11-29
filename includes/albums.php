@@ -81,10 +81,15 @@
                 const albumItem = document.createElement('div');
                 albumItem.className = 'album-post';
 
-                const coverPhotoUrl = coverPhotos[album.cover_photo.id] || ''; // Haal de URL van de coverfoto op
+                const coverPhotoUrl = coverPhotos[album.cover_photo.id] || '';
 
-                // Controleer of album.link beschikbaar is
-                const albumLink = album.link || '#';  // Zorg ervoor dat er een link is, anders gebruik # als fallback
+                let albumLink = album.link || '#';
+
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+                if (isMobile && /facebook\.com/.test(albumLink)) {
+                    albumLink = albumLink.replace(/^https?:\/\/(www\.)?facebook\.com/, 'fb://');
+                }
 
                 albumItem.innerHTML = `
                     <div class="cover-img">
