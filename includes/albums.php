@@ -84,18 +84,15 @@
                 const coverPhotoUrl = coverPhotos[album.cover_photo.id] || '';
 
                 let albumLink = album.link || '#';
+
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
                 const albumIdMatch = album.link.match(/album\.php\?fbid=(\d+)/);
                 const albumId = albumIdMatch ? albumIdMatch[1] : null;
 
                 if (isMobile && albumId) {
-                    // Use App Link-compatible URL
-                    albumLink = `https://www.facebook.com/album.php?fbid=${albumId}`;
+                    albumLink = `fb://album?id=${albumId}`;
                 }
-
-                // Use albumLink as the href for navigation
-                window.location.href = albumLink;
 
                 albumItem.innerHTML = `
                     <div class="cover-img">
