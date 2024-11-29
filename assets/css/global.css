@@ -76,7 +76,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 20px; /* Adjust gap between agenda and prinsen sections */
-    max-width: 1200px;
+    max-width: 1060px;
 }
 
 /* Agenda section */
@@ -86,10 +86,34 @@ body {
 
 /* Prinsen section */
 .prinsen-section {
-    flex: 1; /* Prinsen takes the remaining space */
-    background-color: #eeeded; /* Optional background color for prinsen section */
-    border-radius: 10px; /* Optional border radius */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Optional box shadow */
+    background-color: #eeeded;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+}
+
+@media (min-width: 1179px) and (max-width: 1330px) {
+    .prinsen-section {
+        flex: 0 0 550px; /* Fixed width for prinsen section */
+    }
+
+    .agenda-section {
+        flex: 1; /* Agenda adjusts to take the remaining space */
+        width: 200px; /* Prevent agenda from shrinking too much */
+    }
+}
+
+/* Media query for screen widths between 992px and 1330px */
+@media (min-width: 992px) and (max-width: 1179px) {
+    .prinsen-section {
+        flex: 0 0 435px; /* Fixed width for prinsen section */
+        height: 348px;
+    }
+
+    .agenda-section {
+        flex: 1; /* Agenda adjusts to take the remaining space */
+        width: 200px; /* Prevent agenda from shrinking too much */
+    }
 }
 
 /* News section */

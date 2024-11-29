@@ -48,7 +48,6 @@
           echo "</li>";
         }
       } else {
-        // Wanneer er geen resultaten zijn
         echo "<li>";
           echo "<a>";
             echo "<div class='event-left-content'>";
