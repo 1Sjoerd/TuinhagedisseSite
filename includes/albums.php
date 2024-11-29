@@ -87,8 +87,11 @@
 
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-                if (isMobile && /facebook\.com/.test(albumLink)) {
-                    albumLink = albumLink.replace(/^https?:\/\/(www\.)?facebook\.com/, 'fb://');
+                const albumIdMatch = album.link.match(/album\.php\?fbid=(\d+)/);
+                const albumId = albumIdMatch ? albumIdMatch[1] : null;
+
+                if (isMobile && albumId) {
+                    albumLink = `fb://album/${albumId}`;
                 }
 
                 albumItem.innerHTML = `
