@@ -74,7 +74,7 @@
 @media (max-width: 768px) {
     /* Op een scherm kleiner dan 768px breed, één album per rij */
     #album-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
     }
 }
 

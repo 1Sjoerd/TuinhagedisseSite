@@ -16,6 +16,12 @@ transition: all 0.3s ease;
   border-radius: 10px;
 }
 
+@media (min-width: 992px) and (max-width: 1330px) {
+  .event-calendar {
+    width: auto;
+  }
+}
+
 .event-calendar a {
   text-decoration:none;
   color:#181718;
@@ -94,9 +100,11 @@ transition: all 0.3s ease;
 .event-calendar .event-left-content .event-date,
 .event-calendar .event-left-content .event-location
 {
-  font-family: 'Roboto', sans-serif;
   color: #3f3f3f;
   font-family: "Oswald", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event-calendar .event-left-content .title-event {
@@ -162,19 +170,24 @@ transition: all 0.3s ease;
 }
 
 
-@media (max-width: 1330px) {
+@media (max-width: 1179px) {
   .events-body ul li:nth-child(n+4) {
-    display: none;
+      display: none !important;
+  }
+
+  .events-body ul li:nth-child(3) {
+      border-bottom: none !important;
   }
 }
 
-@media (min-width: 1330px) {
+
+@media (min-width: 1179px) {
   .event-calendar {
     height: 523px;
   }
 }
 
-@media (max-width: 1330px) and (min-width: 992px) {
+@media (max-width: 1179px) and (min-width: 992px) {
   .event-calendar {
       height: 407px;
   }
