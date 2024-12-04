@@ -226,7 +226,7 @@
     .prinsen-body {
         flex-direction: column;
         height: auto;
-        padding: 5px 20px 10px 20px;
+        padding: 15px 20px 20px 20px;
     }
 
     .card {
@@ -249,5 +249,9 @@
         text-align: center;
         padding: 0;
         padding-bottom: 20px;
+    }
+
+    .card-container {
+        margin: 0px;
     }
 }
