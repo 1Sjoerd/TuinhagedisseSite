@@ -60,7 +60,12 @@
                 // Filter albums op basis van het opgegeven tijdsbereik
                 const periodAlbums = data.data.filter(album => {
                     const createdTime = new Date(album.created_time);
-                    return createdTime >= startDate && createdTime < endDate;
+                    const withinDateRange = createdTime >= startDate && createdTime < endDate;
+                    const excludedAlbumIds = ['565833981824688', '565833978491355', '1785761051532916', '565833981824688', '565833978491355', '565833985158021', '565833975158022'];
+                    const notExcluded =
+                        !excludedAlbumIds.includes(album.id);
+                    
+                    return withinDateRange && notExcluded;
                 });
 
                 allAlbums = allAlbums.concat(periodAlbums);
