@@ -97,6 +97,7 @@
                     depth: 300,     // Add more depth for larger screens
                     modifier: 2.5,  // Make the center slide more prominent
                 },
+                spaceBetween: 0,     
             },
         },
     });
