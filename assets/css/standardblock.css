@@ -78,9 +78,10 @@
 }
 
 .block-hp {
-  padding:0px 20px;
+  padding:20px 20px;
   font-size: 1.2em;
   font-family: "Oswald", sans-serif;
+  height: auto;
 }
 
 /* FOR RESPONSIVE ONLY  */
@@ -93,6 +94,8 @@
   }
 
   .block-hp {
-    padding:0px;
+    padding: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
