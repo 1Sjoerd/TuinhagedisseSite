@@ -1,5 +1,5 @@
 <?php
-// index.php
+// vereniging.php
 
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/vereniging.php';

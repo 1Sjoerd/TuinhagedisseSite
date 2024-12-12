@@ -77,6 +77,12 @@
   font-family: "Oswald", sans-serif;
 }
 
+.block-hp {
+  padding:0px 20px;
+  font-size: 1.2em;
+  font-family: "Oswald", sans-serif;
+}
+
 /* FOR RESPONSIVE ONLY  */
 @media only screen and (max-width:480px) {
   .block-overview {
@@ -84,5 +90,9 @@
   }
   .block-overview .heading-title h1 {
     font-size:1em;
+  }
+
+  .block-hp {
+    padding:0px;
   }
 }
