@@ -1,3 +1,3 @@
 <?php
-include("./includes/albums.php");
+    include("./includes/albums.php");
 ?>

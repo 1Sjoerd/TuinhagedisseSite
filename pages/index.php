@@ -1,5 +1,3 @@
-<!-- Specifieke inhoud van de indexpagina -->
-
 <div class="homepage-sections">
     <div class="top-sections">
         <div class="agenda-section">
