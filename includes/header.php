@@ -29,9 +29,9 @@
                     <li class="list-item">
                         <a class="nav__link" href="./vereniging.php">Vereniging</a>
                     </li>
-                    <!--<li class="list-item">
+                    <li class="list-item">
                         <a class="nav__link" href="#">Historie</a>
-                    </li>-->
+                    </li>
                     <li class="list-item">
                         <a class="nav__link" href="./sjponsore.php">Sjponsore</a>
                     </li>
