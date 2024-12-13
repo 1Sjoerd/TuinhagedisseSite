@@ -101,7 +101,7 @@
     const items = document.querySelectorAll('.carousel-item');
     const totalItems = items.length;
     let currentIndex = 0;
-    const itemSpacing = 120;
+    let itemSpacing = 120;
     const scaleStep = 0.10;
     const rotationStep = -15;
     const opacityStep = 0.1;
@@ -117,6 +117,15 @@
             }
         }
     }
+
+    function updateItemSpacing() {
+        const isMobile = window.innerWidth <= 500;
+        itemSpacing = isMobile ? 250 : 160;
+        updateCarousel();
+    }
+
+    window.addEventListener('resize', updateItemSpacing);
+    updateItemSpacing();
 
     function updateCarousel() {
         items.forEach((item, index) => {
@@ -145,25 +154,23 @@
                 scale = 1 - scaleStep * distance;
                 rotateY = -rotationStep;
                 zIndex = totalItems - distance;
-                darkenValue = 0.1 * distance; // Darken progressively with distance
+                darkenValue = 0.1 * distance;
             } else {
                 translateX = -itemSpacing * (totalItems - distance);
                 scale = 1 - scaleStep * (totalItems - distance);
-                rotateY = rotationStep; // Constant rotation step
+                rotateY = rotationStep;
                 zIndex = distance;
-                darkenValue = 0.1 * (totalItems - distance); // Darken progressively with distance
+                darkenValue = 0.1 * (totalItems - distance);
             }
 
             item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
             item.style.zIndex = zIndex;
 
-            // Apply darkening effect using filter on the image
             const image = item.querySelector('.item-image');
             if (image) {
                 image.style.filter = `brightness(${1 - darkenValue})`;
             }
 
-            // Hide the overlay-text for all non-active items with fade-out effect
             const overlayText = item.querySelector('.overlay-text');
             if (overlayText) {
                 if (distance === 0) {
@@ -178,7 +185,7 @@
                     overlayText.style.transition = 'opacity 0.3s ease-out';
                     setTimeout(() => {
                         overlayText.style.display = 'none';
-                    }, 300); // Match transition duration
+                    }, 300);
                 }
             }
 
@@ -196,12 +203,11 @@
                     itemText.style.transition = 'opacity 0.3s ease-out';
                     setTimeout(() => {
                         itemText.style.display = 'none';
-                    }, 300); // Match transition duration
+                    }, 300);
                 }
             }
         });
 
-    // Preload surrounding images
     preloadImages(currentIndex);
 }
 
@@ -269,3 +275,4 @@
         isDragging = false;
     });
 </script>
+
