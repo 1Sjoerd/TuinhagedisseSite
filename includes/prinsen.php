@@ -11,10 +11,10 @@
 
             if ($result->num_rows > 0 ) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='card-container'>";
+                    echo "<div data-id='".$row['id']."prinse' class='card-container show-modal'>";
                         echo "<div class='card'>";
                             echo "<div class='image-section'>";
-                                echo "<img src='./assets/images/prinsen/rick.jpg' alt='Prins ".$row["firstname"]." ".$row["number"]."' loading='lazy' />";
+                            echo "<img src='./assets/images/prinsen/rick.jpg' alt='Prins ".$row["firstname"]." ".$row["number"]."' loading='lazy' />";
                                 echo "<div class='text-overlay'>";
                                     echo "<p class='title-text'>".$row["firstname"]." ".$row["number"]."</p>";
                                 echo "</div>";
@@ -32,7 +32,7 @@
 
             if ($result->num_rows > 0 ) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='card-container'>";
+                    echo "<div data-id='".$row['id']."jeugdprinse' class='card-container show-modal'>";
                         echo "<div class='card'>";
                             echo "<div class='image-section'>";
                                 echo "<img src='./assets/images/prinsen/yara.jpg' alt='Prins ".$row["firstname"]." ".$row["number"]."' loading='lazy' />";
