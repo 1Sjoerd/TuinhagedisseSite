@@ -57,6 +57,10 @@
                 20px 0 40px rgba(255, 255, 255, 0.8);
 }
 
+.image-section:hover {
+    opacity: .7;
+}
+
 .text-section {
     background-color: rgb(45, 142, 54);
     height: 80px;

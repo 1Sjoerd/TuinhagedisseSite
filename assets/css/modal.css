@@ -13,11 +13,32 @@
 
 /* De inhoud van de modal */
 .modal-content {
-    margin: 15% auto;
+    margin: 2% auto;
     width: 80%;
     max-width: 700px;
     color: #333;
 }
+
+.block-text img {
+    max-width: 100%;
+    height: auto; 
+    display: block;
+
+
+    background-color: rgb(216, 216, 216);
+    color: #fff;
+    font-family: "Oswald", sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #bebebe;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0px 5px 0px;
+    transition: transform 0.3s ease;
+    transform: translateY(-5px);
+}
+
 
 .close-button {
     position: absolute;
