@@ -171,4 +171,11 @@ html,body{
   #nextBtn {
     display: none;
   }
+  .carousel-item {
+    width: 250px; /* Reduce the item width */
+  }
+
+  .carousel {
+    justify-content: space-evenly; /* Add even spacing for mobile view */
+  }
 }
