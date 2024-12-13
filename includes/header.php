@@ -30,7 +30,7 @@
                         <a class="nav__link" href="./vereniging.php">Vereniging</a>
                     </li>
                     <li class="list-item">
-                        <a class="nav__link" href="#">Historie</a>
+                        <a class="nav__link" href="./historie.php">Historie</a>
                     </li>
                     <li class="list-item">
                         <a class="nav__link" href="./sjponsore.php">Sjponsore</a>
