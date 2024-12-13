@@ -89,8 +89,8 @@
                         <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
                     </div>
                 </div>
-                <button id="prevBtn"> ❮ </button>
-                <button id="nextBtn"> ❯ </button>
+                <button class="button-next" id="prevBtn"> ❮ </button>
+                <button class="button-next" id="nextBtn"> ❯ </button>
             </div>
         </div>
     </div>
