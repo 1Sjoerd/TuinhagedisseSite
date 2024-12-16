@@ -1,9 +1,30 @@
-RewriteEngine On
+RewriteEngine on
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
+# Enforce SSL
+# Handle non-www URLs
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^vvdetuinhagedisse\.nl [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
+# Handle www URLs
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^www\.vvdetuinhagedisse\.nl [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect .php URLs to their version without .php
+RewriteCond %{THE_REQUEST} \s/(.*)\.php [NC]
+RewriteRule ^(.*)\.php$ /$1 [R=301,L]
+
+# Redirect .php URLs to their version without .php
+RewriteCond %{THE_REQUEST} \s/(.*)\.html [NC]
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Handle URLs without .html extension
+RewriteCond %{REQUEST_METHOD} ^(GET) [NC]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# Handle URLs without .php extension
+RewriteCond %{REQUEST_METHOD} ^(GET) [NC]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.php -f
+RewriteRule ^(.*)$ $1.php [L]
