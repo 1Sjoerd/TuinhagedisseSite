@@ -54,7 +54,6 @@
 
     <!-- Inclusie van de modals -->
     <?php include_once 'includes/jeugdprinseModal.php'; ?>
-    <?php include_once 'includes/newsModal.php'; ?>
     <?php include_once 'includes/prinseModal.php'; ?>
         
     <!-- Link naar je JavaScript-bestand(en) -->
