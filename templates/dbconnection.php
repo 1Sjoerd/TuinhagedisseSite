@@ -1,5 +1,4 @@
 <?php
-session_start();
 $servername = "localhost";
 $username = "Mark";
 $password = "VVTH2023!";
