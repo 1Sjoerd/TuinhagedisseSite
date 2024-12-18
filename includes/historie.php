@@ -4,9 +4,6 @@
 <style>
     <?php include './assets/css/kontak.css'; ?>
 </style>
-<style>
-    <?php include './assets/css/historicCards.css'; ?>
-</style>
 
 <head>
     <link rel="stylesheet" href="./assets/css/historieBtn.css">
