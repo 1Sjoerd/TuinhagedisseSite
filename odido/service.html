@@ -2,43 +2,45 @@
 <html class="no-js" lang="nl">
 <head>
     <link href="CSS.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 
-<body class="page-theme-4" data-page-theme>
-    <main role="main">
-        <section id="se3" class="section">
-            <div class="container">
-                <div id="se3ro1" class="row  ">
-                    <div id="se3ro1co1" class="column-tablet-12 column-desktop-8 mx-desktop-auto ">
-                        <div id="se3ro1co1ce1" class="cell">
-                            <div class="tab-segmented is-inversed" role="tablist" aria-owns=" we-zijn-er-voor-je-tab mobiel-tab internet-+-tv-tab" data-tab>
-                                <ul class="mx-auto">
-                                    <li class="is-active">
-                                        <a href="#Section3_Row1_Column1_Cell1_TabStrip_tab-panel-0" id="we-zijn-er-voor-je-tab" class="theme-link" role="tab" aria-controls="Section3_Row1_Column1_Cell1_TabStrip_tab-panel-0" aria-selected="true" data-analytics-click='{"event":"gaEvent","gaEvent":{"category":"tabstrip_prive","action":"click","label":"We zijn er voor je"},"Application":{"Action":"click","Label":"We zijn er voor je","Category":"tabstrip_prive"}}' data-trigger-resize>Veurgengers</a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#Section3_Row1_Column1_Cell1_TabStrip_tab-panel-1" id="mobiel-tab" class="theme-link" role="tab" aria-controls="Section3_Row1_Column1_Cell1_TabStrip_tab-panel-1" aria-selected="false" data-analytics-click='{"event":"gaEvent","gaEvent":{"category":"tabstrip_prive","action":"click","label":"Mobiel"},"Application":{"Action":"click","Label":"Mobiel","Category":"tabstrip_prive"}}' data-trigger-resize>Jeug</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content" data-tab-content>
-                                <div class="tab-pane theme-text is-active" id="Section3_Row1_Column1_Cell1_TabStrip_tab-panel-0" role="tabpanel" aria-labelledby="we-zijn-er-voor-je-tab">
-                                    <div class="row flex-row-gap-3">
-                                        We zijn er voor je
-                                    </div>
-                                </div>
-                                <div class="tab-pane theme-text " id="Section3_Row1_Column1_Cell1_TabStrip_tab-panel-1" role="tabpanel" aria-labelledby="mobiel-tab">
-                                    <div class="row flex-row-gap-3">
-                                        Mobiel
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<body>
+
+    <div class="historie-section">
+        <div class="tablist is-inversed" role="tablist" data-tab>
+            <ul class="mx-auto">
+                <li class="is-active">
+                    <a href="#veurgengers" class="theme-link" role="tab" data-trigger-resize>VEURGENGERS</a>
+                </li>
+                <li class="">
+                    <a href="#jeug" class="theme-link" role="tab" data-trigger-resize>JEUG</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" data-tab-content>
+            <div class="tab-pane theme-text is-active" id="veurgengers" role="tabpanel">
+                <div class="row flex-row-gap-3">
+                    Content 1
                 </div>
             </div>
-        </section>
-    </main>   
+            <div class="tab-pane theme-text " id="jeug" role="tabpanel">
+                <div class="row flex-row-gap-3">
+                    Content 2
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="jquery3.2.1.js"></script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabSegmented = document.querySelector(".tablist ul");
+            if (tabSegmented) {
+                setTimeout(() => tabSegmented.classList.add("loaded"), 50);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -82,6 +82,7 @@
   padding:20px 20px;
   font-size: 1.2em;
   font-family: "Oswald", sans-serif;
+  min-height: 560px;
   height: auto;
 }
 
