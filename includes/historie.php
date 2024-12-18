@@ -4,6 +4,9 @@
 <style>
     <?php include './assets/css/kontak.css'; ?>
 </style>
+<style>
+    <?php include './assets/css/historicCards.css'; ?>
+</style>
 
 <head>
     <link rel="stylesheet" href="./assets/css/historieBtn.css">
@@ -52,9 +55,9 @@
 
             // Determine the URL to load based on the selected radio button
             if (selectedId === 'aspectRatio--16x9') {
-                contentUrl = 'includes/veurgengerSlider.php';
+                contentUrl = 'tuinhagedissesite/includes/veurgengerSlider.php';
             } else if (selectedId === 'aspectRatio--1x1') {
-                contentUrl = 'includes/jeugSlider.php';
+                contentUrl = 'tuinhagedissesite/includes/jeugSlider.php';
             }
 
             // Debugging: Log selected URL
