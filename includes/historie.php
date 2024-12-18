@@ -55,9 +55,9 @@
 
             // Determine the URL to load based on the selected radio button
             if (selectedId === 'aspectRatio--16x9') {
-                contentUrl = 'tuinhagedissesite/includes/veurgengerSlider.php';
+                contentUrl = 'includes/veurgengerSlider.php';
             } else if (selectedId === 'aspectRatio--1x1') {
-                contentUrl = 'tuinhagedissesite/includes/jeugSlider.php';
+                contentUrl = 'includes/jeugSlider.php';
             }
 
             // Debugging: Log selected URL
