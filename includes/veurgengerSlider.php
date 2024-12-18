@@ -191,16 +191,9 @@
         }
     }
 
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    let isVerticalScroll = false;
-
     carousel.addEventListener('touchstart', (event) => {
         startX = event.touches[0].clientX;
-        startY = event.touches[0].clientY;
         isDragging = true;
-        isVerticalScroll = false;
     });
 
     carousel.addEventListener('mousedown', (event) => {
@@ -210,21 +203,7 @@
 
     carousel.addEventListener('touchmove', (event) => {
         if (!isDragging) return;
-
         const moveX = event.touches[0].clientX;
-        const moveY = event.touches[0].clientY;
-
-        const diffX = Math.abs(moveX - startX);
-        const diffY = Math.abs(moveY - startY);
-
-        if (diffY > diffX) {
-            // User is scrolling vertically
-            isVerticalScroll = true;
-            return; // Allow the default vertical scrolling behavior
-        }
-
-        // User is swiping horizontally
-        event.preventDefault(); // Prevent vertical scrolling during horizontal swipe
         handleSwipe(moveX);
     });
 
@@ -236,7 +215,6 @@
 
     carousel.addEventListener('touchend', () => {
         isDragging = false;
-        isVerticalScroll = false;
     });
 
     carousel.addEventListener('mouseup', () => {
@@ -245,6 +223,5 @@
 
     carousel.addEventListener('mouseleave', () => {
         isDragging = false;
-        isVerticalScroll = false;
     });
 </script>
