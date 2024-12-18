@@ -46,7 +46,19 @@
                                 echo "</h3>";
                                 echo "<p class='post-description'>".$row["text"]."</p>";
                                 echo "<span class='post-date'><i class='fa fa-clock-o'></i>".$formattedDate."</span>";
-                                echo "<a data-id='".$row['id']."news' class='read-more show-modal'>Laes meer</a>";
+                                
+                                // NIEUWE LAES MEER LINK TBV DE NEWSROUTER PAGINA
+                                echo "<a href='#' onclick='submitForm(".$row['id'].")' class='read-more'>Laes meer</a>";
+                                echo "<form id='form-".$row['id']."' method='POST' action='./router.php' style='display:none;'>
+                                        <input type='hidden' name='news' value='".$row['id']."'>
+                                      </form>";
+                                echo "<script>
+                                        function submitForm(id) {
+                                            document.getElementById('form-' + id).submit();
+                                        }
+                                      </script>";
+                                
+                                //echo "<a data-id='".$row['id']."news' class='read-more show-modal'>Laes meer</a>"; GECOMMENT ZODAT DE MODAL NIET MEER OPENT
                             echo "</div>";
                         echo "</div>";
                     }
