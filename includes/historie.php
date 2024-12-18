@@ -1,9 +1,15 @@
-<style> <?php include './assets/css/standardblock.css'; ?> </style>
-<style> <?php include './assets/css/kontak.css'; ?> </style>
-<style> <?php include './assets/css/historicCards.css'; ?> </style>
+<style>
+    <?php include './assets/css/standardblock.css'; ?>
+</style>
+<style>
+    <?php include './assets/css/kontak.css'; ?>
+</style>
+<style>
+    <?php include './assets/css/historicCards.css'; ?>
+</style>
 
 <head>
-    <link href="./odido/CSS.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/css/historieBtn.css">
 </head>
 
 <div class="block-overview">
@@ -13,20 +19,23 @@
 
     <div class="block-hp">
 
-    <div class="historie-section">
+        <div class="historie-section">
 
-            <div class="tablist is-inversed" role="tablist" data-tab>
-                <ul class="mx-auto">
-                    <li class="is-active">
-                        <a href="#veurgengers" class="theme-link" role="tab" data-trigger-resize>VEURGENGERS</a>
-                    </li>
-                    <li class="">
-                        <a href="#jeug" class="theme-link" role="tab" data-trigger-resize>JEUG</a>
-                    </li>
-                </ul>
+            <div id="inputContainer">
+                <div class="segmentedControl">
+                    <span class="segmentedControl--group">
+                        <input type="radio" name="aspectRatio" id="aspectRatio--16x9" checked />
+                        <label class="label-input" for="aspectRatio--16x9">VEURGENGERS</label>
+                    </span>
+                    <span class="segmentedControl--group">
+                        <input type="radio" name="aspectRatio" id="aspectRatio--1x1" />
+                        <label class="label-input" for="aspectRatio--1x1">JEUG</label>
+                    </span>
+                </div>
             </div>
 
             <div id="carousel-container">
+                <!-- Initially load veurgengerSlider.php -->
                 <?php include './includes/veurgengerSlider.php'; ?>
             </div>
 
@@ -34,43 +43,34 @@
     </div>
 </div>
 
-<!-- jquery Include-->
-<script src="./jquery/jquery3.2.1.js"></script> 
+<!-- jQuery Include -->
+<script src="./jquery/jquery3.2.1.js"></script>
 
 <script>
     $(document).ready(function () {
-        $('.theme-link').on('click', function (e) {
+        // Listen for radio button changes
+        $('input[name="aspectRatio"]').on('change', function () {
+            let selectedId = $(this).attr('id');
+            let contentUrl = '';
 
-            // Get the href attribute to determine which tab was clicked
-            const target = $(this).attr('href');
-
-            // Update the active class on the tabs
-            $('.theme-link').parent().removeClass('is-active');
-            $(this).parent().addClass('is-active');
-
-            // Replace content in #carousel-container based on the clicked tab
-            if (target === '#veurgengers') {
-                $('#carousel-container')
-                    .fadeOut(500, function () {
-                        $(this).load('tuinhagedissesite/includes/veurgengerSlider.php', function (response, status, xhr) {
-                            if (status === "error") {
-                                console.error("Error loading veurgengerSlider.php: ", xhr.status, xhr.statusText);
-                            }
-                            $(this).fadeIn(500); // Fade in after content loads
-                        });
-                    });
-            } else if (target === '#jeug') {
-                $('#carousel-container')
-                    .fadeOut(500, function () {
-                        $(this).load('tuinhagedissesite/includes/jeugSlider.php', function (response, status, xhr) {
-                            if (status === "error") {
-                                console.error("Error loading jeugSlider.php: ", xhr.status, xhr.statusText);
-                            }
-                            $(this).fadeIn(500); // Fade in after content loads
-                        });
-                    });
+            // Determine the URL to load based on the selected radio button
+            if (selectedId === 'aspectRatio--16x9') {
+                contentUrl = 'th.martines.dev/includes/veurgengerSlider.php';
+            } else if (selectedId === 'aspectRatio--1x1') {
+                contentUrl = 'th.martines.dev/includes/jeugSlider.php';
             }
+
+            // Debugging: Log selected URL
+            console.log(`Loading content from: ${contentUrl}`);
+
+            // Load the selected content dynamically
+            $('#carousel-container').load(contentUrl, function (response, status, xhr) {
+                if (status === "error") {
+                    console.error(`Error loading content: ${xhr.status} ${xhr.statusText}`);
+                } else {
+                    console.log(`Content loaded successfully from: ${contentUrl}`);
+                }
+            });
         });
     });
 </script>
-
