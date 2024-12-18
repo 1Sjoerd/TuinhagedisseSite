@@ -4,6 +4,7 @@
 }
 
 .carousel {
+  touch-action: pan-y; 
   display: flex;
   justify-content: center;
   width: 100%;
