@@ -2,277 +2,75 @@
 <style> <?php include './assets/css/kontak.css'; ?> </style>
 <style> <?php include './assets/css/historicCards.css'; ?> </style>
 
+<head>
+    <link href="./odido/CSS.css" rel="stylesheet"/>
+</head>
+
 <div class="block-overview">
     <div class="heading-title">
         <h2 class="block-title"> Historie </h2>
     </div>
 
     <div class="block-hp">
-        <div class="container-buttons">
-            <div class="selector">
-                <div class="selector-item">
-                    <input type="radio" id="radio1" name="selector" class="selector-item_radio" checked>
-                    <label for="radio1" class="selector-item_label">Veurgengers</label>
-                </div>
-                <div class="selector-item">
-                    <input type="radio" id="radio2" name="selector" class="selector-item_radio">
-                    <label for="radio2" class="selector-item_label">Jeug</label>
-                </div>
+
+    <div class="historie-section">
+
+            <div class="tablist is-inversed" role="tablist" data-tab>
+                <ul class="mx-auto">
+                    <li class="is-active">
+                        <a href="#veurgengers" class="theme-link" role="tab" data-trigger-resize>VEURGENGERS</a>
+                    </li>
+                    <li class="">
+                        <a href="#jeug" class="theme-link" role="tab" data-trigger-resize>JEUG</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="hcard-container">
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div><div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div><div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div><div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div><div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div><div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                        <div class="overlay-text">Rick I</div>
-                        <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="item-image lazy-image" data-src="./assets/images/prinsen/yara.jpg" alt="Prins John II" loading="lazy" />
-                        <div class="overlay-text">Yara I</div>
-                        <div class="item-text">"Lach, dans, maak plezeer, de rest kump morge weer!"</div>
-                    </div>
-                </div>
-                <button class="button-next" id="prevBtn"> ❮ </button>
-                <button class="button-next" id="nextBtn"> ❯ </button>
+
+            <div id="carousel-container">
+                <?php include './includes/veurgengerSlider.php'; ?>
             </div>
+
         </div>
     </div>
 </div>
 
+<!-- jquery Include-->
+<script src="./jquery/jquery3.2.1.js"></script> 
+
 <script>
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-    const totalItems = items.length;
-    let currentIndex = 0;
-    let itemSpacing = 120;
-    const scaleStep = 0.10;
-    const rotationStep = -15;
-    const opacityStep = 0.1;
-    const preloadRange = 5;
+    $(document).ready(function () {
+        $('.theme-link').on('click', function (e) {
 
-    function preloadImages(index) {
-        for (let i = -preloadRange; i <= preloadRange; i++) {
-            const itemIndex = (index + i + totalItems) % totalItems;
-            const img = items[itemIndex].querySelector('.lazy-image');
-            if (img && img.dataset.src) {
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-            }
-        }
-    }
+            // Get the href attribute to determine which tab was clicked
+            const target = $(this).attr('href');
 
-    function updateItemSpacing() {
-        const isMobile = window.innerWidth <= 500;
-        itemSpacing = isMobile ? 250 : 160;
-        updateCarousel();
-    }
+            // Update the active class on the tabs
+            $('.theme-link').parent().removeClass('is-active');
+            $(this).parent().addClass('is-active');
 
-    window.addEventListener('resize', updateItemSpacing);
-    updateItemSpacing();
-
-    function updateCarousel() {
-        items.forEach((item, index) => {
-            const distance = (index - currentIndex + totalItems) % totalItems;
-            let translateX, scale, rotateY, zIndex;
-            let darkenValue;
-
-            if (distance === 0) {
-                translateX = 0;
-                scale = 1;
-                rotateY = 0;
-                zIndex = totalItems;
-                darkenValue = 0;
-
-                const overlayText = item.querySelector('.overlay-text');
-                if (overlayText) {
-                    overlayText.style.display = 'block';
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        overlayText.style.opacity = 1;
+            // Replace content in #carousel-container based on the clicked tab
+            if (target === '#veurgengers') {
+                $('#carousel-container')
+                    .fadeOut(500, function () {
+                        $(this).load('tuinhagedissesite/includes/veurgengerSlider.php', function (response, status, xhr) {
+                            if (status === "error") {
+                                console.error("Error loading veurgengerSlider.php: ", xhr.status, xhr.statusText);
+                            }
+                            $(this).fadeIn(500); // Fade in after content loads
+                        });
                     });
-                }
-            } else if (distance <= totalItems / 2) {
-                translateX = itemSpacing * distance;
-                scale = 1 - scaleStep * distance;
-                rotateY = -rotationStep;
-                zIndex = totalItems - distance;
-                darkenValue = 0.1 * distance;
-            } else {
-                translateX = -itemSpacing * (totalItems - distance);
-                scale = 1 - scaleStep * (totalItems - distance);
-                rotateY = rotationStep;
-                zIndex = distance;
-                darkenValue = 0.1 * (totalItems - distance);
-            }
-
-            item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
-            item.style.zIndex = zIndex;
-
-            const image = item.querySelector('.item-image');
-            if (image) {
-                image.style.filter = `brightness(${1 - darkenValue})`;
-            }
-
-            const overlayText = item.querySelector('.overlay-text');
-            if (overlayText) {
-                if (distance === 0) {
-                    overlayText.style.display = 'block';
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        overlayText.style.opacity = 1;
+            } else if (target === '#jeug') {
+                $('#carousel-container')
+                    .fadeOut(500, function () {
+                        $(this).load('tuinhagedissesite/includes/jeugSlider.php', function (response, status, xhr) {
+                            if (status === "error") {
+                                console.error("Error loading jeugSlider.php: ", xhr.status, xhr.statusText);
+                            }
+                            $(this).fadeIn(500); // Fade in after content loads
+                        });
                     });
-                } else {
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-out';
-                    setTimeout(() => {
-                        overlayText.style.display = 'none';
-                    }, 300);
-                }
-            }
-
-            const itemText = item.querySelector('.item-text');
-            if (itemText) {
-                if (distance === 0) {
-                    itemText.style.display = 'block';
-                    itemText.style.opacity = 0;
-                    itemText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        itemText.style.opacity = 1;
-                    });
-                } else {
-                    itemText.style.opacity = 0;
-                    itemText.style.transition = 'opacity 0.3s ease-out';
-                    setTimeout(() => {
-                        itemText.style.display = 'none';
-                    }, 300);
-                }
             }
         });
-
-    preloadImages(currentIndex);
-}
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-    });
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateCarousel();
-    });
-
-    updateCarousel();
-
-    let startX = 0;
-    let isDragging = false;
-
-    function handleSwipe(moveX) {
-        const diffX = moveX - startX;
-
-        if (Math.abs(diffX) > 50) {
-            if (diffX < 0) {
-                currentIndex = (currentIndex + 1) % totalItems;
-            } else {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            }
-            updateCarousel();
-            startX = moveX;
-            isDragging = false;
-        }
-    }
-
-    carousel.addEventListener('touchstart', (event) => {
-        startX = event.touches[0].clientX;
-        isDragging = true;
-    });
-
-    carousel.addEventListener('mousedown', (event) => {
-        startX = event.clientX;
-        isDragging = true;
-    });
-
-    carousel.addEventListener('touchmove', (event) => {
-        if (!isDragging) return;
-        const moveX = event.touches[0].clientX;
-        handleSwipe(moveX);
-    });
-
-    carousel.addEventListener('mousemove', (event) => {
-        if (!isDragging) return;
-        const moveX = event.clientX;
-        handleSwipe(moveX);
-    });
-
-    carousel.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        isDragging = false;
     });
 </script>
 
