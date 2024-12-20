@@ -5,37 +5,37 @@
     <div class="carousel-container">
         <div class="carousel">
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Yara I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Yara I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Yara I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Rick I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Rick I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Rick I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
             <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.jpg" alt="Prins Rick I" loading="lazy" />
+                <img class="item-image lazy-image" src="./assets/images/prinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
                 <div class="overlay-text">Rick I</div>
                 <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
             </div>
