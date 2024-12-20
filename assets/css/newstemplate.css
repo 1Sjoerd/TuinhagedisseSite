@@ -1,0 +1,22 @@
+.news-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-column {
+  padding: 10px;
+}
+
+.news-column:first-child {
+  flex: 30%;
+}
+
+.news-column:last-child {
+  flex: 70%;
+}
+
+@media screen and (max-width: 540px) {
+  .news-column {
+    flex: 100% !important;
+  }
+}
