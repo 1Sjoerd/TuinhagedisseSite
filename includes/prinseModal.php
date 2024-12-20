@@ -12,7 +12,7 @@ if ($result->num_rows > 0 ) {
                         echo "<a class='close-button hide-modal' style='color:white;' id='".$row['id']."prinse' data-id='".$row['id']."prinse'><i class='fas fa-times'></i></a>";
                     echo "</div>";
                     echo "<div class='block-text'>";
-                        echo "<img src='./assets/images/prinsen/rick-groepsfoto.jpg' alt='Prins ".$row["firstname"]." ".$row["number"]."' loading='lazy' />";
+                        echo "<img src='".$row["altimage_url"]."' alt='Prins ".$row["firstname"]." ".$row["number"]."' loading='lazy' />";
                         echo $row["info"];
                     echo "</div>";
                 echo "</div>";
