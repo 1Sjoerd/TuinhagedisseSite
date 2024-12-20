@@ -2,46 +2,27 @@
 <style> <?php include './assets/css/historicCards.css'; ?> </style>
 
 <div class="hcard-container">
+    <?php
+    $sql = "SELECT * FROM `prinse` ORDER BY `year` DESC";
+    $result = $conn->query($sql);
+    ?>
     <div class="carousel-container">
         <div class="carousel">
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/prinsen/rick.jpg" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='carousel-item'>";
+                        $image_url = !empty($row['image_url']) ? $row['image_url'] : './assets/images/prinsen/onbekend.jpg';
+                        echo "<img class='item-image lazy-image' data-src='".$image_url."' alt='Prins ".$row["firstname"]." ".$row["number"]."' />";
+                        echo "<div class='overlay-text'>".$row["firstname"]." ".$row["number"]."</div>";
+                        echo "<div class='item-text'>".$row["motto"]."</div>";
+                    echo "</div>";
+                }
+            }
+            ?>
         </div>
-        <button class="button-next" id="prevBtn"> ❮ </button>
-        <button class="button-next" id="nextBtn"> ❯ </button>
+        <button class="button-next" id="prevBtn">❮</button>
+        <button class="button-next" id="nextBtn">❯</button>
     </div>
 </div>
 
