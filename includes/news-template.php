@@ -88,3 +88,39 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const postalcodeInput = document.getElementById("postalcode");
+    const housenumberInput = document.getElementById("housenumber");
+    const streetInput = document.getElementById("street");
+
+    const fetchStreetName = async () => {
+        const postalcode = postalcodeInput.value.trim();
+        const housenumber = housenumberInput.value.trim();
+
+        if (/^[1-9][0-9]{3}[A-Z]{2}$/.test(postalcode) && housenumber) {
+            try {
+                const response = await fetch(`https://api.postcode.tech/v1/postcode?postcode=${postalcode}&number=${housenumber}`, {
+                    headers: {
+                        'Authorization': 'Bearer 8406e1e3-85b1-4ae5-babb-84288a601db4',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+
+                if (data && data.street) {
+                    streetInput.value = data.street;
+                } else {
+                    streetInput.value = "";
+                    alert("Adresgegevens konden niet worden opgehaald.");
+                }
+            } catch (error) {
+                console.error("Fout bij het ophalen van adresgegevens:", error);
+            }
+        }
+    };
+
+    postalcodeInput.addEventListener("blur", fetchStreetName);
+    housenumberInput.addEventListener("blur", fetchStreetName);
+});
+</script>
