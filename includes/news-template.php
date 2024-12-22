@@ -23,7 +23,8 @@
                 $sql = "SELECT `registration_needed`, `registration_fields`, `registration_enddate` FROM `events` WHERE id = ".$row["eventid"]."";
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
-                if ($row['registration_needed'] != '0') {
+                echo $row['registration_enddate'];
+                if ($row['registration_needed'] != '0' && strtotime($row['registration_enddate']) > time()) {
                     echo "</div>";
                     echo "<div class='news-row'>";
                         echo "<div class='news-column-noimg'>";
