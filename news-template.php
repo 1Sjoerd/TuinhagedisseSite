@@ -5,5 +5,5 @@
 $content = 'pages/news-template.php';
 
 // Inclusie van het algemene sjabloon
-include_once 'templates/layout.php';
+include_once 'templates/layoutNoBanner.php';
 ?>
