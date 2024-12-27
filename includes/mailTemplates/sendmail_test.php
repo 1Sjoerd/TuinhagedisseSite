@@ -4,7 +4,7 @@
 $to = $_POST['email']; // note the comma
 
 // Subject
-$subject = 'Bevestiging aanmelding'';
+$subject = 'Bevestiging aanmelding';
 
 include 'confirmationEmail.php';
 
