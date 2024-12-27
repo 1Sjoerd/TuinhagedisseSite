@@ -6,7 +6,7 @@ $to = $_POST['email']; // note the comma
 // Subject
 $subject = 'Bevestiging aanmelding'';
 
-include 'conformationEmail.php';
+include 'confirmationEmail.php';
 
 // To send HTML mail, the Content-type header must be set
 $headers[] = 'MIME-Version: 1.0';
