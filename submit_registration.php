@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($columns)) {
         $sql = "INSERT INTO registrations (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";
         if ($conn->query($sql) === TRUE) {
-            include 'conformationEmail.php';
+            include './includes/mailTemplates/sendmail_test.php';
         } else {
             echo $values."<br>";
             echo "Error: " . $sql . "<br>" . $conn->error;
