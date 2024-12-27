@@ -295,11 +295,11 @@ ob_start();
             </div>
             <div class="block-text">
                 <p>Beste <?php echo $_POST['firstname']; ?>,</p>
-                  <p>Bie deze bevestigen veer det geer ug hubt aangemeld veur de <?php echo $eventName; ?> op:</p>
-                  <p><strong>Datum:</strong> <?php echo $eventDate; ?></p></br>
-                  <p>Bedank!</p></br>
-                  <p>Groet,</p>
-                  <p>VV de Tuinhagedisse</p>
+                <p>Bie deze bevestigen veer det geer ug hubt aangemeld veur de <?php echo $eventName; ?> op:</p>
+                <p><strong>Datum:</strong> <?php echo $eventDate; ?></p></br>
+                <p>Bedank!</p></br>
+                <p>Groet,</p>
+                <p>VV de Tuinhagedisse</p>
             </div>
         </div>
     </div>
@@ -365,5 +365,5 @@ ob_start();
 </html>
 <?php
 $message = ob_get_clean();
-echo $message;
+include './confirmationTemplate.php';
 ?>
