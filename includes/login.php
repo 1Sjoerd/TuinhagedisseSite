@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Set user ID and role
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_role'] = $user['role_id'];
-            echo "<script>window.location.href = 'index.php';</script>";
+            echo "<script>window.location.href = 'dashboard.php';</script>";
             exit();
         } else {
             // Destroy session on failed login
