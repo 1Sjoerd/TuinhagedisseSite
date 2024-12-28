@@ -1,6 +1,4 @@
 <?php
-// contact.php
-
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/kontak.php';
 

@@ -1,6 +1,4 @@
 <?php
-// sjponsore.php
-
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/sjponsore.php';
 

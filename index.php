@@ -1,6 +1,4 @@
 <?php
-// index.php
-
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/index.php';
 

@@ -1,6 +1,4 @@
 <?php
-// historie.php
-
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/historie.php';
 
