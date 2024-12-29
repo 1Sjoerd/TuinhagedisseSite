@@ -3,7 +3,7 @@ $message = "";
 
 // Check if user is already logged in
 if (isset($_SESSION['user_id'])) {
-    echo "<script>window.location.href = 'index.php';</script>";
+    echo "<script>window.location.href = 'dashboard.php';</script>";
     exit();
 }
 
