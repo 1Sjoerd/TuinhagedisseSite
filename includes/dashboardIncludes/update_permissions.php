@@ -2,12 +2,12 @@
 session_start();
 // Check if user is logged in and has the admin role
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
-    echo "<script>window.location.href = '../index.php';</script>";
+    echo "<script>window.location.href = '../../index.php';</script>";
     exit();
 }
 
 // Correct the path to dbconnection.php
-include './templates/dbconnection.php';
+include '../../templates/dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $permissions = $_POST['permissions'] ?? [];
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    echo "<script>window.location.href = '../dashboard.php';</script>";
+    echo "<script>window.location.href = '../../dashboard.php';</script>";
     exit();
 }
 ?>
