@@ -5,14 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Check if user has the admin role
-$isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1;
-
 include './templates/dbconnection.php';
-
-// Fetch roles and permissions
-$roles = $conn->query("SELECT * FROM roles")->fetch_all(MYSQLI_ASSOC);
-$permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC);
 
 // Fetch role permissions
 $rolePermissions = [];
@@ -20,6 +13,28 @@ $result = $conn->query("SELECT * FROM role_permissions");
 while ($row = $result->fetch_assoc()) {
     $rolePermissions[$row['role_id']][] = $row['permission_id'];
 }
+
+function userHasPermission($conn, $userId, $permissionId, $rolePermissions) {
+    $userRoles = $conn->query("SELECT role_id FROM user_roles WHERE user_id = {$userId}")->fetch_all(MYSQLI_ASSOC);
+    foreach ($userRoles as $userRole) {
+        if (in_array($permissionId, $rolePermissions[$userRole['role_id']] ?? [])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Check if user has create_news permission
+$hasCreateNewsPermission = userHasPermission($conn, $_SESSION['user_id'], 1, $rolePermissions);
+
+// Check if user has manage_permissions permission
+$hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
+
+// Check if user has manage_users permission
+$hasManageUsersPermission = userHasPermission($conn, $_SESSION['user_id'], 2, $rolePermissions);
+
+// Fetch events for the dropdown
+$events = $conn->query("SELECT id, title FROM events")->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <style> <?php include './assets/css/standardblock.css'; ?> </style>
@@ -27,3 +42,4 @@ while ($row = $result->fetch_assoc()) {
 <style> <?php include './assets/css/dashboard.css'; ?> </style>
 
 <?php include 'dashboardIncludes/permissions.php'; ?>
+<?php include 'dashboardIncludes/news.php'; ?>
