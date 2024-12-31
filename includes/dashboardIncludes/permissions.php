@@ -1,4 +1,9 @@
-<?php if ($isAdmin): ?>
+<?php if ($hasManagePermissionsPermission): ?>
+<?php
+// Fetch roles and permissions
+$roles = $conn->query("SELECT * FROM roles")->fetch_all(MYSQLI_ASSOC);
+$permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC);
+?>
 <div class="block-overview">
     <div class="heading-title">
         <h2 class="block-title">Role Permissions</h2>
