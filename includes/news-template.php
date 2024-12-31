@@ -57,7 +57,7 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                         <input type="text" id="<?= $field ?>" name="<?= $field ?>">
                                     <?php endforeach; ?>
                                     <input type='hidden' id='eventid' name='eventid' value='<?= $eventid ?>'>
-                                    <input type='submit' value='Aanmelden'>";
+                                    <input type='submit' value='Aanmelden'>
                                 </form>
                             </div>
                         </div>
