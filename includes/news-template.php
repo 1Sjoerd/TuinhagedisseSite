@@ -48,6 +48,7 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                         'housenumber' => 'Huisnummer',
                                         'addition' => 'Toevoeging',
                                         'amount_people' => 'Aantal personen',
+                                        'groupname' => 'Groepsnaam',
                                     ];
                                     foreach ($fields as $field):
                                         $field = htmlspecialchars($field, ENT_QUOTES, 'UTF-8');
