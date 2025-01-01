@@ -8,7 +8,7 @@
     <div class="news-body">
         <div id="news-slider" class="owl-carousel news-slider">
             <?php
-                $sql = "SELECT * FROM `news` ORDER BY `date` DESC";
+                $sql = "SELECT * FROM `news` WHERE `date` <= CURDATE() ORDER BY `date` DESC;";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0 ) {
