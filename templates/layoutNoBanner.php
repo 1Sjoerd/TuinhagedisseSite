@@ -50,6 +50,9 @@
 
     <!-- Inclusie van de footer -->
     <?php include_once 'includes/footer.php'; ?>
+
+    <!-- Link naar je JavaScript-bestand(en) -->
+    <script src="./assets/js/header.js"></script>
     
     <!-- Voeg eventuele andere scripts toe -->
 </body>
