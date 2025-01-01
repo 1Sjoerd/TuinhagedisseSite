@@ -47,7 +47,8 @@ form input{
 }
 
 /* Submit button styling */
-form input[type="submit"] {
+.submit-button {
+  margin-top: 15px;
   width: 100%;
   padding: 10px;
   background-color: #4CAF50;
@@ -58,15 +59,63 @@ form input[type="submit"] {
   cursor: pointer;
 }
 
-form input[type="submit"]:hover {
+.submit-button:hover {
   background-color: #45a049;
 }
 
 .form-row {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .form-group {
-    flex: 1;
+  flex: 1;
+}
+
+.styled-textarea,
+input[type="file"],
+input[type="date"],
+input[type="text"] {
+  font-family: inherit; /* Ensure the font matches the rest of the site */
+}
+
+.styled-select,
+input[type="file"],
+input[type="date"] {
+  height: 43px; /* Set a consistent height */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+}
+
+.styled-select:focus,
+input[type="file"]:focus,
+input[type="date"]:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.styled-textarea {
+  width: 100%;
+  height: 150px; /* Adjust the height as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.styled-textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }

@@ -4,7 +4,7 @@
 $roles = $conn->query("SELECT * FROM roles")->fetch_all(MYSQLI_ASSOC);
 $permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC);
 ?>
-<div class="block-overview">
+<div class="block-overview block-overview-permissions">
     <div class="heading-title">
         <h2 class="block-title">Role Permissions</h2>
     </div>

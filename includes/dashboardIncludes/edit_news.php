@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $title = $_POST['title'];
     $text = $_POST['text'];
-    $eventid = $_POST['eventid'] ?? null;
+    $event_id = $_POST['event_id'] ?? null;
     $image_url = $_POST['existing_image_url'];
 
     if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         move_uploaded_file($_FILES['image_url']['tmp_name'], $image_url);
     }
 
-    $stmt = $conn->prepare("UPDATE news SET date = ?, title = ?, text = ?, image_url = ?, eventid = ? WHERE id = ?");
-    $stmt->bind_param("ssssii", $date, $title, $text, $image_url, $eventid, $id);
+    $stmt = $conn->prepare("UPDATE news SET date = ?, title = ?, text = ?, image_url = ?, event_id = ? WHERE id = ?");
+    $stmt->bind_param("ssssii", $date, $title, $text, $image_url, $event_id, $id);
     $stmt->execute();
 
-    echo "<script>window.location.href = '../../dashboard.php';</script>";
+    echo "<script>window.location.href = 'dashboard.php';</script>";
     exit();
 }
 
@@ -38,7 +38,7 @@ $newsItem = $conn->query("SELECT * FROM news WHERE id = $id")->fetch_assoc();
     <label for="image_url">Image:</label>
     <input type="file" id="image_url" name="image_url">
     <input type="hidden" name="existing_image_url" value="<?php echo $newsItem['image_url']; ?>">
-    <label for="eventid">Event ID (optional):</label>
-    <input type="number" id="eventid" name="eventid" value="<?php echo $newsItem['eventid']; ?>">
+    <label for="event_id">Event ID (optional):</label>
+    <input type="number" id="event_id" name="event_id" value="<?php echo $newsItem['event_id']; ?>">
     <input type="submit" value="Update News">
 </form>
