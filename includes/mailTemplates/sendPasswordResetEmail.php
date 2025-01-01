@@ -12,9 +12,9 @@ $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 $headers[] = 'From: VV de Tuinhagedisse <no-reply@vvdetuinhagedisse.nl>';
 
 if (mail($to, $subject, $mailmessage, implode("\r\n", $headers))) {
-    $message = "Een resetlink is verstuurd naar je e-mailadres.".$reset_link;
+    $message = "Een resetlink is verstuurd naar je e-mailadres.";
     echo "<script>setTimeout(function() { window.location.href = 'index.php'; }, 5000);</script>";
 } else {
-    $message = "Er is een fout opgetreden bij het versturen van de e-mail.".$reset_link;
+    $message = "Er is een fout opgetreden bij het versturen van de e-mail.";
 }
 ?>
