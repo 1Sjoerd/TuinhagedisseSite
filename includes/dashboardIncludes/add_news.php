@@ -21,6 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update existing news item
         $stmt = $conn->prepare("UPDATE news SET eventid = ?, title = ?, text = ?, date = ?, image_url = ? WHERE id = ?");
         $stmt->bind_param("issssi", $eventid, $title, $text, $date, $image_url, $id);
+        if ($stmt->execute()) {
+            error_log("News item updated successfully.");
+        } else {
+            error_log("Error updating news item: " . $stmt->error);
+        }
     } else {
         // Insert placeholder to get new ID
         $stmt = $conn->prepare("INSERT INTO news (date, title, text, image_url, eventid) VALUES (?, ?, ?, ?, ?)");
@@ -73,6 +78,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'gif':
                 $image = imagecreatefromgif($_FILES["image_url"]["tmp_name"]);
                 break;
+            case 'webp':
+                // If the file is already in WebP format, just move it to the target location
+                if (!move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
+                    die("Failed to move WebP file.");
+                }
+                $stmt->close();
+                header("Location: ../../dashboard.php");
+                // Exit the script as no further processing is needed
+                exit;
             default:
                 die("Unsupported image format.");
         }
