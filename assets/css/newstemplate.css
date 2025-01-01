@@ -40,7 +40,6 @@ form label {
 form input{
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -118,4 +117,13 @@ input[type="date"]:focus {
   border-color: #66afe9;
   outline: none;
   box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.address-row {
+  display: flex;
+  gap: 10px;
+}
+
+.address-field {
+  flex: 1;
 }

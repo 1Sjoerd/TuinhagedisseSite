@@ -1,6 +1,10 @@
 <?php
 $eventid = $row['eventid'];
-$image_url = htmlspecialchars($row['image_url'], ENT_QUOTES, 'UTF-8');
+if ($row['image_url']) {
+    $image_url = htmlspecialchars($row['image_url'], ENT_QUOTES, 'UTF-8');
+} else {
+    $image_url = null;
+}
 $title = htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8');
 $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
 ?>
@@ -53,9 +57,31 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                     foreach ($fields as $field):
                                         $field = htmlspecialchars($field, ENT_QUOTES, 'UTF-8');
                                         $label = $translations[$field] ?? $field;
-                                    ?>
-                                        <label for="<?= $field ?>"><?= $label ?></label>
-                                        <input type="text" id="<?= $field ?>" name="<?= $field ?>">
+                                        if (in_array($field, ['postalcode', 'housenumber', 'addition'])):
+                                            if ($field == 'postalcode'): ?>
+                                                <div class="address-row">
+                                            <?php endif; ?>
+                                            <div class="address-field">
+                                                <label for="<?= $field ?>"><?= $label ?></label>
+                                                <input type="text" id="<?= $field ?>" name="<?= $field ?>">
+                                            </div>
+                                            <?php if ($field == 'addition'): ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <label for="<?= $field ?>"><?= $label ?></label>
+                                            <input type="<?php 
+                                                if ($field == 'amount_people') {
+                                                    echo 'number';
+                                                } elseif ($field == 'email') {
+                                                    echo 'email';
+                                                } elseif ($field == 'phone') {
+                                                    echo 'tel';
+                                                } else {
+                                                    echo 'text';
+                                                }
+                                            ?>" id="<?= $field ?>" name="<?= $field ?>">
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                     <input type='hidden' id='eventid' name='eventid' value='<?= $eventid ?>'>
                                     <input type='submit' value='Aanmelden' class='submit-button'>
