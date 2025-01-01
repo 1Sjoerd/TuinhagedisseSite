@@ -6,7 +6,7 @@ $permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC
 ?>
 <div class="block-overview block-overview-permissions">
     <div class="heading-title">
-        <h2 class="block-title">Role Permissions</h2>
+        <h2 class="block-title">Groeps rechten</h2>
     </div>
     <div class="block-text">
         <form method="post" action="includes/dashboardIncludes/update_permissions.php" class="permissions-form">
@@ -33,7 +33,7 @@ $permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <input type="submit" value="Update Permissions" class="submit-button">
+            <input type="submit" value="Opsjlaon" class="submit-button">
         </form>
     </div>
 </div>

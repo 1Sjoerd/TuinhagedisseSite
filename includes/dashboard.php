@@ -25,13 +25,16 @@ function userHasPermission($conn, $userId, $permissionId, $rolePermissions) {
 }
 
 // Check if user has create_news permission
-$hasCreateNewsPermission = userHasPermission($conn, $_SESSION['user_id'], 1, $rolePermissions);
+$hasManageNewsPermission = userHasPermission($conn, $_SESSION['user_id'], 1, $rolePermissions);
 
 // Check if user has manage_users permission
 $hasManageUsersPermission = userHasPermission($conn, $_SESSION['user_id'], 2, $rolePermissions);
 
-// Check if user has manage_permissions permission
+// Check if user has manage_events permission
 $hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
+
+// Check if user has manage_permissions permission
+$hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 4, $rolePermissions);
 ?>
 
 <style> <?php include './assets/css/standardblock.css'; ?> </style>
