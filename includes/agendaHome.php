@@ -31,6 +31,8 @@
           }
 
           $year = $newDate[2];
+
+          $time = date("H:i:s", strtotime($origDate));
                     
           echo "<li>";
             echo "<a>";
