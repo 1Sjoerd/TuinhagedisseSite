@@ -3,16 +3,15 @@
 $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
 ?>
 
-<?php if ($hasCreateNewsPermission): ?>
+<?php if ($hasManageNewsPermission): ?>
 <div class="block-overview">
     <div class="heading-title">
         <h2 class="block-title">Beheer nieuws</h2>
     </div>
     <div class="block-text">
-        <table class="permissions-table">
+        <table class="news-table">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Datum</th>
                     <th>Titel</th>
                     <th>Acties</th>
@@ -24,8 +23,12 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                 foreach ($newsItems as $newsItem):
                 ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($newsItem['id']); ?></td>
-                    <td><?php echo htmlspecialchars($newsItem['date']); ?></td>
+                    <td>
+                        <?php 
+                        $date = new DateTime($newsItem['date']);
+                        echo htmlspecialchars($date->format('d-m-Y')); 
+                        ?>
+                    </td>
                     <td><?php echo htmlspecialchars($newsItem['title']); ?></td>
                     <td>
                         <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>">Bewerk</a>
