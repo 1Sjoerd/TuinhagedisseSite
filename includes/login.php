@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="password">Wachtwoord</label>
                         <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
                     </div>
-                    <input type="submit" value="Inloggen">
+                    <input type="submit" value="Inloggen" class="submit-button">
                 </form>
                 <div class="message">
                     <?php if (!empty($message)) echo htmlspecialchars($message); ?>
