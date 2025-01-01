@@ -120,10 +120,10 @@ input[type="date"]:focus {
 }
 
 .address-row {
-  display: flex !important;
-  gap: 10px !important;
+  display: flex;
+  gap: 10px;
 }
 
 .address-field {
-  flex: 1 !important;
+  flex: 1;
 }
