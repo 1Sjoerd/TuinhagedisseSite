@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("iss", $user_id, $token, $expires_at);
         $stmt->execute();
 
-        $reset_link = "TuinhagedisseSite/resetWachtwoord.php?token=$token";
+        $reset_link = "https://vvdetuinhagedisse.nl/resetWachtwoord.php?token=$token";
 
         include './includes/mailTemplates/sendPasswordResetEmail.php';
 
