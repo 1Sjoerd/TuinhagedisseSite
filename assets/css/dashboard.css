@@ -45,10 +45,6 @@
         text-align: left;
         white-space: nowrap;
     }
-
-    .news-table input[type="checkbox"] {
-        margin-left: 80%;
-    }
 }
 
 @media (max-width: 760px) {
@@ -81,9 +77,6 @@
         white-space: nowrap;
     }
 
-    .permissions-table input[type="checkbox"] {
-        margin-left: 80%;
-    }
 }
 
 .block-overview-permissions {
