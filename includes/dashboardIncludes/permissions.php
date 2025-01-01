@@ -25,7 +25,7 @@ $permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC
                             <td data-label="Role"><?php echo htmlspecialchars($role['name']); ?></td>
                             <?php foreach ($permissions as $permission): ?>
                                 <td data-label="<?php echo htmlspecialchars($permission['name']); ?>">
-                                    <input type="checkbox" name="permissions[<?php echo $role['id']; ?>][]" value="<?php echo $permission['id']; ?>"
+                                    <input type="checkbox" class="permissioncheckbox" name="permissions[<?php echo $role['id']; ?>][]" value="<?php echo $permission['id']; ?>"
                                         <?php echo in_array($permission['id'], $rolePermissions[$role['id']] ?? []) ? 'checked' : ''; ?>>
                                 </td>
                             <?php endforeach; ?>
