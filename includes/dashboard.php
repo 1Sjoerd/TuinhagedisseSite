@@ -27,19 +27,16 @@ function userHasPermission($conn, $userId, $permissionId, $rolePermissions) {
 // Check if user has create_news permission
 $hasCreateNewsPermission = userHasPermission($conn, $_SESSION['user_id'], 1, $rolePermissions);
 
-// Check if user has manage_permissions permission
-$hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
-
 // Check if user has manage_users permission
 $hasManageUsersPermission = userHasPermission($conn, $_SESSION['user_id'], 2, $rolePermissions);
 
-// Fetch events for the dropdown
-$events = $conn->query("SELECT id, title FROM events")->fetch_all(MYSQLI_ASSOC);
+// Check if user has manage_permissions permission
+$hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
 ?>
 
 <style> <?php include './assets/css/standardblock.css'; ?> </style>
 <style> <?php include './assets/css/newstemplate.css'; ?> </style>
 <style> <?php include './assets/css/dashboard.css'; ?> </style>
 
-<?php include 'dashboardIncludes/permissions.php'; ?>
 <?php include 'dashboardIncludes/news.php'; ?>
+<?php include 'dashboardIncludes/permissions.php'; ?>

@@ -48,6 +48,7 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                         'housenumber' => 'Huisnummer',
                                         'addition' => 'Toevoeging',
                                         'amount_people' => 'Aantal personen',
+                                        'groupname' => 'Groepsnaam',
                                     ];
                                     foreach ($fields as $field):
                                         $field = htmlspecialchars($field, ENT_QUOTES, 'UTF-8');
@@ -56,6 +57,8 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                         <label for="<?= $field ?>"><?= $label ?></label>
                                         <input type="text" id="<?= $field ?>" name="<?= $field ?>">
                                     <?php endforeach; ?>
+                                    <input type='hidden' id='eventid' name='eventid' value='<?= $eventid ?>'>
+                                    <input type='submit' value='Aanmelden'>
                                 </form>
                             </div>
                         </div>
