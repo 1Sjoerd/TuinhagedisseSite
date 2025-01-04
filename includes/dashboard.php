@@ -42,4 +42,5 @@ $hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'],
 <style> <?php include './assets/css/dashboard.css'; ?> </style>
 
 <?php include 'dashboardIncludes/news.php'; ?>
+<?php include 'dashboardIncludes/events.php'; ?>
 <?php include 'dashboardIncludes/permissions.php'; ?>
