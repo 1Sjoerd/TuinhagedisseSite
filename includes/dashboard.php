@@ -31,7 +31,7 @@ $hasManageNewsPermission = userHasPermission($conn, $_SESSION['user_id'], 1, $ro
 $hasManageUsersPermission = userHasPermission($conn, $_SESSION['user_id'], 2, $rolePermissions);
 
 // Check if user has manage_events permission
-$hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
+$hasManageEventsPermission = userHasPermission($conn, $_SESSION['user_id'], 3, $rolePermissions);
 
 // Check if user has manage_permissions permission
 $hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 4, $rolePermissions);
@@ -42,4 +42,5 @@ $hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'],
 <style> <?php include './assets/css/dashboard.css'; ?> </style>
 
 <?php include 'dashboardIncludes/news.php'; ?>
+<?php include 'dashboardIncludes/events.php'; ?>
 <?php include 'dashboardIncludes/permissions.php'; ?>
