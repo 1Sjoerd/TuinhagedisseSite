@@ -1,5 +1,7 @@
 <style>
-    <?php include './assets/css/header.css'; ?>
+    <?php include './assets/css/header.css'; 
+    session_start();
+    ?>
 </style>
 
 <a href="./index.php">
@@ -31,6 +33,11 @@
                     <li class="list-item">
                         <a class="nav__link" href="./kontak.php">Kóntak</a>
                     </li>
+                    <?php
+                        if (isset($_SESSION['user_id'])) {
+                            echo "<li class='list-item'><a class='nav__link' href='./includes/logout.php'>Logoet</a></li>";
+                        }
+                    ?>
                 </ul>
             </nav>
         </section>

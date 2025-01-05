@@ -40,7 +40,7 @@ $conn->close();
 
 <div class="block-overview">
     <div class="heading-title">
-        <h2 class="block-title">Reset dien wachtwoord</h2>
+        <h2 class="block-title">Reset dien wachwoord</h2>
     </div>
     <div class="block-text">
         <div class="news-row">
@@ -48,9 +48,9 @@ $conn->close();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" placeholder="Vul je e-mail in" required>
+                        <input type="email" id="email" name="email" placeholder="Vul dien e-mail in" required>
                     </div>
-                    <input type="submit" value="Reset">
+                    <input type="submit" value="Reset" class="submit-button">
                 </form>
                 <div class="message">
                     <?php if (!empty($message)) echo htmlspecialchars($message); ?>
