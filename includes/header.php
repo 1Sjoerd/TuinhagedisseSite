@@ -1,5 +1,6 @@
-<?php require './vendor/autoload.php'; ?>
-
+<?php require './vendor/autoload.php';
+session_start();
+?>
 <style>
     <?php include './assets/css/header.css'; ?>
     .banner-carousel .item img {
@@ -38,6 +39,11 @@
                     <li class="list-item">
                         <a class="nav__link" href="./kontak.php">Kóntak</a>
                     </li>
+                    <?php
+                        if (isset($_SESSION['user_id'])) {
+                            echo "<li class='list-item'><a class='nav__link' href='./includes/logout.php'>Logoet</a></li>";
+                        }
+                    ?>
                 </ul>
             </nav>
         </section>
