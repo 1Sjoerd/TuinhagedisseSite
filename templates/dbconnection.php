@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "Mark";
-$password = "VVTH2023!";
+$username = "root";
+$password = "root";
 $dbname = "vvdetuinhagedisse_nl";
 
 // Create connection
