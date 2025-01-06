@@ -26,7 +26,7 @@
                     </td>
                     <td><?php echo htmlspecialchars($eventItem['title']); ?></td>
                     <td>
-                        <i class="fa-solid fa-pen-to-square"></i> <a href="#" class="edit-event" data-id="<?php echo $eventItem['id']; ?>">Bewerk</a>
+                        <i class="fa-solid fa-pen-to-square"></i> <a href="#" class="edit-event" data-id="<?php echo $eventItem['id']; ?>">Bewirk</a>
                         </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_events.php?id=<?php echo $eventItem['id']; ?>">Verwijder</a>
                     </td>
                 </tr>
