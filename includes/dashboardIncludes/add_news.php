@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_extension = pathinfo($_FILES["image_url"]["name"], PATHINFO_EXTENSION);
     
         // Sanitize the title to create a safe file name
-        $safe_title = preg_replace('/[^a-zA-Z0-9 _-]/', '', $title);
-        $safe_title = str_replace(' ', '_', $safe_title); // Optioneel: vervang spaties door underscores
-    
+        $safe_title = preg_replace('/[^a-zA-Z0-9 _-]/', '', $title); // Verwijder ongewenste tekens
+        $safe_title = str_replace(' ', '_', $safe_title); // Vervang spaties door underscores
         $new_file_name = $id . "_" . $safe_title . ".webp";
+
         $target_file = $target_dir_extention . $target_dir . $new_file_name;
         $db_url = $target_dir . $new_file_name;
 
