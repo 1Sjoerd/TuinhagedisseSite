@@ -48,7 +48,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <button id="addUserButton" class="submit-button">Gebroeker toevoegen</button>
+        <button id="addUserButton" class="submit-button">Gebroeker toevoege</button>
         <div id="userForm" style="display: none;">
             <form id="userFormElement" method="post" action="includes/dashboardIncludes/add_user.php" enctype="multipart/form-data">
                 <label for="email">E-Mail:</label>
