@@ -33,7 +33,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <button id="addEventButton" class="submit-button">Evenement toevoegen</button>
+        <button id="addEventButton" class="submit-button">Ivvenement toevoege</button>
         <div id="eventForm" style="display: none;">
             <form id="eventFormElement" method="post" action="includes/dashboardIncludes/add_event.php" enctype="multipart/form-data">
                 <input type="hidden" id="eventId" name="eventId">
@@ -43,7 +43,7 @@
                 <input type="text" id="eventLocation" name="eventLocation" required>
                 <label for="eventDate">Datum:</label>
                 <input type="datetime-local" id="eventDate" name="eventDate" required>
-                <label for="eventRegistration_needed">Registratie nodig?</label>
+                <label for="eventRegistration_needed">Registratie neudig?</label>
                 <input type="checkbox" id="eventRegistration_needed" name="eventRegistration_needed">
                         
                 <div id="registrationOptions" style="display: none; margin-top: 10px;">
@@ -52,20 +52,20 @@
                     <input type="checkbox" id="firstname" name="eventRegistration_fields[]" value="firstname">
                     <label for="lastname">Achternaam:</label>
                     <input type="checkbox" id="lastname" name="eventRegistration_fields[]" value="lastname">
-                    <label for="phone">Telefoonnummer:</label>
+                    <label for="phone">Tillefoonnómmer:</label>
                     <input type="checkbox" id="phone" name="eventRegistration_fields[]" value="phone"> 
                     <label for="email">E-Mail:</label>
                     <input type="checkbox" id="email" name="eventRegistration_fields[]" value="email">
                     <label for="adres">Adres:</label>
                     <input type="checkbox" id= "adres" name="eventRegistration_fields[]" value="adres">
-                    <label for="amount_people">Aantal personen:</label>
+                    <label for="amount_people">Aantal persone:</label>
                     <input type="checkbox" id="amount_people" name="eventRegistration_fields[]" value="amount_people">
                     <label for="groupname">Groepsnaam:</label>
                     <input type="checkbox" id="groupname" name="eventRegistration_fields[]" value="groupname">
                     <label for="eventRegistration_enddate">Tot wanneer kinse dich opgaeve:</label>
                     <input type="datetime-local" id="eventRegistration_enddate" name="eventRegistration_enddate" value="eventRegistration_enddate">
                 </div>
-                <input type="submit" value="Opslaan" class="submit-button">
+                <input type="submit" value="Opsjlaon" class="submit-button">
             </form>
         </div>
 
