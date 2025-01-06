@@ -24,11 +24,11 @@
                     <td><?php echo htmlspecialchars($userItem['role_name']); ?></td>
                     <td>
                         <?php if ($userItem['is_active'] == 1): ?>
-                            <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Deactiveer</a>
+                            <i class="fa-solid fa-xmark"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Deactiveer</a>
                         <?php else: ?>
-                            <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Heractiveer</a>
+                            <i class="fa-solid fa-check"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Heractiveer</a>
                         <?php endif; ?>
-                        <a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>">Verwijder</a>
+                        </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>">Verwijder</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
