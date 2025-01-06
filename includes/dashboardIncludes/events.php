@@ -47,7 +47,7 @@
                 <input type="checkbox" id="eventRegistration_needed" name="eventRegistration_needed">
                         
                 <div id="registrationOptions" style="display: none; margin-top: 10px;">
-                    Welke gegaeves hubse dao veur neudig:
+                    Welke gegaeves höbse dao veur neudig:
                     <label for="firstname">Veurnaam:</label>
                     <input type="checkbox" id="firstname" name="eventRegistration_fields[]" value="firstname">
                     <label for="lastname">Achternaam:</label>
