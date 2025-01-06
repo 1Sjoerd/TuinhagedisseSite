@@ -1,7 +1,7 @@
 <?php if ($hasManageEventsPermission): ?>
 <div class="block-overview block-overview-permissions">
     <div class="heading-title">
-        <h2 class="block-title">Beheer evenementen</h2>
+        <h2 class="block-title">Beheer ivvenementen</h2>
     </div>
     <div class="block-text">
         <table class="news-table">
