@@ -1,7 +1,7 @@
 <?php if ($hasManageUsersPermission): ?>
 <div class="block-overview block-overview-permissions">
     <div class="heading-title">
-        <h2 class="block-title">Beheer gebruikers</h2>
+        <h2 class="block-title">Beheer gebroekers</h2>
     </div>
     <div class="block-text">
         <table class="news-table">
@@ -34,7 +34,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <button id="addUserButton" class="submit-button">Gebruiker toevoegen</button>
+        <button id="addUserButton" class="submit-button">Gebroeker toevoege</button>
         <div id="userForm" style="display: none;">
             <form id="userFormElement" method="post" action="includes/dashboardIncludes/add_user.php" enctype="multipart/form-data">
                 <label for="email">E-Mail:</label>
