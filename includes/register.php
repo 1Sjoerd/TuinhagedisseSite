@@ -32,8 +32,27 @@ if (isset($_GET['token'])) {
                 $delete_invite = $conn->prepare("DELETE FROM invitations WHERE token = ?");
                 $delete_invite->bind_param("s", $token);
                 $delete_invite->execute();
-
-                $message = "Je account is succesvol aangemaakt!";
+                
+                if ($delete_invite->execute()) {
+                    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    if ($result->num_rows > 0) {
+                        $data = $result->fetch_assoc();
+                        $id = $data['id'];
+                        $role = "3";
+                        
+                        $stmt = $conn->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?)");
+                        $stmt->bind_param("si", $id, $role);
+                        if ($stmt->execute()) {
+                            $message = "Account is aangemaakt en rol is gekoppeld";
+                        } else {
+                            $message = "Kon geen role koppelen voor je account. Neem contact op met de beheerder";
+                        }
+                    }
+                }
             } else {
                 $message = "Er is een fout opgetreden bij het registreren.";
             }
