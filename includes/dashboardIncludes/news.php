@@ -31,7 +31,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                     </td>
                     <td><?php echo htmlspecialchars($newsItem['title']); ?></td>
                     <td>
-                        <i class="fa-solid fa-pen-to-square"></i> <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>">Bewerk</a>
+                        <i class="fa-solid fa-pen-to-square"></i> <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>">Bewirk</a>
                         </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>">Verwijder</a>
                     </td>
                 </tr>
@@ -59,7 +59,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                     <div class="form-group">
                         <label for="eventid">Event ID (optioneel):</label>
                         <select id="eventid" name="eventid" class="styled-select">
-                            <option value="">Selecteer un ivvenement</option>
+                            <option value="">Selecteer 'n ivvenement</option>
                             <?php foreach ($events as $event): ?>
                                 <option value="<?php echo $event['id']; ?>"><?php echo htmlspecialchars($event['title']); ?></option>
                             <?php endforeach; ?>
