@@ -9,32 +9,46 @@
                 <tr>
                     <th>E-Mail</th>
                     <th>Actief</th>
+                    <?php if ($hasManagePermissionsPermission): ?>
                     <th>Rol</th>
+                    <?php endif; ?>
                     <th>Acties</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $userItems = $conn->query("SELECT users.*, roles.name AS role_name FROM users LEFT JOIN user_roles ON users.id = user_roles.user_id LEFT JOIN roles ON user_roles .role_id = roles.id ORDER BY users.created_at DESC;")->fetch_all(MYSQLI_ASSOC);
+                $roles = $conn->query("SELECT * FROM roles")->fetch_all(MYSQLI_ASSOC);
+                $userItems = $conn->query("SELECT users.*, roles.name AS role_name FROM users LEFT JOIN user_roles ON users.id = user_roles.user_id LEFT JOIN roles ON user_roles.role_id = roles.id ORDER BY users.created_at DESC;")->fetch_all(MYSQLI_ASSOC);
+
                 foreach ($userItems as $userItem):
                 ?>
                 <tr>
                     <td><?php echo htmlspecialchars($userItem['email']); ?></td>
                     <td><?php echo htmlspecialchars($userItem['is_active']); ?></td>
-                    <td><?php echo htmlspecialchars($userItem['role_name']); ?></td>
+                    <?php if ($hasManagePermissionsPermission): ?>
+                    <td>
+                        <select class="role-dropdown styled-select" data-user-id="<?php echo $userItem['id']; ?>">
+                            <?php foreach ($roles as $role): ?>
+                                <option value="<?php echo $role['id']; ?>" <?php echo $role['name'] === $userItem['role_name'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($role['name']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                    <?php endif; ?>
                     <td>
                         <?php if ($userItem['is_active'] == 1): ?>
-                            <i class="fa-solid fa-xmark"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Deactiveer</a>
+                            <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-xmark"></i> Deactiveer</a>
                         <?php else: ?>
-                            <i class="fa-solid fa-check"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Activeer</a>
+                            <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-check"></i> Activeer</a>
                         <?php endif; ?>
-                        </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>">Verwijder</a>
+                        </br><a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <button id="addUserButton" class="submit-button">Gebroeker toevoege</button>
+        <button id="addUserButton" class="submit-button">Gebroeker toevoegen</button>
         <div id="userForm" style="display: none;">
             <form id="userFormElement" method="post" action="includes/dashboardIncludes/add_user.php" enctype="multipart/form-data">
                 <label for="email">E-Mail:</label>
@@ -48,6 +62,24 @@
                 var form = document.getElementById('userForm');
                 document.getElementById('userFormElement').reset();
                 form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            });
+
+            document.querySelectorAll('.role-dropdown').forEach(function(dropdown) {
+                dropdown.addEventListener('change', function() {
+                    const userId = this.getAttribute('data-user-id');
+                    const roleId = this.value;
+
+                    // AJAX request
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'includes/dashboardIncludes/update_user_role.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            alert(xhr.responseText); // Voor debuggen, later vervangen door een betere notificatie.
+                        }
+                    };
+                    xhr.send('user_id=' + userId + '&role_id=' + roleId);
+                });
             });
         </script>
     </div>
