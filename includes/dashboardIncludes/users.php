@@ -39,7 +39,7 @@
             <form id="userFormElement" method="post" action="includes/dashboardIncludes/add_user.php" enctype="multipart/form-data">
                 <label for="email">E-Mail:</label>
                 <input type="email" id="email" name="email" required>
-                <input type="submit" value="Toevoegen" class="submit-button">
+                <input type="submit" value="Neudig oet" class="submit-button">
             </form>
         </div>
 
