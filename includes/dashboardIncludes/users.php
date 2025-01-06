@@ -9,17 +9,19 @@
                 <tr>
                     <th>E-Mail</th>
                     <th>Actief</th>
+                    <th>Rol</th>
                     <th>Acties</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $userItems = $conn->query("SELECT * FROM users ORDER BY created_at DESC")->fetch_all(MYSQLI_ASSOC);
+                $userItems = $conn->query("SELECT users.*, roles.name AS role_name FROM users LEFT JOIN user_roles ON users.id = user_roles.user_id LEFT JOIN roles ON user_roles .role_id = roles.id ORDER BY users.created_at DESC;")->fetch_all(MYSQLI_ASSOC);
                 foreach ($userItems as $userItem):
                 ?>
                 <tr>
                     <td><?php echo htmlspecialchars($userItem['email']); ?></td>
                     <td><?php echo htmlspecialchars($userItem['is_active']); ?></td>
+                    <td><?php echo htmlspecialchars($userItem['role_name']); ?></td>
                     <td>
                         <?php if ($userItem['is_active'] == 1): ?>
                             <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Deactiveer</a>
