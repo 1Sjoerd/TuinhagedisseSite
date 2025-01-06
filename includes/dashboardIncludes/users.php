@@ -26,7 +26,7 @@
                         <?php if ($userItem['is_active'] == 1): ?>
                             <i class="fa-solid fa-xmark"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Deactiveer</a>
                         <?php else: ?>
-                            <i class="fa-solid fa-check"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Heractiveer</a>
+                            <i class="fa-solid fa-check"></i> <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>">Activeer</a>
                         <?php endif; ?>
                         </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>">Verwijder</a>
                     </td>
