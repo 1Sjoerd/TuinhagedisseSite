@@ -6,7 +6,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
 <?php if ($hasManageNewsPermission): ?>
 <div class="block-overview">
     <div class="heading-title">
-        <h2 class="block-title">Beheer nieuws</h2>
+        <h2 class="block-title">Beheer nuujts</h2>
     </div>
     <div class="block-text">
         <table class="news-table">
@@ -31,8 +31,8 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                     </td>
                     <td><?php echo htmlspecialchars($newsItem['title']); ?></td>
                     <td>
-                        <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>">Bewerk</a>
-                        <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>">Verwijder</a>
+                        <i class="fa-solid fa-pen-to-square"></i> <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>">Bewerk</a>
+                        </br><i class="fa-solid fa-trash"></i> <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>">Verwijder</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -48,7 +48,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                 <textarea id="text" name="text" class="styled-textarea" required></textarea>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="image_url">Foto:</label>
+                        <label for="image_url">Poster:</label>
                         <input type="file" id="image_url" name="image_url">
                         <input type="hidden" id="existing_image_url" name="existing_image_url">
                     </div>
@@ -59,7 +59,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                     <div class="form-group">
                         <label for="eventid">Event ID (optioneel):</label>
                         <select id="eventid" name="eventid" class="styled-select">
-                            <option value="">Selecteer un evenement</option>
+                            <option value="">Selecteer un ivvenement</option>
                             <?php foreach ($events as $event): ?>
                                 <option value="<?php echo $event['id']; ?>"><?php echo htmlspecialchars($event['title']); ?></option>
                             <?php endforeach; ?>
