@@ -20,19 +20,19 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                 $newsItems = $conn->query("SELECT * FROM news ORDER BY date DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
                 foreach ($newsItems as $newsItem):
                 ?>
-                <div class="row">
-                    <div class="cell" data-title="Datum">
-                        <?php 
-                        $date = new DateTime($newsItem['date']);
-                        echo htmlspecialchars($date->format('d-m-Y')); 
-                        ?>
+                    <div class="row">
+                        <div class="cell" data-title="Datum">
+                            <?php 
+                            $date = new DateTime($newsItem['date']);
+                            echo htmlspecialchars($date->format('d-m-Y')); 
+                            ?>
+                        </div>
+                        <div class="cell" data-title="Titel"><?php echo htmlspecialchars($newsItem['title']); ?></div>
+                        <div class="cell" data-title="Acties">
+                            <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
+                            <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
+                        </div>
                     </div>
-                    <div class="cell" data-title="Titel"><?php echo htmlspecialchars($newsItem['title']); ?></div>
-                    <div class="cell" data-title="Acties">
-                        <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
-                        <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
-                    </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>

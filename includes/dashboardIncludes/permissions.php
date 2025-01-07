@@ -10,29 +10,27 @@ $permissions = $conn->query("SELECT * FROM permissions")->fetch_all(MYSQLI_ASSOC
     </div>
     <div class="block-text">
         <form method="post" action="includes/dashboardIncludes/update_permissions.php" class="permissions-form">
-            <table class="permissions-table">
-                <thead>
-                    <tr>
-                        <th>Role</th>
+            <div class="wrapper wrapper-permissions">
+                <div class="table">
+                    <div class="row header">    
+                        <div class="cell">Role</div>
                         <?php foreach ($permissions as $permission): ?>
-                            <th><?php echo htmlspecialchars($permission['name']); ?></th>
+                            <div class="cell"><?php echo htmlspecialchars($permission['name']); ?></div>
                         <?php endforeach; ?>
-                    </tr>
-                </thead>
-                <tbody>
+                    </div>
                     <?php foreach ($roles as $role): ?>
-                        <tr>
-                            <td data-label="Role"><?php echo htmlspecialchars($role['name']); ?></td>
+                        <div class="row">
+                            <div class="cell" data-title="Gebroeker" data-label="Role"><?php echo htmlspecialchars($role['name']); ?></div>
                             <?php foreach ($permissions as $permission): ?>
-                                <td data-label="<?php echo htmlspecialchars($permission['name']); ?>">
+                                <div class="cell" data-title="<?php echo htmlspecialchars($permission['name']); ?>" data-label="<?php echo htmlspecialchars($permission['name']); ?>">
                                     <input type="checkbox" class="permissioncheckbox" name="permissions[<?php echo $role['id']; ?>][]" value="<?php echo $permission['id']; ?>"
                                         <?php echo in_array($permission['id'], $rolePermissions[$role['id']] ?? []) ? 'checked' : ''; ?>>
-                                </td>
+                            </div>
                             <?php endforeach; ?>
-                        </tr>
+                        </div>
                     <?php endforeach; ?>
-                </tbody>
-            </table>
+                </div>
+            </div>
             <input type="submit" value="Opsjlaon" class="submit-button">
         </form>
     </div>
