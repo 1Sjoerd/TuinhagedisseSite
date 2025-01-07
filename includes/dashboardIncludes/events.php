@@ -4,35 +4,34 @@
         <h2 class="block-title">Beheer ivvenementen</h2>
     </div>
     <div class="block-text">
-        <table class="news-table">
-            <thead>
-                <tr>
-                    <th>Datum</th>
-                    <th>Titel</th>
-                    <th>Acties</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="wrapper">
+            <div class="table">
+                <div class="row header">
+                    <div class="cell">Datum</div>
+                    <div class="cell">Titel</div>
+                    <div class="cell">Acties</div>
+                </div>
                 <?php
                 $eventItems = $conn->query("SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
                 foreach ($eventItems as $eventItem):
                 ?>
-                <tr>
-                    <td>
+                <div class="row">
+                    <div class="cell" data-title="Datum">
                         <?php 
                         $date = new DateTime($eventItem['date']);
                         echo htmlspecialchars($date->format('d-m-Y'));
                         ?>
-                    </td>
-                    <td><?php echo htmlspecialchars($eventItem['title']); ?></td>
-                    <td>
+                    </div>
+                    <div class="cell" data-title="Titel"><?php echo htmlspecialchars($eventItem['title']); ?></div>
+                    <div class="cell" data-title="Acties">
                         <a href="#" class="edit-event" data-id="<?php echo $eventItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
-                        </br><a href="includes/dashboardIncludes/delete_events.php?id=<?php echo $eventItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
-                    </td>
-                </tr>
+                        <a href="includes/dashboardIncludes/delete_events.php?id=<?php echo $eventItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
+                    </div>
+                </div>
                 <?php endforeach; ?>
-            </tbody>
-        </table>
+            </div>
+        </div>
+
         <button id="addEventButton" class="submit-button">Ivvenement toevoege</button>
         <div id="eventForm" style="display: none;">
             <form id="eventFormElement" method="post" action="includes/dashboardIncludes/add_event.php" enctype="multipart/form-data">

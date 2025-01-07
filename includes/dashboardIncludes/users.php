@@ -4,29 +4,27 @@
         <h2 class="block-title">Beheer gebroekers</h2>
     </div>
     <div class="block-text">
-        <table class="news-table">
-            <thead>
-                <tr>
-                    <th>E-Mail</th>
-                    <th>Actief</th>
+        <div class="wrapper">
+            <div class="table">
+                <div class="row header">
+                    <div class="cell">E-Mail</div>
+                    <div class="cell">Actief</div>
                     <?php if ($hasManagePermissionsPermission): ?>
-                    <th>Rol</th>
+                    <div class="cell">Rol</div>
                     <?php endif; ?>
-                    <th>Acties</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <div class="cell">Acties</div>
+                </div>
                 <?php
                 $roles = $conn->query("SELECT * FROM roles")->fetch_all(MYSQLI_ASSOC);
                 $userItems = $conn->query("SELECT users.*, roles.name AS role_name FROM users LEFT JOIN user_roles ON users.id = user_roles.user_id LEFT JOIN roles ON user_roles.role_id = roles.id ORDER BY users.created_at DESC;")->fetch_all(MYSQLI_ASSOC);
 
                 foreach ($userItems as $userItem):
                 ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($userItem['email']); ?></td>
-                    <td><?php echo htmlspecialchars($userItem['is_active']); ?></td>
+                <div class="row">
+                    <div class="cell" data-title="E-Mail"><?php echo htmlspecialchars($userItem['email']); ?></div>
+                    <div class="cell" data-title="Actief"><?php echo htmlspecialchars($userItem['is_active']); ?></div>
                     <?php if ($hasManagePermissionsPermission): ?>
-                    <td>
+                    <div class="cell" data-title="Rol">
                         <select class="role-dropdown styled-select" data-user-id="<?php echo $userItem['id']; ?>">
                             <?php foreach ($roles as $role): ?>
                                 <option value="<?php echo $role['id']; ?>" <?php echo $role['name'] === $userItem['role_name'] ? 'selected' : ''; ?>>
@@ -34,20 +32,21 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                    </td>
+                    </div>
                     <?php endif; ?>
-                    <td>
+                    <div class="cell" data-title="Acties">
                         <?php if ($userItem['is_active'] == 1): ?>
                             <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-xmark"></i> Deactiveer</a>
                         <?php else: ?>
                             <a href="includes/dashboardIncludes/deactivate_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-check"></i> Activeer</a>
                         <?php endif; ?>
-                        </br><a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
-                    </td>
-                </tr>
+                        <a href="includes/dashboardIncludes/delete_user.php?id=<?php echo $userItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
+                    </div>
+                </div>
                 <?php endforeach; ?>
-            </tbody>
-        </table>
+            </div>
+        </div>
+
         <button id="addUserButton" class="submit-button">Gebroeker toevoege</button>
         <div id="userForm" style="display: none;">
             <form id="userFormElement" method="post" action="includes/dashboardIncludes/add_user.php" enctype="multipart/form-data">
