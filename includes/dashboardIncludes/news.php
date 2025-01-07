@@ -9,35 +9,33 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
         <h2 class="block-title">Beheer nuujts</h2>
     </div>
     <div class="block-text">
-        <table class="news-table">
-            <thead>
-                <tr>
-                    <th>Datum</th>
-                    <th>Titel</th>
-                    <th>Acties</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="wrapper">
+            <div class="table">
+                <div class="row header">
+                    <div class="cell">Datum</div>
+                    <div class="cell">Titel</div>
+                    <div class="cell">Acties</div>
+                </div>
                 <?php
                 $newsItems = $conn->query("SELECT * FROM news ORDER BY date DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
                 foreach ($newsItems as $newsItem):
                 ?>
-                <tr>
-                    <td>
+                <div class="row">
+                    <div class="cell" data-title="Datum">
                         <?php 
                         $date = new DateTime($newsItem['date']);
                         echo htmlspecialchars($date->format('d-m-Y')); 
                         ?>
-                    </td>
-                    <td><?php echo htmlspecialchars($newsItem['title']); ?></td>
-                    <td>
+                    </div>
+                    <div class="cell" data-title="Titel"><?php echo htmlspecialchars($newsItem['title']); ?></div>
+                    <div class="cell" data-title="Acties">
                         <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
                         </br><a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
-                    </td>
-                </tr>
+                    </div>
+                </div>
                 <?php endforeach; ?>
-            </tbody>
-        </table>
+            </div>
+        </div>
         <button id="addNewsButton" class="submit-button">Nuujts toevoege</button>
         <div id="newsForm" style="display: none;">
             <form id="newsFormElement" method="post" action="includes/dashboardIncludes/add_news.php" enctype="multipart/form-data">
