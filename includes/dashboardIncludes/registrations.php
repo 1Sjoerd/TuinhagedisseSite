@@ -37,68 +37,9 @@ $eventsWithRegistrations = $conn->query(
                              <a href="#"><i class="fa-solid fa-trash"></i> Verwijder</a>
                          </div>
                     </div>
-                    <div class="registration-details" id="registrations-<?php echo $event['event_id']; ?>" style="display: none;">
-                        <div class="registrations-table">
-                            <div class="row header">
-                                <div class="cell">Naam</div>
-                                <div class="cell">Telefoon</div>
-                                <div class="cell">Email</div>
-                                <div class="cell">Adres</div>
-                                <div class="cell">Aantal personen</div>
-                                <div class="cell">Groepsnaam</div>
-                                <div class="cell">Registratietijd</div>                                
-                            </div>
-                            <div id="registration-rows-<?php echo $event['event_id']; ?>">
-                                <!-- Rijen worden via JavaScript geladen -->
-                            </div>
-                        </div>
-                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    document.querySelectorAll('.toggle-registrations').forEach(button => {
-        button.addEventListener('click', function() {
-            const eventId = this.getAttribute('data-event-id');
-            const detailsRow = document.getElementById('registrations-' + eventId);
-            const detailsTableBody = document.getElementById('registration-rows-' + eventId);
-
-            if (detailsRow.style.display === 'none') {
-                fetch('includes/dashboardIncludes/get_registrations.php?eventid=' + eventId)
-                    .then(response => response.json())
-                    .then(data => {
-                        detailsTableBody.innerHTML = '';
-                        data.forEach(registration => {
-                            const row = `
-                                <div class="row">
-                                <div class="cell" data-title="Naam">${registration.firstname} ${registration.lastname}</div>
-                                <div class="cell" data-title="Telefoon">${registration.phone}</div>
-                                <div class="cell" data-title="Email">${registration.email}</div>
-                                <div class="cell" data-title="Adres">${registration.street} ${registration.housenumber}${registration.addition ? ' ' + registration.addition : ''}, ${registration.postalcode}</div>
-                                <div class="cell" data-title="Aantal personen">${registration.amount_people}</div>
-                                <div class="cell" data-title="Groepsnaam">${registration.groupname}</div>
-                                <div class="cell" data-title="Registratietijd">${new Date(registration.datetime.replace(' ', 'T')).toLocaleString('nl-NL', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                    second: '2-digit',
-                                    hour12: false
-                                })}</div></div>
-                            `;
-                            detailsTableBody.innerHTML += row;
-                        });
-                        detailsRow.style.display = 'block';
-                    })
-                    .catch(error => console.error('Error fetching registrations:', error));
-            } else {
-                detailsRow.style.display = 'none';
-            }
-        });
-    });
-</script>
 <?php endif; ?>
