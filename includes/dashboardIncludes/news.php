@@ -30,7 +30,7 @@ $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10
                     <div class="cell" data-title="Titel"><?php echo htmlspecialchars($newsItem['title']); ?></div>
                     <div class="cell" data-title="Acties">
                         <a href="#" class="edit-news" data-id="<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
-                        </br><a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
+                        <a href="includes/dashboardIncludes/delete_news.php?id=<?php echo $newsItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
