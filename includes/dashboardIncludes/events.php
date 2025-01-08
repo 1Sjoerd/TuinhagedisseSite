@@ -12,7 +12,7 @@
                     <div class="cell">Acties</div>
                 </div>
                 <?php
-                $eventItems = $conn->query("SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
+                $eventItems = $conn->query("SELECT * FROM `events` WHERE `date` >= CURDATE() ORDER BY `date` ASC")->fetch_all(MYSQLI_ASSOC);
                 foreach ($eventItems as $eventItem):
                 ?>
                 <div class="row">
