@@ -9,9 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {
-            $data[$field] = $conn->real_escape_string($_POST[$field]);
-            $columns[] = $field;
-            $values[] = "'" . $data[$field] . "'";
+            if ($field == 'addition' && empty($_POST[$field])) {
+                $data[$field] = NULL;  // Stel 'addition' in als NULL
+                $columns[] = $field;
+                $values[] = "NULL";  // Voeg NULL toe aan de waarden
+            } else {
+                $data[$field] = $conn->real_escape_string($_POST[$field]);
+                $columns[] = $field;
+                $values[] = "'" . $data[$field] . "'";
+            }
         }
     }
 
