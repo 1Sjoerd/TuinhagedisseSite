@@ -196,6 +196,21 @@
     
     $eventname = str_replace(' ', '_', $eventname);
     
-    // PDF downloaden
-    $dompdf->stream('Injrievinge_' . $eventname . '.pdf', ['Attachment' => true]);
+    // PDF bestand genereren
+    $dompdf->render();
+    
+    // PDF output naar een bestand in plaats van direct naar de browser
+    $pdfOutput = $dompdf->output();
+    
+    // Zet de juiste headers voor het downloaden
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="Injrievinge_' . $eventname . '.pdf"');
+    header('Content-Length: ' . strlen($pdfOutput));
+    header('Cache-Control: no-cache, no-store, must-revalidate');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    
+    // Output de PDF inhoud
+    echo $pdfOutput;
+    exit;
 ?>
