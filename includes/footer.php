@@ -29,12 +29,12 @@
 
 <footer>
     <div class="footer">
-        <div class="row">
+        <div class="footerrow">
             <a href="https://www.facebook.com/vvdetuinhagedisse" target="_blank"><i class="fa fa-facebook"></i></a>
             <a href="https://www.instagram.com/vvdetuinhagedisse/" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
 
-        <div class="row">
+        <div class="footerrow">
             &copy; <?php echo date("Y"); ?> V.V. de Tuinhagedisse
         </div>
     </div>
