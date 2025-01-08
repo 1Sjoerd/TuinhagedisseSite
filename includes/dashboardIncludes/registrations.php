@@ -33,7 +33,7 @@ $eventsWithRegistrations = $conn->query(
                             <?php echo htmlspecialchars($event['registration_count']); ?>
                         </div>
                          <div class="cell" data-title="Acties">
-                             <a href="#" data-event-id="<?php echo $event['event_id']; ?>"><i class="fa-solid fa-download"></i> Download</a>
+                             <a href="includes/dashboardIncludes/download_registration_pdf.php?event_id=<?php echo $event['event_id']; ?>"><i class="fa-solid fa-download"></i> Download</a>
                              <a href="#"><i class="fa-solid fa-lock"></i> Sjloet registraties</a>
                              <a href="#"><i class="fa-solid fa-trash"></i> Verwijder registraties</a>
                          </div>
