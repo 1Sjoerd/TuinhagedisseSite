@@ -73,16 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Load the image
         switch ($file_extension) {
+            case 'JPG':
             case 'jpg':
             case 'jpeg':
                 $image = imagecreatefromjpeg($_FILES["image_url"]["tmp_name"]);
                 break;
+            case 'PNG':    
             case 'png':
                 $image = imagecreatefrompng($_FILES["image_url"]["tmp_name"]);
                 break;
+            case 'GIF':
             case 'gif':
                 $image = imagecreatefromgif($_FILES["image_url"]["tmp_name"]);
                 break;
+            case 'WEBP':
             case 'webp':
                 // If the file is already in WebP format, just move it to the target location
                 if (!move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
