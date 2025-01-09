@@ -139,8 +139,8 @@
                 form.style.display = form.style.display === 'none' ? 'block' : 'none';
                 var prinsImagePreview = document.getElementById('prinsimagePreview');
                 prinsImagePreview.style.display = 'none';
-                
-                
+                var prinsAltImagePreview = document.getElementById('prinsaltimagePreview');
+                prinsAltImagePreview.style.display = 'none';
             });
             
             document.querySelectorAll('.edit-prins').forEach(function(button) {
