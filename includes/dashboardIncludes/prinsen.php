@@ -4,6 +4,39 @@
     <div class="heading-title">
         <h2 class="block-title">Beheer prinsen</h2>
     </div>
+    
+<style>
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.pagination-link {
+    padding: 3px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #000;
+}
+.pagination-link.active {
+
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.pagination-link:hover {
+    background-color: #ddd;
+}
+.pagination-link.active:hover {
+    background-color: #45a049;
+    color: white;
+}
+</style>
+
     <div class="block-text">
         <div class="wrapper">
             <div class="table">
@@ -15,7 +48,7 @@
                 <?php
                 // Standaard naar pagina 1 als geen pagina is ingesteld
                 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                $limit = 10; // Aantal items per pagina
+                $limit = 5; // Aantal items per pagina
                 $offset = ($page - 1) * $limit;
                 
                 // Haal het totaal aantal records op
@@ -32,33 +65,52 @@
                         <div class="cell" data-title="jaor"><?php echo htmlspecialchars($prinsenItem['year']); ?></div>
                         <div class="cell" data-title="Acties">
                             <a href="#" class="edit-prins" data-id="<?php echo $prinsenItem['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Bewirk</a>
-                            <a href="#"><i class="fa-solid fa-trash"></i> Verwijder</a>
+                            <a href="includes/dashboardIncludes/delete_prinsen.php?id=<?php echo $prinsenItem['id']; ?>"><i class="fa-solid fa-trash"></i> Verwijder</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
+        
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?>#prinsen-overview" class="pagination-link">Vorige</a>
+                <a href="?page=<?php echo $page - 1; ?>#prinsen-overview" class="pagination-link"><i class="fa-solid fa-chevron-left"></i></a>
             <?php endif; ?>
         
-            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <?php
+            $range = 2; // Aantal pagina's aan beide kanten van de huidige pagina
+            $start = max(1, $page - $range);
+            $end = min($totalPages, $page + $range);
+        
+            if ($start > 1): ?>
+                <a href="?page=1#prinsen-overview" class="pagination-link">1</a>
+                <?php if ($start > 2): ?>
+                    <span class="pagination-dots">...</span>
+                <?php endif; ?>
+            <?php endif; ?>
+        
+            <?php for ($i = $start; $i <= $end; $i++): ?>
                 <a href="?page=<?php echo $i; ?>#prinsen-overview" class="pagination-link <?php if ($i == $page) echo 'active'; ?>">
                     <?php echo $i; ?>
                 </a>
             <?php endfor; ?>
         
+            <?php if ($end < $totalPages): ?>
+                <?php if ($end < $totalPages - 1): ?>
+                    <span class="pagination-dots">..</span>
+                <?php endif; ?>
+                <a href="?page=<?php echo $totalPages; ?>#prinsen-overview" class="pagination-link"><?php echo $totalPages; ?></a>
+            <?php endif; ?>
+        
             <?php if ($page < $totalPages): ?>
-                <a href="?page=<?php echo $page + 1; ?>#prinsen-overview" class="pagination-link">Volgende</a>
+                <a href="?page=<?php echo $page + 1; ?>#prinsen-overview" class="pagination-link"><i class="fa-solid fa-chevron-right"></i></a>
             <?php endif; ?>
         </div>
-
-
+        
         <button id="addPrinsButton" class="submit-button">Prins toevoege</button>
         <div id="prinsForm" style="display: none;">
             <form id="prinsFormElement" method="post" action="includes/dashboardIncludes/add_prins.php" enctype="multipart/form-data">
-                <input type="hidden" id="prinsId" name="id">
+                <input type="hidden" id="prinsId" name="prinsId">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="prinsfirstname">Veurnaam:</label>
@@ -112,6 +164,7 @@
                 document.getElementById('prinsFormElement').reset();
                 document.getElementById('prinsId').value = '';
                 document.getElementById('prinsexisting_image_url').value = '';
+                document.getElementById('prinsexisting_altimage_url').value = '';
                 
 
                     const prinsYearInput = document.getElementById("prinsyear");
@@ -202,15 +255,7 @@
                 }
             });
             
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
+            
         </script>
     </div>
 </div>
