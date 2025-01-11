@@ -1,9 +1,8 @@
-<?php
-// Fetch events for the dropdown
-$events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
-?>
-
 <?php if ($hasManageNewsPermission): ?>
+<?php
+    // Fetch events for the dropdown
+    $events = $conn->query("SELECT id, title FROM events ORDER BY date DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
+?>
 <div class="block-overview">
     <div class="heading-title">
         <h2 class="block-title">Beheer nuujts</h2>

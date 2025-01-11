@@ -71,13 +71,6 @@ form input{
   flex: 1;
 }
 
-.styled-textarea,
-input[type="file"],
-input[type="date"],
-input[type="text"] {
-  font-family: inherit; /* Ensure the font matches the rest of the site */
-}
-
 .styled-select,
 input[type="file"],
 input[type="date"] {
@@ -86,7 +79,6 @@ input[type="date"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
-  font-size: 16px;
   color: #333;
   appearance: none;
   -webkit-appearance: none;
