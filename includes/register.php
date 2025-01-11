@@ -63,7 +63,6 @@ if (isset($_GET['token'])) {
 }
 $conn->close();
 ?>
-?>
 
 <div class="block-overview">
     <div class="heading-title">
