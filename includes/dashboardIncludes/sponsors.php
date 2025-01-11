@@ -119,7 +119,7 @@
                         document.getElementById('sponsorsCarsponsor').checked = data.carsponsor == "1";
 
                         // Stel de juiste optie in voor de eventid dropdown
-                        var sponsorplanidSelect = document.getElementById('sponsorplanid');
+                        var sponsorplanidSelect = document.getElementById('sponsorsPlan');
                         var sponsorplanValue = data.sponsorplan_id ? data.sponsorplan_id.trim() : ""; // Zorg voor een opgeschoonde waarde
                         let optionFound = false;
 
