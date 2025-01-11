@@ -44,6 +44,7 @@
 <?php include 'dashboardIncludes/news.php'; ?>
 <?php include 'dashboardIncludes/events.php'; ?>
 <?php include 'dashboardIncludes/prinsen.php'; ?>
+<?php include 'dashboardIncludes/jeugdprinsen.php'; ?>
 <?php include 'dashboardIncludes/registrations.php'; ?>
 <?php include 'dashboardIncludes/users.php'; ?>
 <?php include 'dashboardIncludes/permissions.php'; ?>
