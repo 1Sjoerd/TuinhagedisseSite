@@ -35,6 +35,9 @@
 
     // Check if user has manage_permissions permission
     $hasManagePermissionsPermission = userHasPermission($conn, $_SESSION['user_id'], 4, $rolePermissions);
+
+    // Check if user has manage_sponsors permission
+    $hasManageSponsorsPermission = userHasPermission($conn, $_SESSION['user_id'], 5, $rolePermissions);
 ?>
 
 <style> <?php include './assets/css/standardblock.css'; ?> </style>
@@ -46,5 +49,7 @@
 <?php include 'dashboardIncludes/prinsen.php'; ?>
 <?php include 'dashboardIncludes/jeugdprinsen.php'; ?>
 <?php include 'dashboardIncludes/registrations.php'; ?>
+<?php include 'dashboardIncludes/sponsorplans.php'; ?>
+<?php include 'dashboardIncludes/sponsors.php'; ?>
 <?php include 'dashboardIncludes/users.php'; ?>
 <?php include 'dashboardIncludes/permissions.php'; ?>

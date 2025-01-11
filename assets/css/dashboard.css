@@ -64,7 +64,6 @@
     margin-bottom: 3px;
     content: attr(data-title);
     min-width: 98px;
-    font-size: 10px;
     line-height: 10px;
     font-weight: bold;
     text-transform: uppercase;
@@ -96,7 +95,6 @@
     margin-bottom: 3px;
     content: attr(data-title);
     min-width: 98px;
-    font-size: 10px;
     line-height: 10px;
     font-weight: bold;
     text-transform: uppercase;
@@ -162,4 +160,19 @@
   margin-top: 10px;
   max-height: 500px;
   object-fit: scale-down;
+}
+
+.currency-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.currency-wrapper span {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+input {
+  width: 100px;
+  padding: 5px;
+  font-size: 1rem;
 }
