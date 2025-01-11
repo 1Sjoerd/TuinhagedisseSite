@@ -4,39 +4,6 @@
     <div class="heading-title">
         <h2 class="block-title">Beheer prinsen</h2>
     </div>
-    
-<style>
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-.pagination-link {
-    padding: 3px 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #000;
-}
-.pagination-link.active {
-
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-.pagination-link:hover {
-    background-color: #ddd;
-}
-.pagination-link.active:hover {
-    background-color: #45a049;
-    color: white;
-}
-</style>
-
     <div class="block-text">
         <div class="wrapper">
             <div class="table">
