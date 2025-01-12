@@ -13,11 +13,14 @@
 <div id="sponsoren-carousel" class="owl-carousel sponsoren-carousel">
     <?php
         // Haal records op voor de huidige pagina
-        $sponsorcarouselItems = $conn->query("SELECT name, image_url FROM sponsors WHERE sponsorplan_id = 3 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
+        $sponsorcarouselItems = $conn->query("SELECT name, image_url, url FROM sponsors WHERE sponsorplan_id = 3 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
 
         foreach ($sponsorcarouselItems as $sponsorcarouselItem):
     ?>
-        <div class="item"><img src='<?php echo htmlspecialchars($sponsorcarouselItem['image_url']); ?>' alt="<?php echo htmlspecialchars($sponsorcarouselItem['name']); ?>"></div>
+        <div class="item">
+            <?php if ($sponsorcarouselItem['url'] != ""): ?><a href="<?php echo htmlspecialchars($sponsorcarouselItem['url']); ?>" target="_blank"><?php endif ?>
+                <img src='<?php echo htmlspecialchars($sponsorcarouselItem['image_url']); ?>' alt="<?php echo htmlspecialchars($sponsorcarouselItem['name']); ?>">
+            <?php if ($sponsorcarouselItem['image_url'] != ""): ?></a><?php endif ?></div>
     <?php endforeach; ?>
 </div>
 
