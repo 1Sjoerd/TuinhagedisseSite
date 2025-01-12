@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle file upload if a new file is provided
     if (!empty($_FILES['sponsorsimage_url']['name'])) {
         $target_dir_extention = "../.";
-        $target_dir = "./assets/images/sjponsors/";
+        $target_dir = "./assets/images/sjponsoren/";
         $test_dir = $target_dir_extention . $target_dir;
         $file_extension = pathinfo($_FILES["sponsorsimage_url"]["name"], PATHINFO_EXTENSION);
     
@@ -117,9 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Move the uploaded file
         if (move_uploaded_file($_FILES["sponsorsimage_url"]["tmp_name"], $target_file)) {
             $image_url = $db_url;
-
             // Update the news item with the new image URL
-            $stmt = $conn->prepare("UPDATE sponsors SET sponsorsimage_url = ? WHERE id = ?");
+            $stmt = $conn->prepare("UPDATE sponsors SET image_url = ? WHERE id = ?");
             $stmt->bind_param("si", $image_url, $id);
             $stmt->execute();
         } else {
