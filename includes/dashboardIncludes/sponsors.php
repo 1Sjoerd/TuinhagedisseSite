@@ -19,7 +19,7 @@
                     <div class="cell">Acties</div>
                 </div>
                 <?php
-                $sponsorsItems = $conn->query("SELECT * FROM `sponsors`")->fetch_all(MYSQLI_ASSOC);
+                $sponsorsItems = $conn->query("SELECT * FROM `sponsors` ORDER BY name")->fetch_all(MYSQLI_ASSOC);
                 foreach ($sponsorsItems as $sponsorsItem):
                 ?>
                 <div class="row">
@@ -40,7 +40,7 @@
                 <label for="sponsorsName">Naam:</label>
                 <input type="text" id="sponsorsName" name="sponsorsName" required>
                 <label for="sponsorsUrl">Url:</label>
-                <input type="text" id="sponsorsUrl" name="sponsorsUrl" required>
+                <input type="text" id="sponsorsUrl" name="sponsorsUrl">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="sponsorsPostalcode">Postcode:</label>

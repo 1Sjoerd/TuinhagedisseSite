@@ -11,19 +11,14 @@
 <script src="./assets/js/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 
 <div id="sponsoren-carousel" class="owl-carousel sponsoren-carousel">
-    <div class="item"><img src='./assets/images/logos-sjponsoren/aad_20leeuwe.jpg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/Baker%20Bart%20kazerneplein.jpg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/bartjanssenassurantien.png' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/botex%20wasserij%20logo.jpg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/Dierx%20Groep.jpg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/domiveranda.png' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/hetfinancieeladvieshuis.png' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/Hotel-en-Grand-Cafe-De-Pauw.png' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/janwuts.jpeg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/meneerkes.jpg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/mts.gif' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/sif.jpeg' alt=""></div>
-    <div class="item"><img src='./assets/images/logos-sjponsoren/van%20Tuyl%20beheer.jpg' alt=""></div>
+    <?php
+        // Haal records op voor de huidige pagina
+        $sponsorcarouselItems = $conn->query("SELECT name, image_url FROM sponsors WHERE sponsorplan_id = 3 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
+
+        foreach ($sponsorcarouselItems as $sponsorcarouselItem):
+    ?>
+        <div class="item"><img src='<?php echo htmlspecialchars($sponsorcarouselItem['image_url']); ?>' alt="<?php echo htmlspecialchars($sponsorcarouselItem['name']); ?>"></div>
+    <?php endforeach; ?>
 </div>
 
 

@@ -42,14 +42,14 @@
                         <label for="sponsorplanMinAmount">Minimaal bedrag:</label>
                         <div class="currency-wrapper">
                             <span>€</span>
-                            <input type="text" id="sponsorplanMinAmount" name="sponsorplanMinAmount" required>
+                            <input type="text" id="sponsorplanMinAmount" name="sponsorplanMinAmount">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="sponsorplanMaxAmount">Maximaal bedrag:</label>
                         <div class="currency-wrapper">
                             <span>€</span>
-                            <input type="text" id="sponsorplanMaxAmount" name="sponsorplanMaxAmount" required>
+                            <input type="text" id="sponsorplanMaxAmount" name="sponsorplanMaxAmount">
                         </div>
                     </div>
                 </div>
