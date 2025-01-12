@@ -117,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Move the uploaded file
         if (move_uploaded_file($_FILES["sponsorsimage_url"]["tmp_name"], $target_file)) {
             $image_url = $db_url;
+
             // Update the news item with the new image URL
             $stmt = $conn->prepare("UPDATE sponsors SET image_url = ? WHERE id = ?");
             $stmt->bind_param("si", $image_url, $id);
