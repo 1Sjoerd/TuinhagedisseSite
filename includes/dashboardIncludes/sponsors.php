@@ -47,15 +47,15 @@
                         <input type="text" id="sponsorsPostalcode" name="sponsorsPostalcode" pattern="[1-9][0-9]{3}[A-Z]{2}" required>
                     </div>
                     <div class="form-group">
-                        <label for="sponsorsHousenumber">Hoesnummer:</label>
+                        <label for="sponsorsHousenumber">Hoesnómmer:</label>
                         <input type="text" id="sponsorsHousenumber" name="sponsorsHousenumber" required>
                     </div>
                     <div class="form-group">
-                        <label for="sponsorsAddition">Toevoeging:</label>
+                        <label for="sponsorsAddition">Toeveuging:</label>
                         <input type="text" id="sponsorsAddition" name="sponsorsAddition">
                     </div>
                 </div>
-                <label for="sponsorsStreet">Straotnaam:</label>
+                <label for="sponsorsStreet">Sjtraotnaam:</label>
                 <input type="text" id="sponsorsStreet" name="sponsorsStreet" required>
                 <div class="form-row">
                     <div class="form-group">
@@ -80,7 +80,7 @@
                         <input type="hidden" id="sponsorsexisting_image_url" name="sponsorsexisting_image_url">
                     </div>
                     <div class="form-group">
-                        <label for="sponsorsCarsponsor">Logo op de auto?</label>
+                        <label for="sponsorsCarsponsor">Logo op’pe auto?</label>
                         <input type="checkbox" id="sponsorsCarsponsor" name="sponsorsCarsponsor">
                     </div>
                 </div>
