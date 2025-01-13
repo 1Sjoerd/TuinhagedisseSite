@@ -12,65 +12,23 @@
 
         <div class="logo-container">
             <ul class="logo-gallery">
+                
+                <?php
+                    // Haal records op voor de huidige pagina
+                    $sponsorcarouselItems = $conn->query("SELECT s.name, s.image_url, s.url FROM sponsors s INNER JOIN sponsorplan sp ON s.sponsorplan_id = sp.id WHERE sp.showlogo = 1 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
+    
+                    foreach ($sponsorcarouselItems as $sponsorcarouselItem):
+                ?>
                 <li>
-                    <img src="./assets/images/logos-sjponsoren/aad_20leeuwe.jpg"/>
-                </li>
-                <li>
-                    <a href="https://www.bakkerbart.nl/vestigingen/bestellen-bij-bakker-bart-roermond-kazerneplein" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/Baker Bart kazerneplein.jpg"/>
+                    <?php if ($sponsorcarouselItem['url'] != ""): ?>
+                    <a href="<?php echo htmlspecialchars($sponsorcarouselItem['url']); ?>" target="_blank">
+                    <?php endif ?>
+                        <img src='<?php echo htmlspecialchars($sponsorcarouselItem['image_url']); ?>' alt="<?php echo htmlspecialchars($sponsorcarouselItem['name']); ?>">
+                    <?php if ($sponsorcarouselItem['image_url'] != ""): ?>
                     </a>
+                    <?php endif ?>
                 </li>
-                <li>
-                    <a href="http://www.janssenass.nl/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/bartjanssenassurantien.png"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://botex-wasserij.nl/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/botex wasserij logo.jpg"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://dierx.eu/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/Dierx Groep.jpg"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://domiveranda.com/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/domiveranda.png"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.hetfinancieeladvieshuis.nl/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/hetfinancieeladvieshuis.png"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.hoteldepauw.nl/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/Hotel-en-Grand-Cafe-De-Pauw.png"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.janwuts.nl/voorraadlijst/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/janwuts.jpeg"/>
-                    </a>
-                </li>
-                <li>
-                    <img src="./assets/images/logos-sjponsoren/meneerkes.jpg"/>
-                </li>
-                <li>
-                    <a href="https://www.mertenssimons.nl/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/mts.gif"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://sif-group.com/en/" target="_blank">
-                        <img src="./assets/images/logos-sjponsoren/sif.jpeg"/>
-                    </a>
-                </li>
-                <li>
-                    <img src="./assets/images/logos-sjponsoren/van Tuyl beheer.jpg"/>
-                </li>
+                    <?php endforeach; ?>
             </ul>
         </div>
         <div class="other-sponsors">
