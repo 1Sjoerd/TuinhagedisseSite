@@ -1,227 +1,240 @@
-
+<?php
+require_once __DIR__ . '/../templates/dbconnection.php';
+?>
 <style> <?php include './assets/css/historicCards.css'; ?> </style>
 
 <div class="hcard-container">
+    <?php
+    $sql = "SELECT * FROM `jeugdprinse` ORDER BY `year` DESC";  // Adjust table name if different
+    $result = $conn->query($sql);
+    $all_items = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $all_items[] = $row;
+        }
+    }
+    // Convert PHP array to JSON for JavaScript
+    $items_json = json_encode($all_items);
+    ?>
     <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Yara I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Yara I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Yara I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
-            <div class="carousel-item">
-                <img class="item-image lazy-image" src="./assets/images/jeugprinsen/yara.webp" alt="Prins Rick I" loading="lazy" />
-                <div class="overlay-text">Rick I</div>
-                <div class="item-text">"Vastelaovend raak biej os de gooje toon!"</div>
-            </div>
+        <div class="carousel" data-total-items="<?php echo count($all_items); ?>">
+            <?php
+            // Initially render only 11 items, centered around the first item
+            $initial_count = min(11, count($all_items));
+            $initial_items = array_slice($all_items, 0, $initial_count);
+            foreach ($initial_items as $index => $row) {
+                echo "<div class='carousel-item' data-index='{$index}'>";
+                $image_url = !empty($row['image_url']) ? $row['image_url'] : './assets/images/jeugprinsen/onbekend.jpg';
+                echo "<img class='item-image' src='".$image_url."' alt='Jeugprins ".$row["firstname"]." ".$row["number"]."' />";
+                echo "<div class='overlay-text'>".$row["firstname"]." ".$row["number"]."</div>";
+                echo "<div class='item-text'>".$row["motto"]."</div>";
+                echo "</div>";
+            }
+            ?>
         </div>
-        <button class="button-next" id="prevBtn"> ❮ </button>
-        <button class="button-next" id="nextBtn"> ❯ </button>
+        <button class="button-next" id="prevBtn">❮</button>
+        <button class="button-next" id="nextBtn">❯</button>
     </div>
 </div>
 
-<!-- jeugprinsen Cover Flow Script -->
 <script>
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-    const totalItems = items.length;
-    let currentIndex = 0;
-    let itemSpacing = 120;
-    const scaleStep = 0.10;
-    const rotationStep = -15;
-    const opacityStep = 0.1;
-    const preloadRange = 5;
-
-    function preloadImages(index) {
-        for (let i = -preloadRange; i <= preloadRange; i++) {
-            const itemIndex = (index + i + totalItems) % totalItems;
-            const img = items[itemIndex].querySelector('.lazy-image');
-            if (img && img.dataset.src) {
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-            }
+    class OptimizedCarousel {
+        constructor() {
+            this.carousel = document.querySelector('.carousel');
+            this.totalItems = parseInt(this.carousel.dataset.totalItems);
+            this.currentIndex = 0;
+            this.visibleRange = 5; // Number of items on each side
+            this.itemSpacing = window.innerWidth <= 500 ? 250 : 160;
+            this.scaleStep = 0.10;
+            this.rotationStep = -15;
+            // Store all items data
+            this.allItemsData = <?php echo $items_json; ?>;
+            
+            this.initializeCarousel();
+            this.bindEvents();
         }
-    }
 
-    function updateItemSpacing() {
-        const isMobile = window.innerWidth <= 500;
-        itemSpacing = isMobile ? 250 : 160;
-        updateCarousel();
-    }
-
-    window.addEventListener('resize', updateItemSpacing);
-    updateItemSpacing();
-
-    function updateCarousel() {
-        items.forEach((item, index) => {
-            const distance = (index - currentIndex + totalItems) % totalItems;
-            let translateX, scale, rotateY, zIndex;
-            let darkenValue;
-
-            if (distance === 0) {
-                translateX = 0;
-                scale = 1;
-                rotateY = 0;
-                zIndex = totalItems;
-                darkenValue = 0;
-
-                const overlayText = item.querySelector('.overlay-text');
-                if (overlayText) {
-                    overlayText.style.display = 'block';
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        overlayText.style.opacity = 1;
-                    });
+        initializeCarousel() {
+            // Clear existing items
+            this.carousel.innerHTML = '';
+            
+            // Load initial items (centered around currentIndex)
+            for (let i = -this.visibleRange; i <= this.visibleRange; i++) {
+                const index = (this.currentIndex + i + this.totalItems) % this.totalItems;
+                if (index >= 0 && index < this.totalItems) {
+                    this.addItem(index);
                 }
-            } else if (distance <= totalItems / 2) {
-                translateX = itemSpacing * distance;
-                scale = 1 - scaleStep * distance;
-                rotateY = -rotationStep;
-                zIndex = totalItems - distance;
-                darkenValue = 0.1 * distance;
-            } else {
-                translateX = -itemSpacing * (totalItems - distance);
-                scale = 1 - scaleStep * (totalItems - distance);
-                rotateY = rotationStep;
-                zIndex = distance;
-                darkenValue = 0.1 * (totalItems - distance);
+            }
+            
+            this.updateCarousel();
+        }
+
+        bindEvents() {
+            window.addEventListener('resize', () => this.updateItemSpacing());
+            document.getElementById('nextBtn').addEventListener('click', () => this.moveCarousel(1));
+            document.getElementById('prevBtn').addEventListener('click', () => this.moveCarousel(-1));
+            this.setupTouchEvents();
+        }
+
+        updateItemSpacing() {
+            this.itemSpacing = window.innerWidth <= 500 ? 250 : 160;
+            this.updateCarousel();
+        }
+
+        moveCarousel(direction) {
+            this.currentIndex = (this.currentIndex + direction + this.totalItems) % this.totalItems;
+            this.updateVisibleItems();
+            this.updateCarousel();
+        }
+
+        updateVisibleItems() {
+            const items = Array.from(document.querySelectorAll('.carousel-item'));
+            const currentItems = new Set(items.map(item => parseInt(item.dataset.index)));
+            
+            // Calculate needed indices
+            const neededIndices = new Set();
+            for (let i = -this.visibleRange; i <= this.visibleRange; i++) {
+                const index = (this.currentIndex + i + this.totalItems) % this.totalItems;
+                if (index >= 0 && index < this.totalItems) {
+                    neededIndices.add(index);
+                }
             }
 
-            item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
-            item.style.zIndex = zIndex;
+            // Remove items that are no longer needed
+            items.forEach(item => {
+                const itemIndex = parseInt(item.dataset.index);
+                if (!neededIndices.has(itemIndex)) {
+                    item.remove();
+                }
+            });
 
-            const image = item.querySelector('.item-image');
-            if (image) {
-                image.style.filter = `brightness(${1 - darkenValue})`;
-            }
+            // Add new items that are needed
+            neededIndices.forEach(index => {
+                if (!currentItems.has(index)) {
+                    this.addItem(index);
+                }
+            });
+        }
 
-            const overlayText = item.querySelector('.overlay-text');
-            if (overlayText) {
+        addItem(index) {
+            const itemData = this.allItemsData[index];
+            if (!itemData) return;
+
+            const item = document.createElement('div');
+            item.className = 'carousel-item';
+            item.dataset.index = index;
+            
+            const imageUrl = itemData.image_url || './assets/images/prinsen/onbekend.jpg';
+            item.innerHTML = `
+                <img class='item-image' src='${imageUrl}' alt='Prins ${itemData.firstname} ${itemData.number}' />
+                <div class='overlay-text'>${itemData.firstname} ${itemData.number}</div>
+                <div class='item-text'>${itemData.motto}</div>
+            `;
+            
+            this.carousel.appendChild(item);
+        }
+
+        updateCarousel() {
+            const items = document.querySelectorAll('.carousel-item');
+            items.forEach(item => {
+                const itemIndex = parseInt(item.dataset.index);
+                let distance = (itemIndex - this.currentIndex + this.totalItems) % this.totalItems;
+                // Adjust distance calculation to handle wraparound correctly
+                if (distance > this.totalItems / 2) {
+                    distance -= this.totalItems;
+                }
+                
+                if (Math.abs(distance) > this.visibleRange) {
+                    item.style.display = 'none';
+                    return;
+                }
+                
+                item.style.display = 'block';
+                let translateX, scale, rotateY, zIndex;
+                let darkenValue;
+
                 if (distance === 0) {
-                    overlayText.style.display = 'block';
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        overlayText.style.opacity = 1;
-                    });
+                    translateX = 0;
+                    scale = 1;
+                    rotateY = 0;
+                    zIndex = this.totalItems;
+                    darkenValue = 0;
+                    this.showOverlay(item, true);
                 } else {
-                    overlayText.style.opacity = 0;
-                    overlayText.style.transition = 'opacity 0.3s ease-out';
-                    setTimeout(() => {
-                        overlayText.style.display = 'none';
-                    }, 300);
+                    translateX = this.itemSpacing * distance;
+                    scale = 1 - this.scaleStep * Math.abs(distance);
+                    rotateY = distance > 0 ? -this.rotationStep : this.rotationStep;
+                    zIndex = this.totalItems - Math.abs(distance);
+                    darkenValue = 0.1 * Math.abs(distance);
+                    this.showOverlay(item, false);
                 }
-            }
 
+                item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
+                item.style.zIndex = zIndex;
+
+                const image = item.querySelector('.item-image');
+                if (image) {
+                    image.style.filter = `brightness(${1 - darkenValue})`;
+                }
+            });
+        }
+
+        showOverlay(item, show) {
+            const overlay = item.querySelector('.overlay-text');
             const itemText = item.querySelector('.item-text');
+            
+            if (overlay) {
+                overlay.style.opacity = show ? '1' : '0';
+                overlay.style.display = show ? 'block' : 'none';
+            }
+            
             if (itemText) {
-                if (distance === 0) {
-                    itemText.style.display = 'block';
-                    itemText.style.opacity = 0;
-                    itemText.style.transition = 'opacity 0.3s ease-in';
-                    requestAnimationFrame(() => {
-                        itemText.style.opacity = 1;
-                    });
-                } else {
-                    itemText.style.opacity = 0;
-                    itemText.style.transition = 'opacity 0.3s ease-out';
-                    setTimeout(() => {
-                        itemText.style.display = 'none';
-                    }, 300);
+                itemText.style.opacity = show ? '1' : '0';
+                itemText.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        setupTouchEvents() {
+            let startX = 0;
+            let isDragging = false;
+
+            const handleSwipe = (moveX) => {
+                const diffX = moveX - startX;
+                if (Math.abs(diffX) > 50) {
+                    this.moveCarousel(diffX < 0 ? 1 : -1);
+                    startX = moveX;
+                    isDragging = false;
                 }
-            }
-        });
+            };
 
-    preloadImages(currentIndex);
-}
+            this.carousel.addEventListener('touchstart', (event) => {
+                startX = event.touches[0].clientX;
+                isDragging = true;
+            });
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-    });
+            this.carousel.addEventListener('mousedown', (event) => {
+                startX = event.clientX;
+                isDragging = true;
+            });
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateCarousel();
-    });
+            this.carousel.addEventListener('touchmove', (event) => {
+                if (!isDragging) return;
+                handleSwipe(event.touches[0].clientX);
+            });
 
-    updateCarousel();
+            this.carousel.addEventListener('mousemove', (event) => {
+                if (!isDragging) return;
+                handleSwipe(event.clientX);
+            });
 
-    let startX = 0;
-    let isDragging = false;
-
-    function handleSwipe(moveX) {
-        const diffX = moveX - startX;
-
-        if (Math.abs(diffX) > 50) {
-            if (diffX < 0) {
-                currentIndex = (currentIndex + 1) % totalItems;
-            } else {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            }
-            updateCarousel();
-            startX = moveX;
-            isDragging = false;
+            this.carousel.addEventListener('touchend', () => isDragging = false);
+            this.carousel.addEventListener('mouseup', () => isDragging = false);
+            this.carousel.addEventListener('mouseleave', () => isDragging = false);
         }
     }
 
-    carousel.addEventListener('touchstart', (event) => {
-        startX = event.touches[0].clientX;
-        isDragging = true;
-    });
-
-    carousel.addEventListener('mousedown', (event) => {
-        startX = event.clientX;
-        isDragging = true;
-    });
-
-    carousel.addEventListener('touchmove', (event) => {
-        if (!isDragging) return;
-        const moveX = event.touches[0].clientX;
-        handleSwipe(moveX);
-    });
-
-    carousel.addEventListener('mousemove', (event) => {
-        if (!isDragging) return;
-        const moveX = event.clientX;
-        handleSwipe(moveX);
-    });
-
-    carousel.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        isDragging = false;
+    // Initialize the carousel
+    document.addEventListener('DOMContentLoaded', () => {
+        new OptimizedCarousel();
     });
 </script>
