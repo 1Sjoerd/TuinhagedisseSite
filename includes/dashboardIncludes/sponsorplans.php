@@ -53,8 +53,16 @@
                         </div>
                     </div>
                 </div>
-                <label for="sponsorplanInfo">Info:</label>
-                <input type="text" id="sponsorplanInfo" name="sponsorplanInfo">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sponsorplanInfo">Info:</label>
+                        <input type="text" id="sponsorplanInfo" name="sponsorplanInfo">
+                    </div>
+                    <div class="form-group">
+                        <label for="sponsorplanInfo">Logo oppe sait:</label>
+                        <input type="checkbox" id="sponsorplanWebsite" name="sponsorplanWebsite">
+                    </div>
+                </div>
                 <input type="submit" value="Opsjlaon" class="submit-button">
             </form>
         </div>
@@ -82,6 +90,7 @@
                         document.getElementById('sponsorplanMinAmount').value = data.min_amount;
                         document.getElementById('sponsorplanMaxAmount').value = data.max_amount;
                         document.getElementById('sponsorplanInfo').value = data.info;
+                        document.getElementById('sponsorplanWebsite').checked = data.showlogo == "1";
 
                         document.getElementById('sponsorplanForm').style.display = 'block';
                     })

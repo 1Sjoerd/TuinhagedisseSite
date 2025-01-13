@@ -1,19 +1,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style> <?php include './assets/css/footer.css'; ?> </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
 
 <!-- Owl Stylesheets -->
 <link rel="stylesheet" href="./assets/js/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
 
 
 <!-- javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="./assets/js/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 
 <div id="sponsoren-carousel" class="owl-carousel sponsoren-carousel">
     <?php
         // Haal records op voor de huidige pagina
-        $sponsorcarouselItems = $conn->query("SELECT name, image_url, url FROM sponsors WHERE sponsorplan_id = 3 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
+        $sponsorcarouselItems = $conn->query("SELECT s.name, s.image_url, s.url FROM sponsors s INNER JOIN sponsorplan sp ON s.sponsorplan_id = sp.id WHERE sp.showlogo = 1 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
 
         foreach ($sponsorcarouselItems as $sponsorcarouselItem):
     ?>

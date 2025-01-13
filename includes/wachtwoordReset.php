@@ -48,7 +48,7 @@ $conn->close();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" placeholder="Vul dien e-mail in" required>
+                        <input type="email" id="email" name="email" placeholder="Vul dien e-mail in" autocomplete="email" required>
                     </div>
                     <input type="submit" value="Reset" class="submit-button">
                 </form>
