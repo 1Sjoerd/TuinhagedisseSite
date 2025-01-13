@@ -53,7 +53,19 @@
 
     <!-- Link naar je JavaScript-bestand(en) -->
     <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/modal.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./assets/js/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
     <!-- Voeg eventuele andere scripts toe -->
+     <script>$(".registrationFieldSelect").select2({
+            closeOnSelect : false,
+            placeholder : "Selecteer de velden",
+            allowHtml: true,
+            allowClear: true,
+            tags: true
+        });
+        </script>
 </body>
 </html>

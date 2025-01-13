@@ -110,13 +110,13 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="prinsimage_url">Aafbeelding:</label>
-                        <input type="file" id="prinsimage_url" name="prinsimage_url">
+                        <input type="file" id="prinsimage_url" name="prinsimage_url" accept="image/*">
                         <img id="prinsimagePreview" class="editprinsimg" alt="Huidige afbeelding" style="display:none;">
                         <input type="hidden" id="prinsexisting_image_url" name="prinsexisting_image_url">
                     </div>
                     <div class="form-group">
                         <label for="prinsaltimage_url">Groepsfoto: (optioneel)</label>
-                        <input type="file" id="prinsaltimage_url" name="prinsaltimage_url">
+                        <input type="file" id="prinsaltimage_url" name="prinsaltimage_url" accept="image/*">
                         <img id="prinsaltimagePreview" class="editprinsimg" alt="Huidige groepsfoto"  style="display:none;">
                         <input type="hidden" id="prinsexisting_altimage_url" name="prinsexisting_altimage_url">
                     </div>

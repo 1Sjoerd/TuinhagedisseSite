@@ -1,4 +1,7 @@
 <?php if ($hasManageEventsPermission): ?>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
 <div class="block-overview block-overview-permissions">
     <div class="heading-title">
         <h2 class="block-title">Beheer ivvenementen</h2>
@@ -31,7 +34,6 @@
                 <?php endforeach; ?>
             </div>
         </div>
-
         <button id="addEventButton" class="submit-button">Ivvenement toevoege</button>
         <div id="eventForm" style="display: none;">
             <form id="eventFormElement" method="post" action="includes/dashboardIncludes/add_event.php" enctype="multipart/form-data">
@@ -43,24 +45,17 @@
                 <label for="eventDate">Datum:</label>
                 <input type="datetime-local" id="eventDate" name="eventDate" required>
                 <label for="eventRegistration_needed">Registratie neudig?</label>
-                <input type="checkbox" id="eventRegistration_needed" name="eventRegistration_needed">
-                        
+                <input type="checkbox" id="eventRegistration_needed" name="eventRegistration_needed">                        
                 <div id="registrationOptions" style="display: none; margin-top: 10px;">
-                    Welke gegaeves höbse dao veur neudig:
-                    <label for="firstname">Veurnaam:</label>
-                    <input type="checkbox" id="firstname" name="eventRegistration_fields[]" value="firstname">
-                    <label for="lastname">Achternaam:</label>
-                    <input type="checkbox" id="lastname" name="eventRegistration_fields[]" value="lastname">
-                    <label for="phone">Tillefoonnómmer:</label>
-                    <input type="checkbox" id="phone" name="eventRegistration_fields[]" value="phone"> 
-                    <label for="email">E-Mail:</label>
-                    <input type="checkbox" id="email" name="eventRegistration_fields[]" value="email">
-                    <label for="adres">Adres:</label>
-                    <input type="checkbox" id= "adres" name="eventRegistration_fields[]" value="adres">
-                    <label for="amount_people">Aantal persone:</label>
-                    <input type="checkbox" id="amount_people" name="eventRegistration_fields[]" value="amount_people">
-                    <label for="groupname">Groepsnaam:</label>
-                    <input type="checkbox" id="groupname" name="eventRegistration_fields[]" value="groupname">
+                    <select class="registrationFieldSelect" name="eventRegistration_fields[]" style="width: 100%;" multiple="multiple">
+                        <option value="firstname" >Veurnaam</option>
+                        <option value="lastname" >Achternaam</option>
+                        <option value="phone" >Tillefoonnómmer</option>
+                        <option value="email" >E-Mail</option>
+                        <option value="adres" >Adres</option>
+                        <option value="amount_people" >Aantal persone</option>
+                        <option value="groupname" >Groepsnaam</option>
+                    </select>
                     <label for="eventRegistration_enddate">Tot wanneer kinse dich opgaeve:</label>
                     <input type="datetime-local" id="eventRegistration_enddate" name="eventRegistration_enddate" value="eventRegistration_enddate">
                 </div>
@@ -73,6 +68,23 @@
                 var form = document.getElementById('eventForm');
                 document.getElementById('eventFormElement').reset();
                 document.getElementById('eventId').value = '';
+
+                // Reset de select-velden
+                var selectElement = document.querySelector('select[name="eventRegistration_fields[]"]');
+                if (selectElement) {
+                    Array.from(selectElement.options).forEach(option => {
+                        option.selected = false; // Deselecteer alle opties
+                    });
+
+                    // Reset Select2 als het gebruikt wordt
+                    if ($(selectElement).hasClass('js-select2')) {
+                        $(selectElement).trigger('change'); // Werk de weergave van Select2 bij
+                    }
+                }
+
+                // Zorg ervoor dat de registratie-opties verborgen zijn
+                document.getElementById('registrationOptions').style.display = 'none';
+
                 form.style.display = form.style.display === 'none' ? 'block' : 'none';
             });
 
@@ -102,18 +114,38 @@
 
                         document.getElementById('eventRegistration_enddate').value = data.registration_enddate;
 
-                        // Set the registration fields checkboxes
+                        // Set the registration fields for the select element
                         var registrationFields = data.registration_fields ? data.registration_fields.split(', ') : [];
-                        document.querySelectorAll('input[name="eventRegistration_fields[]"]').forEach(function(checkbox) {
-                            checkbox.checked = registrationFields.includes(checkbox.value);
-                        });
+                        var selectElement = document.querySelector('select[name="eventRegistration_fields[]"]');
+
+                        if (selectElement) {
+                            Array.from(selectElement.options).forEach(option => {
+                                option.selected = false;
+                            });
+
+                            registrationFields.forEach(field => {
+                                for (let i = 0; i < selectElement.options.length; i++) {
+                                    if (selectElement.options[i].value === field) {
+                                        selectElement.options[i].selected = true;
+                                        break;
+                                    }
+                                }
+                            });
+
+                            if ($(selectElement).hasClass('registrationFieldSelect')) {
+                                $(selectElement).trigger('change');
+                            }
+                        }
 
                         document.getElementById('eventForm').style.display = 'block';
                     })
                     .catch(error => console.error('Error fetching event:', error));
                 });
             });
+
+
         </script>
     </div>
 </div>
+
 <?php endif; ?>
