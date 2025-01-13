@@ -64,9 +64,9 @@ $conn->close();
             <div class="news-column-noimg">
                 <form action="" method="POST">
                     <label for="new_password">Nieuw wachtwoord:</label>
-                    <input type="password" id="new_password" name="new_password" required><br><br>
+                    <input type="password" id="new_password" name="new_password" autocomplete="new-password" required><br><br>
                     <label for="confirm_password">Bevestig wachtwoord:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                    <input type="password" id="confirm_password" name="confirm_password" autocomplete="new-password" required><br><br>
                     <input type="submit" value="Reset">
                 </form>
                 <div class="message">

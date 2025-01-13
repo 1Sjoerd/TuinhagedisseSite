@@ -60,11 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" placeholder="Vul dien e-mail in" required>
+                        <input type="email" id="email" name="email" placeholder="Vul dien e-mail in" autocomplete="username" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Wachwoord</label>
-                        <input type="password" id="password" name="password" placeholder="Vul dien wachwoord in" required>
+                        <input type="password" id="password" name="password" placeholder="Vul dien wachwoord in" autocomplete="current-password" required>
                     </div>
                     <input type="submit" value="Inloggen" class="submit-button">
                 </form>
