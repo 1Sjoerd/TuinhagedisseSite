@@ -13,21 +13,19 @@ require_once __DIR__ . '/../templates/dbconnection.php';
             $all_items[] = $row;
         }
     }
-    // Convert PHP array to JSON for JavaScript
     $items_json = json_encode($all_items);
     ?>
     <div class="carousel-container">
         <div class="carousel" data-total-items="<?php echo count($all_items); ?>">
             <?php
-            // Initially render only 11 items, centered around the first item
             $initial_count = min(11, count($all_items));
             $initial_items = array_slice($all_items, 0, $initial_count);
             foreach ($initial_items as $index => $row) {
                 echo "<div class='carousel-item' data-index='{$index}'>";
                 $image_url = !empty($row['image_url']) ? $row['image_url'] : './assets/images/prinsen/onbekend.jpg';
-                echo "<img class='item-image' src='".$image_url."' alt='Prins ".$row["firstname"]." ".$row["number"]."' />";
+                echo "<img class='item-image' src='".$image_url."' alt='Veurgenger ".$row["firstname"]." ".$row["number"]."' />";
                 echo "<div class='overlay-text'>".$row["firstname"]." ".$row["number"]."</div>";
-                echo "<div class='item-text'>".$row["motto"]."</div>";
+                echo "<div class='item-text' style='font-weight: 500;'>".$row["motto"]."</div>";
                 echo "</div>";
             }
             ?>
@@ -43,11 +41,10 @@ require_once __DIR__ . '/../templates/dbconnection.php';
             this.carousel = document.querySelector('.carousel');
             this.totalItems = parseInt(this.carousel.dataset.totalItems);
             this.currentIndex = 0;
-            this.visibleRange = 5; // Number of items on each side
+            this.visibleRange = 5;
             this.itemSpacing = window.innerWidth <= 500 ? 250 : 160;
             this.scaleStep = 0.10;
             this.rotationStep = -15;
-            // Store all items data
             this.allItemsData = <?php echo $items_json; ?>;
             
             this.initializeCarousel();
@@ -55,10 +52,8 @@ require_once __DIR__ . '/../templates/dbconnection.php';
         }
 
         initializeCarousel() {
-            // Clear existing items
             this.carousel.innerHTML = '';
             
-            // Load initial items (centered around currentIndex)
             for (let i = -this.visibleRange; i <= this.visibleRange; i++) {
                 const index = (this.currentIndex + i + this.totalItems) % this.totalItems;
                 if (index >= 0 && index < this.totalItems) {
@@ -91,7 +86,6 @@ require_once __DIR__ . '/../templates/dbconnection.php';
             const items = Array.from(document.querySelectorAll('.carousel-item'));
             const currentItems = new Set(items.map(item => parseInt(item.dataset.index)));
             
-            // Calculate needed indices
             const neededIndices = new Set();
             for (let i = -this.visibleRange; i <= this.visibleRange; i++) {
                 const index = (this.currentIndex + i + this.totalItems) % this.totalItems;
@@ -100,7 +94,6 @@ require_once __DIR__ . '/../templates/dbconnection.php';
                 }
             }
 
-            // Remove items that are no longer needed
             items.forEach(item => {
                 const itemIndex = parseInt(item.dataset.index);
                 if (!neededIndices.has(itemIndex)) {
@@ -108,7 +101,6 @@ require_once __DIR__ . '/../templates/dbconnection.php';
                 }
             });
 
-            // Add new items that are needed
             neededIndices.forEach(index => {
                 if (!currentItems.has(index)) {
                     this.addItem(index);
@@ -139,7 +131,6 @@ require_once __DIR__ . '/../templates/dbconnection.php';
             items.forEach(item => {
                 const itemIndex = parseInt(item.dataset.index);
                 let distance = (itemIndex - this.currentIndex + this.totalItems) % this.totalItems;
-                // Adjust distance calculation to handle wraparound correctly
                 if (distance > this.totalItems / 2) {
                     distance -= this.totalItems;
                 }
@@ -233,7 +224,6 @@ require_once __DIR__ . '/../templates/dbconnection.php';
         }
     }
 
-    // Initialize the carousel
     document.addEventListener('DOMContentLoaded', () => {
         new OptimizedCarousel();
     });
