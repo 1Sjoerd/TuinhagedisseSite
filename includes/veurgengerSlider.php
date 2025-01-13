@@ -18,7 +18,7 @@ require_once __DIR__ . '/../templates/dbconnection.php';
     <div class="carousel-container">
         <div class="carousel" data-total-items="<?php echo count($all_items); ?>">
             <?php
-            $initial_count = min(11, count($all_items));
+            $initial_count = min(9, count($all_items));
             $initial_items = array_slice($all_items, 0, $initial_count);
             foreach ($initial_items as $index => $row) {
                 echo "<div class='carousel-item' data-index='{$index}'>";
