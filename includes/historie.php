@@ -48,28 +48,31 @@
 
 <script>
     $(document).ready(function () {
-        // Listen for radio button changes
         $('input[name="aspectRatio"]').on('change', function () {
             let selectedId = $(this).attr('id');
             let contentUrl = '';
 
-            // Determine the URL to load based on the selected radio button
             if (selectedId === 'aspectRatio--16x9') {
                 contentUrl = 'includes/veurgengerSlider.php';
             } else if (selectedId === 'aspectRatio--1x1') {
                 contentUrl = 'includes/jeugSlider.php';
             }
 
-            // Debugging: Log selected URL
-            console.log(`Loading content from: ${contentUrl}`);
+            // Add loading state
+            $('#carousel-container').addClass('loading');
 
             // Load the selected content dynamically
             $('#carousel-container').load(contentUrl, function (response, status, xhr) {
                 if (status === "error") {
                     console.error(`Error loading content: ${xhr.status} ${xhr.statusText}`);
+                    $('#carousel-container').html('<div class="error">Error loading content. Please try again.</div>');
                 } else {
                     console.log(`Content loaded successfully from: ${contentUrl}`);
+                    // Initialize the carousel after content is loaded
+                    new OptimizedCarousel();
                 }
+                // Remove loading state
+                $('#carousel-container').removeClass('loading');
             });
         });
     });
