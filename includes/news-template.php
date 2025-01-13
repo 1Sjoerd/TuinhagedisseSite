@@ -43,14 +43,14 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                     <?php
                                         $fields = explode(", ", $row['registration_fields']);
                                         $translations = [
-                                            'firstname' => ['Voornaam', 'Jan', true, 'given-name'],
+                                            'firstname' => ['Veurnaam', 'Jan', true, 'given-name'],
                                             'lastname' => ['Achternaam', 'Janssen', true, 'family-name'],
-                                            'phone' => ['Telefoonnummer', '', true, 'tel-local'],
+                                            'phone' => ['Tillefoonnómmer', '', true, 'tel-local'],
                                             'email' => ['E-mail', 'info@vvdetuinhagedisse.nl', true, 'email'],
-                                            'street' => ['Straatnaam', '', true, 'off'],
+                                            'street' => ['Sjtraotnaam', '', true, 'off'],
                                             'postalcode' => ['Postcode', '1234AB', true, 'postal-code'],
-                                            'housenumber' => ['Huisnummer', '', true, 'off'],
-                                            'addition' => ['Toevoeging', '', false, ''], // Niet verplicht
+                                            'housenumber' => ['Hoesnómmer', '', true, 'off'],
+                                            'addition' => ['Toeveuging', '', false, ''], // Niet verplicht
                                             'amount_people' => ['Aantal personen', '1', true, ''],
                                             'groupname' => ['Groepsnaam', 'VV de Tuinhagedisse', true, ''],
                                         ];
