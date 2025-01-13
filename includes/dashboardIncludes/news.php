@@ -46,7 +46,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="image_url">Poster:</label>
-                        <input type="file" id="image_url" name="image_url">
+                        <input type="file" id="image_url" name="image_url" accept="image/*">
                         <input type="hidden" id="existing_image_url" name="existing_image_url">
                     </div>
                     <div class="form-group">

@@ -44,7 +44,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="sponsorsPostalcode">Postcode:</label>
-                        <input type="text" id="sponsorsPostalcode" name="sponsorsPostalcode" required>
+                        <input type="text" id="sponsorsPostalcode" name="sponsorsPostalcode" pattern="[1-9][0-9]{3}[A-Z]{2}" required>
                     </div>
                     <div class="form-group">
                         <label for="sponsorsHousenumber">Hoesnummer:</label>
@@ -76,7 +76,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="sponsorsimage_url">Poster:</label>
-                        <input type="file" id="sponsorsimage_url" name="sponsorsimage_url">
+                        <input type="file" id="sponsorsimage_url" name="sponsorsimage_url" accept="image/*">
                         <input type="hidden" id="sponsorsexisting_image_url" name="sponsorsexisting_image_url">
                     </div>
                     <div class="form-group">
@@ -142,6 +142,40 @@
                     .catch(error => console.error('Fout bij ophalen sponsorplannen:', error));
                 });
             });
+
+            document.getElementById('sponsorsPostalcode').addEventListener('blur', function() {
+                const postalcodeInput = document.getElementById('sponsorsPostalcode');
+                // Verwijder spaties en zet om naar hoofdletters
+                postalcodeInput.value = postalcodeInput.value.replace(/\s+/g, '').toUpperCase();
+                fetchStreetNameIfValid(); // Roep de API-aanroep functie aan
+            });
+            
+            document.getElementById('sponsorsHousenumber').addEventListener('blur', fetchStreetNameIfValid);
+            
+            function fetchStreetNameIfValid() {
+                const postalcodeInput = document.getElementById('sponsorsPostalcode');
+                const housenumberInput = document.getElementById('sponsorsHousenumber');
+                const streetInput = document.getElementById('sponsorsStreet');
+            
+                const postalcode = postalcodeInput.value.trim();
+                const housenumber = housenumberInput.value.trim();
+            
+                // Controleer of beide velden volledig en geldig zijn
+                const postalcodeRegex = /^[1-9][0-9]{3}[A-Z]{2}$/;
+                if (postalcodeRegex.test(postalcode) && housenumber !== '') {
+                    // API-aanroep
+                    fetch(`includes/dashboardIncludes/get_street.php?postalcode=${encodeURIComponent(postalcode)}&housenumber=${encodeURIComponent(housenumber)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                streetInput.value = data.street;
+                            } else {
+                                alert(data.message || 'Straatnaam niet gevonden. Controleer de invoer.');
+                                streetInput.value = '';
+                            }
+                        })
+                }
+            }
         </script>
     </div>
 </div>
