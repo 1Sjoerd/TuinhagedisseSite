@@ -74,7 +74,7 @@ $conn->close();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="password">Wachwoord:</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" autocomplete="new-password" required>
                     </div>
                     <input type="submit" value="Aanmake" class="submit-button">
                 </form>
