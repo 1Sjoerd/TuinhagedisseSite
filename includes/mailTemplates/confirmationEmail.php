@@ -1,18 +1,25 @@
 <?php
-$eventid = $_POST['eventid'];
-$eventName = '';
+$eventid = isset($_POST['eventid']) ? $_POST['eventid'] : null;
+$firstname = isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : 'Beste bezoeker';
+$amount_people = isset($_POST['amount_people']) ? (int)$_POST['amount_people'] : 1;
 
-$sql = "SELECT * FROM events WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $eventid);
-$stmt->execute();
-$result = $stmt->get_result();
+if ($eventid) {
+    $sql = "SELECT * FROM events WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $eventid);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $eventName = $row['title'];
-    $eventDate = date("d-m-Y", strtotime($row['date']));
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $eventName = htmlspecialchars($row['title']); 
+        $eventDate = date("d-m-Y", strtotime($row['date']));
+    }
 }
+
+// Functie voor de aanspreekvorm
+$pronoun = ($amount_people > 1) ? 'uch' : 'dien';
+$reflexivePronoun = ($amount_people > 1) ? 'uch' : 'dich';
 
 ob_start();
 ?>
@@ -77,11 +84,10 @@ ob_start();
         </tr>
         <tr>
             <td class="content">
-                <p>Beste <?php echo $_POST['firstname']; ?>,</p>
-                <p>Hartelijk dank veur <?php if ($_POST['amount_people'] > 1) { echo "uch"; } else { echo "dien"; } ?> insjrieving veur de <?php echo $eventName; ?>! Veer kieke der nao oet <?php if ($_POST['amount_people'] > 1) { echo "uch"; } else { echo "dich"; } ?> te zeen op: <?php echo $eventDate; ?></p>
+                <p>Beste <?php echo $firstname; ?>,</p>
+                <p>Hartelijk dank veur <?php echo $pronoun; ?> insjrieving veur de <?php echo $eventName; ?>! Veer kieke der nao oet <?php echo $reflexivePronoun; ?> te zeen op: <?php echo $eventDate; ?></p>
                 <p>Höbt geer nog vraoge? Naem den gerust kóntak mit os op.</p>
-                <p>Groet,
-                VV de Tuinhagedisse</p>
+                <p>Groet,<br>VV de Tuinhagedisse</p>
             </td>
         </tr>
         <tr>
