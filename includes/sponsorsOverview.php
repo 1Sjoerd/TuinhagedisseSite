@@ -33,10 +33,21 @@
         </div>
         <div class="other-sponsors">
             <div class="block-text">
-                <a href="https://ok-rijmar.nl/" target="_blank">Rijmar</a><br>
-                <a href="https://subnetriooltechniek.nl/" target="_blank">Subnet</a><br>
-                <a href="http://gifeco.nl/" target="_blank">Gifeco Training & Advies</a><br>
-                Logistic Services Personeelsdiensten bv<br>
+                <?php
+                    // Haal records op voor de huidige pagina
+                    $sponsorcarouselItems = $conn->query("SELECT s.name, s.url FROM sponsors s INNER JOIN sponsorplan sp ON s.sponsorplan_id = sp.id WHERE sp.showlogo = 0 ORDER BY RAND();")->fetch_all(MYSQLI_ASSOC);
+
+                    foreach ($sponsorcarouselItems as $sponsorcarouselItem):
+                        // Escape de naam van de sponsor slechts eenmaal
+                        $sponsorName = htmlspecialchars($sponsorcarouselItem['name']);
+                        $sponsorUrl = htmlspecialchars($sponsorcarouselItem['url']);
+                ?>
+                    <?php if ($sponsorcarouselItem['url']): ?>
+                        <a href="<?php echo $sponsorUrl; ?>" target="_blank"><?php echo $sponsorName; ?></a><br>
+                    <?php else: ?>
+                        <?php echo $sponsorName; ?><br>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
