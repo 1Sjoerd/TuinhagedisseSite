@@ -84,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $target_file = $target_dir_extention . $target_dir . $new_file_name;
         $db_url = $target_dir . $new_file_name;
-        $fb_url = "https://vvdetuinhagedisse.nl/assets/images/news/" . $new_file_name;
 
         // Check if the directory exists and is writable
         if (!is_dir($test_dir) || !is_writable($test_dir)) {
@@ -139,8 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 // Post to Facebook
                 if (isset($_POST['post_on_facebook']) && $_POST['post_on_facebook'] == '1' && isset($new)) {
-                    $accessToken = 'EAAMuxlWpSN8BO4Jq8LwWbE5nd2SDQelAvc2Gd3gX8Qkf4cPUKmFVnw0wGHtDmZBhO8EuJR5N7G84BeZCCIaDnLZAyv3lvuGQ36tZAU8G2UrGkR0caZCc8OYvEkuvOqOX3WjqPh3wj7O4l0VJf8YQxOGQlZCZADSGcAcpqsPa7dV82pfnUOOwSsLHlj2NUboGcZAW';
-                    $pageId = '848282781947419';
                     $message = $title . "\n\n" . $text;
                     $currentTimestamp = time();
                     $defaultTime = '09:00:00';
@@ -204,8 +201,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Post to Facebook
             if (isset($_POST['post_on_facebook']) && $_POST['post_on_facebook'] == '1' && isset($new)) {
-                $accessToken = 'EAAMuxlWpSN8BO4Jq8LwWbE5nd2SDQelAvc2Gd3gX8Qkf4cPUKmFVnw0wGHtDmZBhO8EuJR5N7G84BeZCCIaDnLZAyv3lvuGQ36tZAU8G2UrGkR0caZCc8OYvEkuvOqOX3WjqPh3wj7O4l0VJf8YQxOGQlZCZADSGcAcpqsPa7dV82pfnUOOwSsLHlj2NUboGcZAW';
-                $pageId = '848282781947419';
                 $message = $title . "\n\n" . $text;
                 $currentTimestamp = time();
                 $defaultTime = '09:00:00';
