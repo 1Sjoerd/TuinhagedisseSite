@@ -32,6 +32,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssssi", $date, $title, $text, $image_url, $eventid);
         $stmt->execute();
         $id = $stmt->insert_id;
+        $new = "1";
+        
+        // Post to Facebook
+        if (isset($_POST['post_on_facebook']) && $_POST['post_on_facebook'] == '1' && isset($new) && empty($_FILES['image_url']['name'])) {
+            $accessToken = 'EAAMuxlWpSN8BO4Jq8LwWbE5nd2SDQelAvc2Gd3gX8Qkf4cPUKmFVnw0wGHtDmZBhO8EuJR5N7G84BeZCCIaDnLZAyv3lvuGQ36tZAU8G2UrGkR0caZCc8OYvEkuvOqOX3WjqPh3wj7O4l0VJf8YQxOGQlZCZADSGcAcpqsPa7dV82pfnUOOwSsLHlj2NUboGcZAW';
+            $pageId = '848282781947419';
+            $message = $title . "\n\n" . $text;
+            $currentTimestamp = time();
+            
+            $defaultTime = '09:00:00';
+            $selectedTimestamp = strtotime("$date $defaultTime");
+
+            $isScheduled = $selectedTimestamp > $currentTimestamp;
+            
+            $url = "https://graph.facebook.com/v17.0/$pageId/feed";
+            $postData = [
+                'message' => $message,
+                'access_token' => $accessToken,
+            ];
+            
+            if ($isScheduled) {
+                $postData['scheduled_publish_time'] = $selectedTimestamp;
+                $postData['published'] = false; // Markeer als gepland
+            }
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+            $postResponse = curl_exec($ch);
+            $postHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+        }
+        
     }
 
     // Handle file upload if a new file is provided
@@ -93,6 +129,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     die("Failed to move WebP file.");
                 }
                 $stmt->close();
+                $image_url = $db_url;
+                // Update the news item with the new image URL
+                $stmt = $conn->prepare("UPDATE news SET image_url = ? WHERE id = ?");
+                $stmt->bind_param("si", $image_url, $id);
+                $stmt->execute();
+                
+                
+                // Post to Facebook
+                if (isset($_POST['post_on_facebook']) && $_POST['post_on_facebook'] == '1' && isset($new)) {
+                    $message = $title . "\n\n" . $text;
+                    $currentTimestamp = time();
+                    $defaultTime = '09:00:00';
+                    $selectedTimestamp = strtotime("$date $defaultTime");
+                
+                    $isScheduled = $selectedTimestamp > $currentTimestamp;
+                    
+                    $absoluteImagePath = "../." . $image_url;
+                    
+                    // Check if the image file exists before posting to Facebook
+                    if (!file_exists($absoluteImagePath)) {
+                        die("Afbeeldingsbestand bestaat niet: $absoluteImagePath");
+                    }
+                    
+                    $url = "https://graph.facebook.com/v17.0/$pageId/photos";
+                    $postData = [
+                        'source' => new CURLFile($absoluteImagePath),
+                        'caption' => $message,
+                        'access_token' => $accessToken,
+                    ];
+                    
+                    if ($isScheduled) {
+                        $postData['scheduled_publish_time'] = $selectedTimestamp;
+                        $postData['published'] = false; // Markeer als gepland
+                    }
+
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            
+                    $postResponse = curl_exec($ch);
+                    $postHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
+                }
+                
                 header("Location: ../../dashboard.php");
                 // Exit the script as no further processing is needed
                 exit;
@@ -111,16 +194,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Move the uploaded file
         if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
             $image_url = $db_url;
-
             // Update the news item with the new image URL
             $stmt = $conn->prepare("UPDATE news SET image_url = ? WHERE id = ?");
             $stmt->bind_param("si", $image_url, $id);
             $stmt->execute();
+            
+            // Post to Facebook
+            if (isset($_POST['post_on_facebook']) && $_POST['post_on_facebook'] == '1' && isset($new)) {
+                $message = $title . "\n\n" . $text;
+                $currentTimestamp = time();
+                $defaultTime = '09:00:00';
+                $selectedTimestamp = strtotime("$date $defaultTime");
+    
+                $isScheduled = $selectedTimestamp > $currentTimestamp;
+                
+                $absoluteImagePath = "../." . $image_url;
+                
+                // Check if the image file exists before posting to Facebook
+                if (!file_exists($absoluteImagePath)) {
+                    die("Afbeeldingsbestand bestaat niet: $absoluteImagePath");
+                }
+                
+                $url = "https://graph.facebook.com/v17.0/$pageId/photos";
+                $postData = [
+                    'source' => new CURLFile($absoluteImagePath),
+                    'caption' => $message,
+                    'access_token' => $accessToken,
+                ];
+                
+                if ($isScheduled) {
+                    $postData['scheduled_publish_time'] = $selectedTimestamp;
+                    $postData['published'] = false; // Markeer als gepland
+                }
+
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+                $postResponse = curl_exec($ch);
+                $postHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+            }
+            
         } else {
             die("There was an error uploading the file.");
         }
     }
-
     $stmt->close();
 
     header("Location: ../../dashboard.php");
