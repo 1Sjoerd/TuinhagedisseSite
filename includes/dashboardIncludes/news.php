@@ -63,6 +63,11 @@
                         </select>
                     </div>
                 </div>
+                <label for="post_on_facebook" id="facebookPostLabel" style="display: none;">
+                    <input type="checkbox" id="post_on_facebook" name="post_on_facebook" value="1">
+                    Mot dit bericht auch op Facebook?
+                </label>
+
                 <input type="submit" value="Opsjlaon" class="submit-button">
             </form>
         </div>
@@ -73,6 +78,7 @@
                 document.getElementById('newsFormElement').reset();
                 document.getElementById('newsId').value = '';
                 document.getElementById('existing_image_url').value = '';
+                document.getElementById('facebookPostLabel').style.display = 'block';
                 form.style.display = form.style.display === 'none' ? 'block' : 'none';
             });
 
@@ -91,6 +97,7 @@
                         document.getElementById('text').value = data.text;
                         document.getElementById('date').value = data.date;
                         document.getElementById('existing_image_url').value = data.image_url;
+                        document.getElementById('facebookPostLabel').style.display = 'none';
 
                         // Stel de juiste optie in voor de eventid dropdown
                         var eventidSelect = document.getElementById('eventid');
