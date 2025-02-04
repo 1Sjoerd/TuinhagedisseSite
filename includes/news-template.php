@@ -50,7 +50,7 @@ $text = htmlspecialchars($row['text'], ENT_QUOTES, 'UTF-8');
                                             'street' => ['Sjtraotnaam', '', true, 'off'],
                                             'postalcode' => ['Postcode', '1234AB', true, 'postal-code'],
                                             'housenumber' => ['Hoesnómmer', '', true, 'off'],
-                                            'addition' => ['Toeveuging', '', false, ''], // Niet verplicht
+                                            'addition' => ['Toevoeging', '', false, ''], // Niet verplicht
                                             'amount_people' => ['Aantal personen', '1', true, ''],
                                             'groupname' => ['Groepsnaam', 'VV de Tuinhagedisse', true, ''],
                                         ];
