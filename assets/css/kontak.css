@@ -24,12 +24,18 @@
   transition:0.5s;
 }
   
-.row a:hover{
-  color:rgb(165, 165, 165);
-}
-  
 .row a i{
   font-size:2em;
   margin:0% 1%;
   text-shadow: 1px 1px rgb(16, 90, 24);
+}
+
+.enrollment-button {
+  background-color: rgb(43, 148, 53);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
 }
