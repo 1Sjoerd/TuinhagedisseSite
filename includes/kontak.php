@@ -20,7 +20,7 @@
         </div>
         <div id="enrollmentForm" class="glassform" style="display: none;">
             <div class="form-grid">
-                <form id="enrollmentFormElement" method="post" action="#" enctype="multipart/form-data" class="glass-form">
+                <form id="enrollmentFormElement" method="post" action="includes/dashboardIncludes/process_enrollment.php" enctype="multipart/form-data" class="glass-form">
                     Insjriefformulier</br>
                     <div class="form-row">
                         <div class="form-group">

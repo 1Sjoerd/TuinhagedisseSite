@@ -1,5 +1,5 @@
-<?php require './vendor/autoload.php';
-session_start();
+<?php
+require './vendor/autoload.php';
 ?>
 <style>
     <?php include './assets/css/header.css'; ?>
