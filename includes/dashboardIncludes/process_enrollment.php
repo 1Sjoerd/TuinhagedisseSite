@@ -13,7 +13,8 @@
         if ($dob) {
             $dateObj = DateTime::createFromFormat('Y-m-d', $dob);
             if ($dateObj) {
-                $dob = $dateObj->format('d-m-Y');
+                $dob_for_display = $dateObj->format('d-m-Y'); // Voor PDF
+                $dob = $dateObj->format('Y-m-d'); // Voor database
             }
         }
         $street = trim($_POST['street'] ?? '');
@@ -21,13 +22,53 @@
         $postalcode = trim($_POST['postalcode'] ?? '');
         $city = trim($_POST['city'] ?? '');
         $phone = trim($_POST['phone'] ?? '');
-        $email = trim($_POST['email'] ?? '');
+        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
         $phoneparent = trim($_POST['phoneparent'] ?? '');
-        $emailparent = trim($_POST['emailparent'] ?? '');
+        $emailparent = filter_var($_POST['emailparent'], FILTER_VALIDATE_EMAIL);
         $groep_jeug = $_POST['groep_jeug'] ?? [];
         $groep_groot = $_POST['groep_groot'] ?? [];
         $signatureData = $_POST['signatureData'] ?? '';
     }
+
+    if (!$conn) {
+        die('Fout bij verbinden met database: ' . mysqli_connect_error());
+    }
+
+    $token = bin2hex(random_bytes(32));
+    $stmt = $conn->prepare("INSERT INTO member_enrollments (
+        token, firstname, initials, lastname, dob, street, housenumber, postalcode, city, 
+        phone, email, phoneparent, emailparent, groupjeug, groupgroot, signature
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    if (!$stmt) {
+        die('Fout bij voorbereiden van statement: ' . $conn->error);
+    }
+
+   $stmt->bind_param(
+        "ssssssssssssssss",
+        $token,
+        $firstname,
+        $initials,
+        $lastname,
+        $dob,
+        $street,
+        $housenumber,
+        $postalcode,
+        $city,
+        $phone,
+        $email,
+        $phoneparent,
+        $emailparent,
+        json_encode($groep_jeug),
+        json_encode($groep_groot),
+        $signatureData
+    );
+
+    if (!$stmt->execute()) {
+        die('Fout bij uitvoeren van statement: ' . $stmt->error);
+    }
+
+    $stmt->close();
 
     $html = '<!DOCTYPE html>
     <html lang="nl">
@@ -80,7 +121,7 @@
                 <td class="label">Voornaam:</td>
                 <td class="value">'. htmlspecialchars($firstname) .'</td>
                 <td class="label">Geboortedatum:</td>
-                <td class="value">'. htmlspecialchars($dob) .'</td>
+                <td class="value">'. htmlspecialchars($dob_for_display) .'</td>
             </tr>
             <tr>
                 <td class="label">Adres:</td>
@@ -166,7 +207,6 @@
     $dompdf = new Dompdf($options);
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait'); // Zet papierformaat en oriëntatie
-    $dompdf->render();
     
     // PDF bestand genereren
     $dompdf->render();
@@ -181,7 +221,7 @@
     header('Cache-Control: no-cache, no-store, must-revalidate');
     header('Pragma: no-cache');
     header('Expires: 0');
-    
+
     // Output de PDF inhoud
     echo $pdfOutput;
     exit;
