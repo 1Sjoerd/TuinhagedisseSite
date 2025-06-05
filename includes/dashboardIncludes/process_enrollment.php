@@ -176,7 +176,7 @@
     
     // Zet de juiste headers voor het downloaden
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="Injrievinge_test.pdf"');
+    header('Content-Disposition: attachment; filename="Insjriefformulier_'. htmlspecialchars($firstname) .'_'. htmlspecialchars($lastname) .'.pdf"');
     header('Content-Length: ' . strlen($pdfOutput));
     header('Cache-Control: no-cache, no-store, must-revalidate');
     header('Pragma: no-cache');
