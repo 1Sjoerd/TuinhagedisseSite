@@ -104,5 +104,8 @@ ob_start();
 </html>
 <?php
 $message = ob_get_clean();
+$confirmationtitle = "Bevestiging insjrieving";
+$confirmationtext = ($amount_people > 1) ? "Uch" : "Dien";
+$confirmationtext .= " aanmelding veur de $eventName is gelök!</br>Veer zólle dit auch per mail bevestigen.</br></br>Binnen enkele ogenblikke keerse automatisch teruk nao de homepagina.";
 include './confirmationTemplate.php';
 ?>
