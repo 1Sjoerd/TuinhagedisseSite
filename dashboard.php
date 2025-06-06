@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Specificeer de specifieke inhoud van deze pagina
 $content = 'pages/dashboard.php';
 

@@ -33,7 +33,16 @@ curl_close($ch);
 if ($httpCode === 200) {
     $data = json_decode($response, true);
     if (isset($data['street'])) {
-        echo json_encode(['success' => true, 'street' => $data['street']]);
+        $responseData = [
+            'success' => true,
+            'street' => $data['street'],
+        ];
+        if (isset($data['city'])) {
+            $responseData['city'] = $data['city'];
+        }
+        echo json_encode($responseData);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Straat niet gevonden.']);
     }
 }
 ?>

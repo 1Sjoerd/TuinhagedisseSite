@@ -1,0 +1,128 @@
+.glassform form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.glass-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.glass-form .form-group {
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+}
+
+.glass-form input[type="text"],
+.glass-form input[type="email"],
+.glass-form input[type="tel"],
+.glass-form input[type="date"],
+.glass-form input[type="number"] {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(189, 182, 182, 0.2);
+  color: #000;
+  font-size: 1rem;
+  box-shadow: 0 1px 2.5px rgba(0, 0, 0, 0.1);
+}
+
+.glass-form input::placeholder {
+  color: #555;
+}
+
+.glass-form .icon-label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #333;
+  pointer-events: none;
+}
+
+.glassform-submit-button {
+  padding: 0.75rem 2rem;
+  color: white !important;
+  background: rgb(43, 148, 53) !important;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  text-align: center;
+  box-shadow: 0 1px 2.5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.glass-form .form-group label {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: normal;
+}
+
+/* Checkbox Styling */
+.glass-form .form-group input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(189, 182, 182, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 1px 2.5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.glass-form .form-group input[type="checkbox"]:checked {
+  background: #2b9435;
+}
+
+.glass-form .form-group input[type="checkbox"]:checked::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Canvas handtekening veld styling */
+#signature {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    touch-action: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 1px 2.5px rgba(0,0,0,0.05);
+    width: 300px;
+    height: 150px;
+    max-width: 100%;
+}
+#signature.error {
+    border: 2px solid red;
+}
+#clearSignature {
+    background: #eee;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
