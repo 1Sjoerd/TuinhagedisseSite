@@ -214,15 +214,47 @@
     // PDF output naar een bestand in plaats van direct naar de browser
     $pdfOutput = $dompdf->output();
     
-    // Zet de juiste headers voor het downloaden
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="Insjriefformulier_'. htmlspecialchars($firstname) .'_'. htmlspecialchars($lastname) .'.pdf"');
-    header('Content-Length: ' . strlen($pdfOutput));
-    header('Cache-Control: no-cache, no-store, must-revalidate');
-    header('Pragma: no-cache');
-    header('Expires: 0');
+    // Tijdelijk pad om PDF op te slaan
+    $tempPdfPath = sys_get_temp_dir() . '/enrollmentform' . uniqid() . '.pdf';
+    file_put_contents($tempPdfPath, $pdfOutput);
+    
+    // E-mailgegevens
+    $to = ' . $email . ';
+    $subject = 'Nieuwe inschrijving van ' . $firstname . ' ' . $lastname;
+    $boundary = md5(uniqid());
+    $filename = 'Inschrijving_' . $lastname . '.pdf';
+    $headers = [];
+    $headers[] = 'From: VV de Tuinhagedisse <no-reply@vvdetuinhagedisse.nl>';
+    $headers[] = 'Reply-To: no-reply@vvdetuinhagedisse.nl';
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
+    
+    // Basis HTML boodschap
+    $body = "--$boundary\r\n";
+    $body .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $body .= "<p>Er is een nieuwe inschrijving ontvangen van <strong>$firstname $lastname</strong>.</p>";
+    $body .= "<p>De PDF is als bijlage toegevoegd.</p>\r\n";
 
-    // Output de PDF inhoud
-    echo $pdfOutput;
+    $body .= "";
+    
+    // PDF toevoegen
+    $pdfEncoded = chunk_split(base64_encode(file_get_contents($tempPdfPath)));
+    $body .= "--$boundary\r\n";
+    $body .= "Content-Type: application/pdf; name=\"$filename\"\r\n";
+    $body .= "Content-Transfer-Encoding: base64\r\n";
+    $body .= "Content-Disposition: attachment; filename=\"$filename\"\r\n\r\n";
+    $body .= $pdfEncoded . "\r\n";
+    $body .= "--$boundary--";
+    
+    // Versturen
+    if (mail($to, $subject, $body, implode("\r\n", $headers))) {
+        echo "E-mail met inschrijving succesvol verzonden.";
+    } else {
+        echo "Fout bij verzenden van e-mail.";
+    }
+    
+    // Opruimen tijdelijk bestand
+    unlink($tempPdfPath);
     exit;
 ?>
