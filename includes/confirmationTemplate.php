@@ -13,6 +13,6 @@
 </div>
 <script>
     setTimeout (function () {
-     window.location.href = "index.php";
+     window.location.href = "../index.php";
     }, 10000);
 </script>
